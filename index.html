@@ -2461,13 +2461,6 @@ const glossaryTerms = [
     usage: "When 3i private equity acquired Hobbycraft for £95 million using £75 million debt (79% leverage), implemented operational improvements reducing costs 18%, expanded from 58 to 98 stores, then sold to Bridgepoint for £135 million after 4 years—achieving 43% total return but leaving business with £85 million debt burden.",
     related: ["Leveraged Buyout", "External Finance", "Equity Finance", "Investment Funds"]
   },{
-    term: "Crowd Funding",
-    category: "Finance",
-    technical: "Raising capital by collecting small investments from large numbers of individuals via online platforms, including equity crowdfunding (offering ownership stakes), reward-based (offering products), and debt crowdfunding (peer-to-peer lending), democratising investment access.",
-    simple: "Raising money from many people, each contributing small amounts, usually through online platforms.",
-    usage: "BrewDog raised £74 million from 130,000 'Equity for Punks' crowdfunding investors (average £569 each) for collective 23% equity stake, creating brand advocates generating £180 million revenue through passionate promotion, though complex shareholding structure creates administrative costs of £2.8 million annually and complicated corporate governance.",
-    related: ["Equity Finance", "External Finance", "Alternative Finance", "Online Platforms"]
-  },{
     term: "Fixed Costs",
     category: "Finance",
     technical: "Business expenses that remain constant regardless of output level within relevant range, including rent, salaries, insurance, and depreciation, representing financial obligations payable even at zero production, affecting break-even point and operating leverage.",
@@ -3745,9 +3738,9 @@ const glossaryTerms = [
   },{
     term: "Average Rate of Return (ARR)",
     category: "Finance",
-    technical: "An investment appraisal method calculating average annual profit as a percentage of average investment, formula: (Total Profit ÷ Number of Years) ÷ (Initial Investment ÷ 2) × 100, enabling comparison with alternative investments and target returns, but ignoring cash flow timing and using accounting profit rather than cash flows.",
-    simple: "The average annual profit from an investment expressed as a percentage of the average amount invested.",
-    usage: "A factory automation project costing £500,000 generating total profit of £300,000 over 5 years produces ARR of 24% [(£300,000 ÷ 5) ÷ (£500,000 ÷ 2) × 100], exceeding the company's 15% target—easily compared against alternative projects or savings rates, but ARR doesn't distinguish between receiving £200,000 profit in Year 1 versus Year 5, treating each identically despite the significant time value difference.",
+    technical: "An investment appraisal method calculating the average annual accounting profit as a percentage of the initial investment, formula: ARR = (Average Annual Accounting Profit ÷ Initial Investment) × 100, where Average Annual Accounting Profit = Total Profit ÷ Number of Years, enabling comparison with target returns, bank interest rates, and alternative investments, but ignoring cash flow timing and using accounting profit rather than cash flows.",
+    simple: "The average annual profit from an investment expressed as a percentage of the initial cost, used to compare projects against a target return.",
+    usage: "A factory automation project costing £500,000 generating total profit of £300,000 over 5 years produces ARR of 12% [(£300,000 ÷ 5) ÷ £500,000 × 100], falling below the company's 15% target—easily compared against alternative projects or bank savings rates of 4.5%, but ARR doesn't distinguish between receiving £200,000 profit in Year 1 versus Year 5, treating each identically despite the significant time value difference that NPV would capture.",
     related: ["Investment Appraisal", "Payback Period", "Net Present Value", "Profitability"]
   },{
     term: "Net Present Value (NPV)",
@@ -4327,13 +4320,6 @@ const glossaryTerms = [
     usage: "Toyota's job rotation moves production workers between 4-6 different workstations every 2-4 weeks, developing multi-skilled teams capable of covering absences (reducing temporary agency costs £2.8 million annually), identifying process improvements through fresh perspectives (rotation workers submit 40% more kaizen suggestions), and reducing repetitive strain injuries 25%—though each rotation involves a 15% productivity dip during the 3-day learning curve, requiring careful scheduling during high-demand periods.",
     related: ["Job Enrichment", "Job Enlargement", "Motivation", "Training"]
   },{
-    term: "Liquidity Ratio",
-    category: "Finance",
-    technical: "Financial ratios measuring an organisation's ability to meet short-term obligations as they fall due, primarily the current ratio (current assets ÷ current liabilities) and acid test ratio ((current assets - inventory) ÷ current liabilities), indicating financial stability and creditworthiness, with optimal levels varying by industry.",
-    simple: "Ratios that measure whether a business has enough short-term assets to pay its short-term debts.",
-    usage: "Comparing retailer liquidity reveals industry variation: Primark's current ratio of 1.6 and acid test of 0.4 (heavy inventory holding) versus Amazon's current ratio of 1.0 and acid test of 0.8 (faster inventory turnover)—banks typically require current ratio above 1.2 for lending approval, with Primark's low acid test acceptable given fast-fashion inventory turning over 8 times annually versus furniture retailers where stock sits for 6+ months making acid test critically important.",
-    related: ["Current Ratio", "Acid Test Ratio", "Working Capital", "Cash Flow"]
-  },{
     term: "Locus of Control",
     category: "Business Strategy & Foundations",
     technical: "A psychological concept distinguishing between individuals who believe they control outcomes through their own actions (internal locus) and those who attribute outcomes to external factors like luck, fate, or powerful others (external locus), influencing entrepreneurial behaviour, with research indicating successful entrepreneurs typically exhibit strong internal locus of control.",
@@ -4467,8 +4453,7 @@ const glossaryTerms = [
     simple: "How committed, motivated, and emotionally connected employees feel towards their work and employer.",
     usage: "Gallup research shows only 10% of UK employees are 'engaged' (versus 33% in US), costing an estimated £52-70 billion annually in lost productivity—companies in the top quartile for engagement achieve 21% higher profitability, 17% higher productivity, and 41% lower absenteeism, with John Lewis's 74% engagement score (versus retail average 45%) correlating with £4,200 revenue per employee above sector average, demonstrating engagement's measurable financial impact.",
     related: ["Motivation", "Labour Turnover", "Absenteeism", "Productivity"]
-  },
-  // ==================== FINANCE ADDITIONS ====================
+  },// ==================== FINANCE ADDITIONS ====================
   {
     term: "Revenue",
     category: "Finance",
@@ -4476,65 +4461,56 @@ const glossaryTerms = [
     simple: "The total money a business earns from selling its products or services, before any costs are taken off.",
     usage: "Tesco's revenue of £65.8 billion (2024) makes it the UK's largest retailer by sales, generated across grocery (82%), clothing and general merchandise (8%), fuel (7%), and financial services (3%)—but revenue alone doesn't indicate success, as Tesco's £2.3 billion operating profit represents just 3.5% of revenue, while luxury retailer Burberry generates only £3.1 billion revenue but converts 18% to operating profit, demonstrating why revenue must be analysed alongside profitability.",
     related: ["Profit", "Average Revenue", "Total Revenue", "Income Statement"]
-  },
-  {
+  },{
     term: "Debt Factoring",
     category: "Finance",
     technical: "A financial arrangement where a business sells its trade receivables (unpaid invoices) to a specialist factor at a discount (typically 80-90% of face value), receiving immediate cash to improve liquidity, with the factor assuming responsibility for collecting payment from customers and bearing the credit risk.",
     simple: "Selling unpaid customer invoices to a specialist company at a discount to get cash immediately rather than waiting for customers to pay.",
     usage: "A construction firm owed £500,000 by clients on 90-day payment terms sells invoices to a factor receiving £425,000 immediately (85% advance), with the remaining £75,000 minus 3% fee (£15,000) paid upon customer settlement—converting 90-day wait into same-day cash, enabling the firm to pay subcontractors and take on new contracts, though the £15,000 cost reduces margins and some clients perceive factoring negatively as a sign of financial difficulty.",
     related: ["Working Capital", "Cash Flow", "Trade Credit", "Sources of Finance"]
-  },
-  {
+  },{
     term: "Leasing",
     category: "Finance",
     technical: "A financing arrangement where a business pays regular instalments to use an asset owned by a leasing company for a specified period, avoiding large capital outlay, providing tax-deductible payments, and enabling regular equipment upgrades, classified as operating leases (short-term, off-balance sheet) or finance leases (long-term, on-balance sheet).",
     simple: "Renting equipment, vehicles, or property for regular payments instead of buying it outright, avoiding a large upfront cost.",
     usage: "Rather than purchasing a £45,000 delivery van outright, a florist leases for £650 monthly over 4 years (total £31,200 plus £8,000 maintenance package)—preserving £45,000 cash for stock and marketing, claiming lease payments as tax-deductible expense (saving £7,800 at 25% corporation tax), and upgrading to electric vans after 4 years without disposal costs, though total leasing cost over 8 years exceeds purchase price by £18,000.",
     related: ["Sources of Finance", "Capital Expenditure", "Fixed Assets", "Cash Flow"]
-  },
-  {
+  },{
     term: "Crowdfunding",
     category: "Finance",
     technical: "Raising capital from a large number of individuals, typically through online platforms, in the form of donations, rewards (pre-purchasing products), loans (peer-to-peer lending), or equity investment, enabling startups and small businesses to access finance while simultaneously testing market demand and building a customer community.",
     simple: "Raising money from a large number of people, usually online, where each person contributes a small amount.",
     usage: "BrewDog raised £73 million through six rounds of 'Equity for Punks' crowdfunding on its own platform, attracting 200,000 individual investors buying shares at £25-47 each—simultaneously raising expansion capital without bank debt, creating 200,000 brand ambassadors who visit bars 4x more frequently than non-shareholders, and generating £12 million in free media coverage, though managing 200,000 shareholders creates £1.2 million annual compliance costs and governance complexity.",
     related: ["Sources of Finance", "Equity", "Business Angels", "Venture Capital"]
-  },
-  {
+  },{
     term: "Insolvency",
     category: "Finance",
     technical: "The financial state where a business cannot meet its debts as they fall due (cash flow insolvency) or where total liabilities exceed total assets (balance sheet insolvency), potentially leading to administration, liquidation, or company voluntary arrangement (CVA), with directors legally obligated to act in creditors' interests once insolvency is recognised.",
     simple: "When a business cannot pay its debts when they are due, or when its debts are greater than the value of everything it owns.",
     usage: "UK corporate insolvencies reached 25,158 in 2023 (highest since 2009), with notable failures including Wilko (£400 million debts, 12,000 jobs lost), Joules (cash flow insolvency despite profitable brand), and hundreds of energy suppliers collapsing when wholesale gas prices tripled—demonstrating that insolvency can result from poor financial management (Wilko's underinvestment), rapid external change (energy crisis), or excessive growth (overtrading depleting working capital).",
     related: ["Liquidity", "Cash Flow", "Working Capital", "Financial Risk"]
-  },
-  {
+  },{
     term: "Window Dressing",
     category: "Finance",
     technical: "The practice of manipulating financial statements to present a more favourable picture of a company's financial position than reality, including delaying payments to inflate cash balances at year-end, sale-and-leaseback transactions to reduce reported debt, and creative accounting practices that comply technically with standards but mislead stakeholders.",
     simple: "Making a business's financial accounts look better than they really are through legal but misleading techniques.",
     usage: "Common window dressing techniques include: selling assets before year-end and leasing them back to inflate cash (Tesco did this with £2 billion of property), delaying supplier payments to improve year-end cash position, bringing forward revenue recognition from January sales into December accounts, and capitalising expenses that should be written off—Patisserie Valerie's £94 million fraud represented extreme window dressing, with fictitious cash balances and suppressed liabilities deceiving investors until the company collapsed.",
     related: ["Financial Statements", "Business Ethics", "Corporate Governance", "Balance Sheet"]
-  },
-  {
+  },{
     term: "Budgeting",
     category: "Finance",
     technical: "The process of creating financial plans allocating expected income and expenditure across departments, projects, or time periods, providing targets for revenue and cost control, enabling variance analysis comparing actual versus planned performance, and facilitating coordination between business functions.",
     simple: "Creating a financial plan that sets targets for income and spending, used to control costs and measure performance.",
     usage: "A restaurant chain sets annual budgets: each branch receives revenue targets (based on location capacity and local demand), food cost budgets (32% of revenue), labour budgets (28% of revenue), and marketing allocations (£2,000 monthly)—monthly variance analysis revealing Branch A's food costs at 38% (adverse variance of 6%) triggers investigation finding wastage from poor portion control, enabling corrective training that saves £45,000 annually across the chain.",
     related: ["Budget Variances", "Cash Flow Forecast", "Financial Planning", "Zero-based Budgeting"]
-  },
-  {
+  },{
     term: "Cash Flow Statement",
     category: "Finance",
     technical: "A financial statement reporting cash inflows and outflows over an accounting period, categorised into operating activities (trading cash flows), investing activities (asset purchases and sales), and financing activities (loans, share issues, dividends), reconciling opening and closing cash balances and revealing the sources and uses of cash regardless of accounting profit.",
     simple: "A financial statement showing where cash came from and where it went during a period, split into operating, investing, and financing activities.",
     usage: "A tech startup reporting £2 million accounting profit may show negative operating cash flow of -£500,000 (customers paying slowly), investing outflows of -£3 million (server infrastructure), and financing inflows of +£5 million (venture capital)—the cash flow statement reveals the business is cash-dependent on investor funding despite apparent profitability, with operating cash conversion of only 25% indicating aggressive revenue recognition that profit figures alone would not reveal.",
     related: ["Cash Flow", "Income Statement", "Balance Sheet", "Cash Flow Forecast"]
-  },
-
-  // ==================== MARKETING ADDITIONS ====================
+  },// ==================== MARKETING ADDITIONS ====================
   {
     term: "Extension Strategy",
     category: "Marketing",
@@ -4542,33 +4518,28 @@ const glossaryTerms = [
     simple: "Actions taken to extend the life of a product and prevent sales from declining, such as updating features, finding new markets, or rebranding.",
     usage: "Lucozade has used multiple extension strategies over 90 years: originally marketed as a hospital recovery drink (1927-1983), repositioned as an energy sports drink with Daley Thompson endorsement (1983), reformulated to reduce sugar content 50% ahead of sugar tax (2017), and launched Lucozade Alert targeting gamers and students (2020)—each extension strategy reviving the brand when sales plateaued, avoiding the decline phase that has killed competitors like Tab Clear and Purdey's.",
     related: ["Product Life Cycle", "Product Development", "Branding", "Market Development"]
-  },
-  {
+  },{
     term: "Sampling Methods",
     category: "Marketing",
     technical: "Techniques for selecting representative subsets of a target population for market research, including random sampling (equal chance of selection), stratified sampling (divided into subgroups then sampled proportionally), quota sampling (set numbers from each category), and convenience sampling (easily accessible respondents), with method choice affecting research validity, cost, and reliability.",
     simple: "Different ways of choosing people to take part in market research, from random selection to targeting specific groups.",
     usage: "When Cadbury researched new chocolate flavours, sampling method choice significantly affected results: random sampling of 2,000 UK adults (representative but £45,000 cost), stratified sampling by age and region ensuring proportional representation of key demographics (£38,000, better targeted), quota sampling of 500 regular chocolate buyers at supermarkets (£12,000, faster but potentially biased toward one retailer's customers), and online convenience sampling generating 10,000 responses (£5,000 but skewed toward younger, digitally-active consumers).",
     related: ["Market Research", "Primary Research", "Quantitative Research", "Qualitative Research"]
-  },
-  {
+  },{
     term: "Loss Leader Pricing",
     category: "Marketing",
     technical: "A pricing strategy deliberately selling selected products below cost to attract customers into stores or onto platforms, generating profit through complementary purchases and increased footfall, commonly used by supermarkets and technology companies, with risks including attracting only deal-seekers and potential predatory pricing allegations.",
     simple: "Selling a product at a loss to attract customers who will then buy other, more profitable items.",
     usage: "Tesco sells 4-pint milk at £1.15 (below £1.28 cost, losing 13p per unit) as a loss leader generating 2.3 million weekly purchases—85% of milk buyers purchase average £18.40 additional items at normal margins, generating £2.85 profit per transaction after absorbing the milk loss, with loss leaders increasing store footfall 12% and basket size 23% versus non-promotional periods, though dairy farmers argue loss leader pricing pressures farm-gate milk prices below sustainable levels.",
     related: ["Pricing Strategy", "Penetration Pricing", "Predatory Pricing", "Market Penetration"]
-  },
-  {
+  },{
     term: "Predatory Pricing",
     category: "Marketing",
     technical: "An anti-competitive pricing strategy where a dominant firm deliberately sets prices below cost to drive competitors out of the market, intending to raise prices once competition is eliminated, illegal under UK Competition Act 1998 and investigated by the Competition and Markets Authority, though difficult to prove intent versus legitimate competitive pricing.",
     simple: "When a large business deliberately sets prices very low to force competitors out of business, then raises prices once they've gone.",
     usage: "When Amazon allegedly priced nappies below cost through Amazon Mom programme (selling at 30% loss), forcing rival Diapers.com into financial distress and ultimately acquiring it for £380 million (70% below previous valuation)—the CMA and FTC face difficulty distinguishing predatory pricing from aggressive competition, requiring evidence of: pricing below average variable cost, dominant market position, and intention to recoup losses through later price increases, with only 3 successful UK prosecutions in 20 years.",
     related: ["Loss Leader Pricing", "Competition", "Competition and Markets Authority (CMA)", "Barriers to Entry"]
-  },
-
-  // ==================== HR ADDITIONS ====================
+  },// ==================== HR ADDITIONS ====================
   {
     term: "McGregor's Theory X and Theory Y",
     category: "Human Resources",
@@ -4576,81 +4547,70 @@ const glossaryTerms = [
     simple: "Two opposing views of workers: Theory X sees them as lazy and needing control, Theory Y sees them as self-motivated and wanting responsibility.",
     usage: "Sports Direct under Mike Ashley exemplified Theory X management: warehouse workers tracked by GPS, timed toilet breaks, zero-hours contracts removing security, and punitive absence policies—generating 80% annual labour turnover and Guardian exposés, while John Lewis's Theory Y approach (employee ownership, autonomous department management, profit-sharing bonuses averaging 8-15% salary) achieves 25% turnover and consistently higher customer satisfaction, demonstrating how management assumptions become self-fulfiling prophecies.",
     related: ["Motivation", "Leadership Styles", "Maslow's Hierarchy of Needs", "Herzberg's Two-Factor Theory"]
-  },
-  {
+  },{
     term: "Hawthorne Effect",
     category: "Human Resources",
     technical: "The phenomenon observed in Elton Mayo's 1920s-1930s experiments at Western Electric's Hawthorne Works, where workers' productivity improved regardless of environmental changes (lighting, breaks, hours) simply because they received attention and felt valued, demonstrating that social and psychological factors influence productivity more than physical working conditions.",
     simple: "The finding that workers perform better when they feel noticed and valued, regardless of the actual changes made to their working conditions.",
     usage: "When a UK call centre conducted trials improving break room facilities for one team (new furniture, better coffee, plants), productivity rose 18%—but a control group receiving only management attention ('we're monitoring your wellbeing') improved 15%, demonstrating the Hawthorne Effect where being observed and valued matters more than physical changes, informing modern management that regular check-ins, recognition, and showing genuine interest in employees can improve performance more cost-effectively than expensive facility upgrades.",
     related: ["Motivation", "Mayo", "Taylor's Scientific Management", "Employee Engagement"]
-  },
-  {
+  },{
     term: "Employment Contract",
     category: "Human Resources",
     technical: "A legally binding agreement between employer and employee specifying terms and conditions of employment including job title, duties, hours, pay, holiday entitlement, notice period, and disciplinary procedures, required in writing within two months of starting employment under Employment Rights Act 1996, providing legal protection for both parties.",
     simple: "A legal agreement between an employer and employee setting out the terms of the job, including pay, hours, and responsibilities.",
     usage: "A standard UK employment contract for a marketing manager specifies: job title and reporting line, £42,000 salary paid monthly, 37.5 hours weekly with flexible working options, 28 days holiday plus bank holidays, 3-month probation period, 3-month notice period, non-compete clause preventing working for direct competitors for 6 months post-departure, and reference to employee handbook for detailed policies—failure to provide written terms within 2 months enables employee tribunal claims of up to 4 weeks' pay compensation.",
     related: ["Zero-Hours Contract", "Employment Rights", "Human Resource Management (HRM)", "Redundancy"]
-  },
-  {
+  },{
     term: "Minimum Wage and National Living Wage",
     category: "Human Resources",
     technical: "Legally mandated minimum hourly pay rates set by the UK government, with the National Living Wage (NLW) applying to workers aged 21+ and lower National Minimum Wage (NMW) rates for younger workers and apprentices, reviewed annually by the Low Pay Commission, intended to prevent exploitation while balancing business affordability and employment levels.",
     simple: "The lowest hourly pay rate that employers are legally required to pay workers, varying by age group.",
     usage: "The National Living Wage increase to £11.44 (April 2024) affects 2.7 million UK workers directly and compresses pay differentials for millions more—a care home with 50 minimum-wage staff faces £140,000 additional annual wage costs, with options including absorbing costs (reducing profit 8%), increasing fees to residents (risking council contract loss), reducing hours (impacting care quality), or investing in productivity technology, demonstrating the real business trade-offs behind minimum wage policy.",
     related: ["Employment Contract", "Employee Costs", "Government Intervention", "Labour Market"]
-  },
-  {
+  },{
     term: "Disciplinary and Grievance Procedures",
     category: "Human Resources",
     technical: "Formal organisational processes for addressing employee misconduct (disciplinary) and employee complaints about workplace treatment (grievance), following ACAS Code of Practice requiring investigation, written notification, right to a hearing with representation, and right of appeal, with failure to follow procedures risking unfair dismissal claims at employment tribunal.",
     simple: "Formal processes for dealing with employee misconduct and for employees to raise complaints, following legal guidelines.",
     usage: "When a supermarket discovers a checkout worker has been undercharging friends, the disciplinary procedure requires: investigation (reviewing CCTV, till records), written notification of allegations, formal hearing where employee can bring union representative or colleague, consideration of mitigating circumstances (first offence, personal difficulties), proportionate sanction (written warning through to dismissal for gross misconduct), and right of appeal—skipping any stage risks employment tribunal finding unfair dismissal, with average tribunal award of £13,541 plus legal costs.",
     related: ["Employment Contract", "Employment Rights", "Trade Unions", "Human Resource Management (HRM)"]
-  },
-  {
+  },{
     term: "Flexible Working",
     category: "Human Resources",
     technical: "Working arrangements departing from standard full-time, fixed-location patterns, including part-time, job-sharing, flexitime, compressed hours, annualised hours, and remote/hybrid working, with UK employees having legal right to request flexible working from day one of employment (Employment Relations Act 2023), aimed at improving work-life balance and widening labour market participation.",
     simple: "Working arrangements that give employees choice over when, where, or how many hours they work.",
     usage: "Since COVID-19, 44% of UK employees work hybridly (averaging 2.3 office days weekly), with firms like Nationwide offering fully remote roles—benefits include 23% reduction in voluntary turnover, access to wider talent pool (recruiting nationally rather than locally), and 15% productivity improvement in focused work, though challenges include: maintaining culture (65% of managers report weaker team cohesion), fair promotion opportunities for remote workers, and £8,000 per employee home-office setup costs.",
     related: ["Remote Working", "Teleworking", "Labour Market", "Motivation"]
-  },
-  {
+  },{
     term: "Teleworking",
     category: "Human Resources",
     technical: "Working from a location other than the employer's premises, typically from home, enabled by digital communication technology including video conferencing, cloud computing, and collaboration platforms, offering cost savings and flexibility but requiring trust-based management, appropriate technology infrastructure, and attention to employee isolation and wellbeing.",
     simple: "Working from home or another location away from the office, using technology to stay connected.",
     usage: "BT's teleworking programme has 13,000 employees (15% of workforce) working primarily from home, saving £65 million annually in office space costs (consolidating from 240 to 60 UK offices), reducing employee commuting emissions by 12,000 tonnes CO₂, and improving retention among working parents (turnover 40% lower than office-based roles)—though BT invests £3,200 per teleworker in equipment, broadband, and cybersecurity, and conducts quarterly wellbeing checks after finding 22% of permanent teleworkers reported increased isolation.",
     related: ["Flexible Working", "Remote Working", "Technology", "Communication"]
-  },
-  {
+  },{
     term: "Handy's Cultural Types",
     category: "Human Resources",
     technical: "Charles Handy's framework classifying organisational culture into four types: Power culture (centralised control around key individual), Role culture (defined by formal rules, procedures, and job descriptions), Task culture (team-based, project-focused, flexible), and Person culture (individual expertise-centred, loose structure), with each type suited to different organisational contexts and strategies.",
     simple: "Four types of organisational culture identified by Charles Handy: Power (boss decides), Role (rules and procedures), Task (teamwork), and Person (individual experts).",
     usage: "Comparing UK organisations through Handy's framework: Ryanair exhibits power culture (Michael O'Leary's personal authority driving all major decisions), HMRC operates role culture (strict procedures, defined hierarchies, consistency prioritised), a digital marketing agency typifies task culture (cross-functional project teams assembled flexibly around client briefs), and a barristers' chambers reflects person culture (independent professionals sharing administrative resources)—demonstrating how culture must align with strategy, with attempts to impose role culture on creative agencies or task culture on safety-critical organisations typically failing.",
     related: ["Organisational Culture", "Corporate Culture", "Deal and Kennedy's Cultural Model", "Leadership Styles"]
-  },
-  {
+  },{
     term: "Deal and Kennedy's Cultural Model",
     category: "Human Resources",
     technical: "A framework classifying organisational culture based on two dimensions: degree of risk in business activities and speed of feedback on decisions, creating four culture types: Tough-Guy/Macho (high risk, fast feedback), Work Hard/Play Hard (low risk, fast feedback), Bet-Your-Company (high risk, slow feedback), and Process (low risk, slow feedback).",
     simple: "A model categorising business cultures by how risky their decisions are and how quickly they find out if those decisions worked.",
     usage: "Applying Deal and Kennedy: investment banking (tough-guy/macho culture—traders make high-risk decisions with instant P&L feedback, celebrating individual stars), Tesco (work hard/play hard—low-risk individual transactions but fast daily sales feedback, team energy valued), pharmaceutical R&D at GSK (bet-your-company—£1 billion drug development decisions with 10-year feedback cycles, requiring long-term commitment), and local council planning department (process culture—low-risk decisions, slow feedback, focus on procedural correctness)—mismatches between culture type and business context create dysfunction.",
     related: ["Organisational Culture", "Handy's Cultural Types", "Corporate Culture", "Change Management"]
-  },
-  {
+  },{
     term: "Strike",
     category: "Human Resources",
     technical: "An organised withdrawal of labour by employees, typically coordinated through trade unions, used as a last resort to pressure employers during industrial disputes over pay, conditions, redundancies, or policy changes, requiring a formal ballot with at least 50% turnout and majority support under the Trade Union Act 2016.",
     simple: "When workers collectively refuse to work as a form of protest, usually over pay or working conditions, organised through a trade union.",
     usage: "The 2022-2023 UK strike wave saw 2.7 million working days lost (highest since 1989): rail workers (RMT union demanding 7% pay rise versus 2% offered, disrupting 40,000 daily services), nurses (RCN's first-ever strike over 19% real-terms pay decline since 2010), and Royal Mail postal workers (CWU opposing automation displacing 10,000 roles)—costing the UK economy estimated £1.7 billion in lost output, but ultimately securing improved offers in most disputes, demonstrating strikes' continued effectiveness as a bargaining tool despite declining union membership.",
     related: ["Trade Unions", "Industrial Action", "Collective Bargaining", "Employee Relations"]
-  },
-
-  // ==================== OPERATIONS ADDITIONS ====================
+  },// ==================== OPERATIONS ADDITIONS ====================
   {
     term: "Just-in-Case (JIC)",
     category: "Operations Management",
@@ -4658,25 +4618,21 @@ const glossaryTerms = [
     simple: "Keeping extra stock 'just in case' it's needed, to avoid running out if there are supply problems or unexpected demand.",
     usage: "After COVID-19 exposed JIT vulnerabilities, many businesses shifted toward JIC: Toyota increased semiconductor buffer stocks from 2 weeks to 4 months (adding £800 million inventory cost but avoiding the production shutdowns that cost competitors £60 billion), UK supermarkets expanded warehouse capacity 25% to hold 3-week food reserves versus previous 3-day JIT supply, and NHS stockpiled 6-month PPE reserves at £2.4 billion—demonstrating the post-pandemic reassessment of JIT's cost savings versus JIC's supply resilience.",
     related: ["Just-in-Time (JIT)", "Buffer Stock", "Inventory Management", "Supply Chain Management"]
-  },
-  {
+  },{
     term: "Internet of Things (IoT)",
     category: "Operations Management",
     technical: "The network of physical devices embedded with sensors, software, and connectivity enabling them to collect and exchange data without human intervention, applied in business through smart manufacturing, supply chain tracking, predictive maintenance, energy management, and customer behaviour monitoring, creating operational efficiencies but raising data security and privacy concerns.",
     simple: "Everyday objects connected to the internet that can collect and share data, such as smart sensors in factories or delivery tracking devices.",
     usage: "Rolls-Royce uses IoT sensors in 13,000 commercial aircraft engines, collecting 70 trillion data points annually monitoring temperature, vibration, and fuel efficiency in real-time—enabling predictive maintenance that identifies component degradation 6 weeks before failure (reducing unplanned groundings 40%), optimising fuel burn saving airlines £250 million annually, and creating 'power-by-the-hour' service contracts worth £8.2 billion, transforming Rolls-Royce from engine manufacturer to data-driven service provider.",
     related: ["Artificial Intelligence (AI)", "Automation", "Technology", "Digital Technology"]
-  },
-  {
+  },{
     term: "3D Printing",
     category: "Operations Management",
     technical: "Additive manufacturing technology building three-dimensional objects layer by layer from digital designs using materials including plastics, metals, ceramics, and composites, enabling rapid prototyping, mass customisation, on-demand production, and complex geometries impossible with traditional manufacturing, though currently limited by speed, material range, and unit cost at volume.",
     simple: "A manufacturing technology that builds objects layer by layer from a digital design, allowing rapid prototyping and customised production.",
     usage: "Airbus uses 3D printing to produce 1,000+ aircraft components: titanium bracket redesigned for 3D printing weighs 30% less (saving 500kg per aircraft, reducing fuel costs £120,000 annually per plane), prototype development time reduced from 6 months to 2 weeks, spare parts printed on-demand at regional hubs eliminating £45 million warehousing costs, and complex cooling channels inside turbine blades impossible to manufacture traditionally—though 3D printing unit costs remain 5-10x higher than mass production for volumes above 10,000 units.",
     related: ["Innovation", "Technology", "Research and Development (R&D)", "Mass Customisation"]
-  },
-
-  // ==================== STRATEGY & EXTERNAL ADDITIONS ====================
+  },// ==================== STRATEGY & EXTERNAL ADDITIONS ====================
   {
     term: "Monopoly",
     category: "Business Strategy & Foundations",
@@ -4684,129 +4640,112 @@ const glossaryTerms = [
     simple: "A market dominated by one company, giving it the power to set prices and limit competition.",
     usage: "Google holds 92% of UK search engine market share, constituting functional monopoly—enabling dominance in digital advertising (£14.5 billion UK revenue), leveraging search data across Maps, YouTube, Gmail, and Android ecosystem, while competitors (Bing 3%, DuckDuckGo 1.5%) cannot achieve the data volume necessary to match search quality, creating self-reinforcing dominance that CMA's Digital Markets Unit is now empowered to regulate through the Digital Markets Act designating Google as having 'strategic market status'.",
     related: ["Oligopoly", "Competition", "Barriers to Entry", "Competition and Markets Authority (CMA)"]
-  },
-  {
+  },{
     term: "Oligopoly",
     category: "Business Strategy & Foundations",
     technical: "A market structure dominated by a small number of large firms whose decisions are interdependent, characterised by high concentration ratios, significant barriers to entry, non-price competition (branding, quality, service), and tendency toward price rigidity, with firms choosing between collusion (illegal) and competitive strategies while monitoring rivals' actions.",
     simple: "A market dominated by a few large firms who are very aware of each other's actions and tend to compete through branding rather than price.",
     usage: "UK mobile telecommunications is a classic oligopoly: four networks (EE, Vodafone, Three, O2) control 96% market share, with interdependent pricing (all unlimited data plans converged to £25-30 monthly within 6 months), massive barriers to entry (5G network rollout costs £2+ billion), competition focused on network coverage, brand advertising, and exclusive handset deals rather than price, and kinked demand curve behaviour where price cuts are matched immediately but increases are not—explaining stable prices despite limited competition.",
     related: ["Monopoly", "Perfect Competition", "Concentration Ratio", "Market Structure"]
-  },
-  {
+  },{
     term: "Perfect Competition",
     category: "Business Strategy & Foundations",
     technical: "A theoretical market structure characterised by many small firms, identical products, perfect information, no barriers to entry or exit, and price-taking behaviour, where firms earn only normal profit in the long run as supernormal profits attract new entrants, serving as a benchmark against which real markets are compared rather than existing in pure form.",
     simple: "A theoretical market with many small firms selling identical products, where no single firm can influence the price.",
     usage: "UK wheat farming approximates perfect competition: 21,000 farms producing essentially identical commodity wheat, prices determined by global markets (£185/tonne) with individual farmers unable to charge more, near-perfect information through AHDB market data, relatively low entry barriers (land rental available), and only normal profits achievable long-term—contrasting with imperfect competition in branded food (Warburtons bread commanding 25% premium over own-label despite identical ingredients) where differentiation enables above-normal returns.",
     related: ["Monopoly", "Oligopoly", "Market Structure", "Contestable Markets"]
-  },
-  {
+  },{
     term: "Contestable Markets",
     category: "Business Strategy & Foundations",
     technical: "Markets where potential competition from new entrants constrains the behaviour of existing firms regardless of actual market concentration, characterised by low barriers to entry and exit, low sunk costs, and the credible threat of 'hit-and-run' entry, meaning even monopolists may price competitively to deter challengers.",
     simple: "Markets where the threat of new competitors entering keeps existing businesses competitive, even if there are only a few firms.",
     usage: "UK budget airlines demonstrate contestability: despite Ryanair and easyJet's dominance, low sunk costs (aircraft can be leased and redeployed to other routes within weeks) mean new entrants like Wizz Air can contest profitable routes, forcing incumbents to maintain competitive fares—when easyJet's London-Barcelona fare reached £180, Wizz Air entered at £45, causing easyJet to reduce to £65 within months, demonstrating how contestability disciplines pricing without requiring many actual competitors.",
     related: ["Barriers to Entry", "Barriers to Exit", "Perfect Competition", "Market Structure"]
-  },
-  {
+  },{
     term: "Government Intervention",
     category: "Business Strategy & Foundations",
     technical: "Actions taken by government to influence business activity and correct market failures, including legislation and regulation, taxation, subsidies, provision of public goods and services, competition policy, trade policy, and macroeconomic management, affecting business costs, market access, competitive conditions, and strategic decisions.",
     simple: "When the government takes action to influence how businesses operate, through laws, taxes, subsidies, or regulation.",
     usage: "UK sugar tax (Soft Drinks Industry Levy, 2018) demonstrates government intervention: 24p/litre on drinks with 8g+ sugar per 100ml generated £340 million revenue, but more significantly prompted reformulation—Lucozade reduced sugar 50%, Ribena 55%, and Irn-Bru 60% before the levy took effect, reducing childhood sugar consumption from soft drinks by 29% without significant sales decline, demonstrating how intervention can achieve behavioural change through threat as much as implementation.",
     related: ["Fiscal Policy", "Monetary Policy", "Subsidies", "Market Failure"]
-  },
-  {
+  },{
     term: "Subsidies",
     category: "Business Strategy & Foundations",
     technical: "Financial assistance provided by government to businesses or industries to encourage production, reduce consumer prices, support employment, promote exports, or achieve social objectives, funded through taxation, potentially distorting market competition and creating dependency, with WTO rules restricting trade-distorting subsidies.",
     simple: "Money given by the government to businesses to help them produce goods, keep prices low, or support a particular industry.",
     usage: "UK electric vehicle subsidies illustrate intervention debate: £2,500 plug-in car grants (costing £1.4 billion 2011-2022) accelerated EV adoption from 0.1% to 16.6% of new car sales, supporting 12,000 jobs in battery manufacturing, but critics argue subsidies primarily benefited wealthy early adopters (average EV buyer earning £65,000+) and Tesla (receiving estimated £280 million in UK grants)—the grant was withdrawn in 2022 as the market matured, testing whether demand sustains without subsidy support.",
     related: ["Government Intervention", "Fiscal Policy", "Market Failure", "Tariffs"]
-  },
-  {
+  },{
     term: "Trade Blocs",
     category: "Business Strategy & Foundations",
     technical: "Groups of countries that agree to reduce or eliminate trade barriers between members, ranging from free trade areas (no internal tariffs) to customs unions (common external tariff) to single markets (free movement of goods, services, capital, and labour) to economic unions (common economic policies), creating larger markets but potentially diverting trade from non-members.",
     simple: "Groups of countries that agree to trade more freely with each other by reducing or removing barriers like tariffs.",
     usage: "The EU Single Market (27 countries, 450 million consumers, £14 trillion GDP) eliminated tariffs, standardised regulations, and enabled free movement—UK businesses benefited from frictionless export to largest trading partner (42% of exports), but Brexit withdrawal introduced customs declarations costing UK businesses £7.5 billion annually, border delays averaging 2 hours for goods, and regulatory divergence requiring dual compliance for manufacturers selling in both UK and EU markets.",
     related: ["International Trade", "Tariffs", "Globalisation", "World Trade Organisation (WTO)"]
-  },
-  {
+  },{
     term: "World Trade Organisation (WTO)",
     category: "Business Strategy & Foundations",
     technical: "An international body governing trade rules between 164 member nations, promoting trade liberalisation through multilateral negotiations, administering trade agreements, resolving disputes, and monitoring national trade policies, operating on principles of non-discrimination (most-favoured-nation), reciprocity, and binding commitments, with WTO rules applying as default terms when countries lack bilateral trade agreements.",
     simple: "An international organisation that sets the rules for trade between countries and helps resolve trade disputes.",
     usage: "Post-Brexit, UK trade with countries lacking free trade agreements defaults to WTO terms: 12% average tariff on car exports to markets without deals, 35% tariffs on dairy exports, and 'rules of origin' documentation adding £25 per consignment—prompting UK government to negotiate 73 trade agreements covering 68% of UK trade, though WTO Most Favoured Nation rules ensure no country faces worse terms than others, providing baseline market access even without bilateral agreements.",
     related: ["Trade Blocs", "International Trade", "Tariffs", "Globalisation"]
-  },
-  {
+  },{
     term: "Pressure Groups",
     category: "Business Strategy & Foundations",
     technical: "Organisations formed to influence government policy, business behaviour, or public opinion on specific issues without seeking political power themselves, classified as insider groups (regular government consultation access) and outsider groups (using public campaigns, protests, and media), affecting business through reputational pressure, consumer boycotts, legislative lobbying, and shareholder activism.",
     simple: "Organisations that campaign to influence business behaviour or government policy on specific issues.",
     usage: "Greenpeace's campaign against Shell's Brent Spar oil platform disposal (1995) demonstrated pressure group power: organising consumer boycotts reducing Shell's German sales 50%, generating global media coverage, and forcing Shell to reverse its deep-sea disposal decision despite government and scientific support—costing Shell £43 million in alternative onshore dismantling but establishing the precedent that businesses must consider public perception alongside regulatory compliance, with modern pressure groups leveraging social media to mobilise millions instantly.",
     related: ["Stakeholders", "Corporate Social Responsibility", "Business Ethics", "External Environment"]
-  },
-  {
+  },{
     term: "Corporate Culture",
     category: "Business Strategy & Foundations",
     technical: "The shared values, beliefs, attitudes, and norms that characterise how an organisation operates and how its members behave, shaped by founders, leadership, history, and industry context, influencing decision-making, employee behaviour, customer experience, and strategic capability, often described as 'how we do things around here'.",
     simple: "The shared values, attitudes, and ways of working that define what it feels like to work at a particular company.",
     usage: "Netflix's corporate culture document ('Freedom and Responsibility') emphasises radical transparency (sharing financial data with all employees), unlimited holiday (averaging 28 days taken), no expense approval processes (trusting employee judgement), and 'keeper test' (managers regularly asking 'would I fight to keep this person?')—creating high-performance culture attracting top talent, but critics note it generates intense pressure with 14% annual turnover and 'adequate performance gets a generous severance package' creating anxiety, demonstrating culture's power to drive results while creating trade-offs.",
     related: ["Organisational Culture", "Handy's Cultural Types", "Deal and Kennedy's Cultural Model", "Mission Statement"]
-  },
-  {
+  },{
     term: "Short-termism",
     category: "Business Strategy & Foundations",
     technical: "A focus on immediate financial results and near-term shareholder returns at the expense of long-term strategic investment, innovation, and sustainable growth, driven by quarterly reporting pressures, executive bonus structures, and activist investors, potentially undermining research and development, workforce development, and competitive positioning.",
     simple: "When businesses focus too much on quick profits and short-term results rather than investing for the long term.",
     usage: "UK firms invest only 10% of GDP in capital (versus Germany's 21% and South Korea's 31%), attributed to short-termism: average CEO tenure of 4.8 years discourages 10-year investment horizons, quarterly earnings pressure causes R&D cuts during downturns (UK R&D spending 1.7% GDP versus 3.1% in Germany), and activist investors demanding immediate share buybacks—Unilever abandoned quarterly reporting in 2020 to combat short-termism, while Arm Holdings invested £1.2 billion in chip design over 12 years before achieving profitability, demonstrating long-term patience's value.",
     related: ["Long-termism", "Corporate Governance", "Shareholders", "Investment"]
-  },
-  {
+  },{
     term: "Long-termism",
     category: "Business Strategy & Foundations",
     technical: "A strategic orientation prioritising sustainable long-term value creation over short-term profit maximisation, involving sustained investment in research, workforce development, brand building, and stakeholder relationships, increasingly advocated by institutional investors, stewardship codes, and ESG frameworks as generating superior returns over extended periods.",
     simple: "Focusing on building long-term value through sustained investment rather than chasing quick profits.",
     usage: "Amazon exemplified long-termism: Jeff Bezos reinvested virtually all profit for 20 years, accepting losses and shareholder criticism to build AWS (£28 billion invested before profitability), Prime membership (subsidised deliveries losing £4 billion annually to build 200 million subscriber base), and logistics network (£100 billion in fulfilment infrastructure)—generating £42 billion annual operating profit by 2023, demonstrating that long-term investment can create exponentially greater value than short-term profit extraction, though requiring patient investors willing to forgo immediate returns.",
     related: ["Short-termism", "Corporate Strategy", "Investment", "Strategic Planning"]
-  },
-  {
+  },{
     term: "Bowman's Strategic Clock",
     category: "Business Strategy & Foundations",
     technical: "A model identifying eight competitive positioning strategies based on combinations of price and perceived added value, extending Porter's generic strategies to include: low price/low value (position 1), low price (2), hybrid (3), differentiation (4), focused differentiation (5), increased price/standard value (6), high price/low value (7), and low value/standard price (8), with positions 6-8 representing likely failure strategies.",
     simple: "A model showing eight different competitive positions a business can take based on its price level and the value customers think they're getting.",
     usage: "Mapping UK coffee shops on Bowman's Strategic Clock: Greggs occupies Position 2 (low price, acceptable quality), Costa takes Position 3 (hybrid—mid-price, reasonable quality and experience), Starbucks aims for Position 4 (differentiation through experience, customisation, and brand at premium price), and Grind Coffee targets Position 5 (focused differentiation—super-premium speciality coffee for connoisseurs at £4.50+)—positions 6-8 (overcharging for undifferentiated products) represent unsustainable strategies, explaining why mid-range cafés without clear positioning frequently fail.",
     related: ["Competitive Advantage", "Differentiation", "Market Positioning", "Porter's Five Forces"]
-  },
-  {
+  },{
     term: "Kaplan and Norton's Balanced Scorecard",
     category: "Business Strategy & Foundations",
     technical: "A strategic management framework measuring organisational performance across four perspectives beyond financial metrics: Financial (shareholder value, profitability), Customer (satisfaction, retention, market share), Internal Business Processes (efficiency, quality, innovation), and Learning and Growth (employee development, culture, technology), providing balanced assessment of strategic execution.",
     simple: "A framework measuring business performance across four areas: financial results, customer satisfaction, internal processes, and learning and growth.",
     usage: "Tesco applies balanced scorecard thinking through its 'Steering Wheel': Financial (5% profit growth target), Customer (NPS score above 45, availability 98.5%), Operations (waste reduction 10% annually, supply chain efficiency), and People (employee engagement above 75%, internal promotion rate 60%)—ensuring store managers optimise across all dimensions rather than hitting financial targets by cutting staff (which would damage customer scores) or reducing waste investment (harming long-term efficiency), with balanced scorecard KPIs determining 40% of management bonuses.",
     related: ["Corporate Strategy", "Business Objectives", "Key Performance Indicators", "Strategic Planning"]
-  },
-  {
+  },{
     term: "Kay's Distinctive Capabilities",
     category: "Business Strategy & Foundations",
     technical: "John Kay's framework identifying three sources of sustainable competitive advantage: Architecture (internal and external relationships and networks), Reputation (brand strength and trust built over time), and Innovation (ability to create new products, processes, or business models), arguing these capabilities must be distinctive, sustainable, and appropriable (the firm captures the value created) to generate lasting advantage.",
     simple: "John Kay's theory that lasting competitive advantage comes from three things: strong relationships, trusted reputation, and the ability to innovate.",
     usage: "Applying Kay's framework to John Lewis: Architecture (unique employee ownership structure creating 80,000 'Partners' with aligned incentives, long-term supplier partnerships averaging 15 years, and customer trust network), Reputation (150-year heritage, 'Never Knowingly Undersold' pledge, consistently top-rated for customer service), Innovation (first UK retailer to offer click-and-collect, pioneering experience-led retail with in-store styling services)—these distinctive capabilities are difficult for competitors to replicate because they're embedded in culture and relationships built over decades.",
     related: ["Competitive Advantage", "Corporate Strategy", "Bowman's Strategic Clock", "Differentiation"]
-  },
-  {
+  },{
     term: "Elkington's Triple Bottom Line",
     category: "Business Strategy & Foundations",
     technical: "John Elkington's framework arguing businesses should measure success across three dimensions: Profit (financial performance), People (social impact on employees, communities, and society), and Planet (environmental sustainability), challenging the traditional single focus on financial returns and advocating for integrated reporting of economic, social, and environmental performance.",
     simple: "The idea that businesses should measure success in three areas: Profit (financial), People (social impact), and Planet (environmental impact).",
     usage: "Unilever's Sustainable Living Plan adopted triple bottom line reporting: Profit (£52 billion revenue, 16% operating margin), People (reaching 1.3 billion people through hygiene programmes, improving livelihoods for 800,000 smallholder farmers, achieving gender-balanced management), Planet (halving environmental footprint per consumer use, 100% renewable electricity, zero waste to landfill from all factories)—Unilever argues this approach generates long-term shareholder value, with sustainable living brands growing 69% faster than the rest of the portfolio.",
     related: ["Corporate Social Responsibility (CSR)", "Sustainability", "Business Ethics", "Carroll's CSR Pyramid"]
-  },
-
-  // ==================== LEGAL ADDITIONS ====================
+  },// ==================== LEGAL ADDITIONS ====================
   {
     term: "Consumer Rights Act 2015",
     category: "Business Strategy & Foundations",
@@ -4814,57 +4753,49 @@ const glossaryTerms = [
     simple: "The main UK law protecting shoppers, requiring that products are good quality, work properly, and match their description.",
     usage: "When a customer buys a £1,200 laptop from Currys that develops a screen fault after 8 months, the Consumer Rights Act 2015 provides: right to repair or replacement within first 6 months (retailer must prove fault wasn't present at purchase), right to partial refund thereafter, and 6-year window for claims—Currys' extended warranty costing £149 arguably duplicates statutory rights, with Which? research showing 41% of consumers unaware of their legal protections, enabling retailers to profit from warranty sales covering rights already provided free by law.",
     related: ["Consumer Protection", "Business Ethics", "External Environment", "Government Intervention"]
-  },
-  {
+  },{
     term: "Health and Safety at Work Act 1974",
     category: "Business Strategy & Foundations",
     technical: "The primary UK legislation establishing employer duties to ensure, so far as reasonably practicable, the health, safety, and welfare of employees and others affected by business activities, requiring risk assessments, safe systems of work, training, protective equipment, and consultation with employees, enforced by the Health and Safety Executive with criminal penalties for breaches.",
     simple: "The main UK law requiring employers to keep workers and visitors safe, including carrying out risk assessments and providing training.",
     usage: "Compliance costs UK businesses approximately £8.8 billion annually but prevents far greater losses: construction industry fatalities fell from 166 (1974) to 45 (2023) following implementation, while the Grenfell Tower tragedy (72 deaths, 2017) demonstrated catastrophic consequences of safety failures, with resulting inquiry costs exceeding £150 million, criminal investigations of 58 organisations, and Kingspan's reputational damage reducing UK market share 15%—illustrating that health and safety investment protects both lives and business viability.",
     related: ["Risk Assessment", "External Environment", "Government Intervention", "Operational Risk"]
-  },
-  {
+  },{
     term: "Data Protection and GDPR",
     category: "Business Strategy & Foundations",
     technical: "The UK Data Protection Act 2018 and retained EU General Data Protection Regulation governing how organisations collect, store, process, and share personal data, requiring lawful basis for processing, data minimisation, purpose limitation, accuracy, storage limitation, and security, with individual rights including access, rectification, erasure, and portability, enforced by the Information Commissioner's Office with fines up to £17.5 million or 4% of global turnover.",
     simple: "Laws controlling how businesses collect and use people's personal information, giving individuals rights over their data.",
     usage: "British Airways was fined £20 million by the ICO after hackers stole 400,000 customers' payment card details through a website vulnerability in 2018—the breach cost BA an estimated £100 million including the fine, customer compensation, IT remediation, and reputational damage with booking conversion rates falling 8%, demonstrating that data protection is a business-critical investment, with UK companies now spending average £1.2 million annually on GDPR compliance, rising to £25 million+ for major financial services firms.",
     related: ["Consumer Rights", "External Environment", "Technology", "Business Ethics"]
-  },
-  {
+  },{
     term: "Competition and Markets Authority (CMA)",
     category: "Business Strategy & Foundations",
     technical: "The UK's primary competition regulator responsible for investigating mergers exceeding £70 million turnover or creating 25%+ market share, enforcing prohibitions against anti-competitive agreements and abuse of dominant position, protecting consumer interests, and now regulating digital markets, with powers to block mergers, impose fines of up to 10% of global turnover, and require remedies.",
     simple: "The UK government body that checks mergers don't reduce competition, investigates anti-competitive behaviour, and protects consumers.",
     usage: "The CMA blocked Microsoft's £55 billion Activision acquisition (later approved with conditions), blocked Sainsbury's-Asda £12 billion merger (finding it would raise prices in 629 local areas), fined construction firms £59.5 million for bid-rigging, and investigated Apple and Google's mobile duopoly—businesses now factor CMA review into M&A planning with 6-12 month regulatory timelines, and the Digital Markets Act 2024 gives CMA new powers to regulate tech giants' market conduct proactively.",
     related: ["Monopoly", "Mergers", "Competition", "Government Intervention"]
-  },
-  {
+  },{
     term: "Equality Act 2010",
     category: "Human Resources",
     technical: "UK legislation prohibiting discrimination based on nine protected characteristics: age, disability, gender reassignment, marriage/civil partnership, pregnancy/maternity, race, religion/belief, sex, and sexual orientation, covering recruitment, employment terms, promotion, dismissal, and harassment, requiring employers to make reasonable adjustments for disabled employees and enabling positive action to address underrepresentation.",
     simple: "UK law making it illegal to discriminate against people at work because of characteristics like age, gender, race, disability, or religion.",
     usage: "The Equality Act impacts every HR decision: job advertisements cannot specify age ('young, dynamic team' is potentially discriminatory), interview questions must relate to job requirements (asking about childcare plans is unlawful), pay must be equal for equal work (BBC faced 100+ equal pay claims costing £500,000+), and reasonable adjustments for disabled employees are mandatory (average cost £300 per adjustment)—employment tribunal discrimination claims cost employers average £28,000 in compensation plus £15,000 legal costs, with uncapped awards for discrimination compared to £105,707 cap for unfair dismissal.",
     related: ["Employment Rights", "Human Resource Management (HRM)", "Recruitment", "Diversity"]
-  },
-  {
+  },{
     term: "Employment Rights",
     category: "Human Resources",
     technical: "The legal entitlements and protections afforded to UK workers including the right to a written statement of employment, national minimum wage, statutory holiday (28 days including bank holidays), protection from unfair dismissal (after 2 years), redundancy pay, maternity/paternity/shared parental leave, right to request flexible working, and whistleblowing protection.",
     simple: "The legal protections and entitlements workers have, including minimum pay, holiday, protection from unfair dismissal, and parental leave.",
     usage: "UK employment rights create significant business obligations: statutory maternity pay costs employers £2.3 billion annually (recoverable at 92-103%), 28 days minimum holiday per full-time employee costs retail sector £4.2 billion, unfair dismissal protection after 2 years requires documented performance management processes, and auto-enrolment pension contributions (minimum 3% employer contribution) add £8.5 billion annual business costs—with non-compliance risking employment tribunal claims averaging £13,500 per case and HMRC penalties for minimum wage breaches of up to 200% of underpayment.",
     related: ["Employment Contract", "Equality Act 2010", "Minimum Wage and National Living Wage", "Trade Unions"]
-  },
-  {
+  },{
     term: "Whistleblowing",
     category: "Business Strategy & Foundations",
     technical: "The act of an employee reporting suspected wrongdoing, illegal activity, or dangers to the public within their organisation to management, regulators, or external authorities, protected under the Public Interest Disclosure Act 1998 which shields whistleblowers from dismissal or detriment, essential for detecting fraud, safety violations, and unethical practices that internal controls may miss.",
     simple: "When an employee reports wrongdoing or illegal activity in their workplace, protected by law from being punished for speaking up.",
     usage: "The most impactful UK whistleblowing cases include: Paul Moore at HBOS warning about excessive lending risks in 2005 (dismissed, vindicated by 2008 banking crisis costing taxpayers £20 billion), Volkswagen engineers reporting emissions cheating to US regulators (leading to £24 billion in fines), and NHS whistleblowers exposing Mid Staffordshire patient neglect (contributing to reforms saving lives)—yet 43% of UK whistleblowers report suffering retaliation despite legal protection, with average tribunal compensation of £22,000 often insufficient given career damage.",
     related: ["Business Ethics", "Corporate Governance", "Employment Rights", "Risk Management"]
-  },
-
-  // ==================== ENTREPRENEURSHIP ADDITIONS ====================
+  },// ==================== ENTREPRENEURSHIP ADDITIONS ====================
   {
     term: "Calculated Risk",
     category: "Business Strategy & Foundations",
@@ -4872,8 +4803,7 @@ const glossaryTerms = [
     simple: "Taking a risk after carefully weighing up the potential rewards against the possible downsides and preparing for things going wrong.",
     usage: "When Sara Davies invested £36,000 personal savings launching Crafter's Companion from her university bedroom, she took a calculated risk: market research confirmed 2 million UK crafters with limited specialist suppliers, she tested demand through craft fair sales before committing to manufacturing, maintained part-time employment as income safety net, and limited initial inventory to 500 units (capping maximum loss at £36,000)—the calculated approach enabled scaling to £34 million revenue and Dragon's Den investor status, contrasting with uncalculated risk-taking that bankrupts 60% of startups within 3 years.",
     related: ["Entrepreneurship", "Locus of Control", "Risk", "Decision Making"]
-  },
-  // ==================== CRITICAL PATH ANALYSIS COMPONENTS ====================
+  },// ==================== CRITICAL PATH ANALYSIS COMPONENTS ====================
   {
     term: "Node",
     category: "Operations Management",
@@ -4881,41 +4811,35 @@ const glossaryTerms = [
     simple: "A circle in a network diagram marking the start or end of an activity, showing the earliest and latest times that point can be reached.",
     usage: "In a network diagram for a shop refit project, Node 3 shows EST of 8 days (earliest the preceding activities can all be completed) and LFT of 8 days (latest this point can be reached without delaying the project)—because EST equals LFT, Node 3 sits on the critical path with zero float, meaning any delay to activities feeding into Node 3 will directly delay the entire project completion.",
     related: ["Critical Path Analysis", "Earliest Start Time (EST)", "Latest Finish Time (LFT)", "Float Time"]
-  },
-  {
+  },{
     term: "Float Time",
     category: "Operations Management",
     technical: "The amount of time an activity can be delayed without affecting the overall project completion date, calculated as Latest Finish Time minus Earliest Start Time minus activity duration, with zero float indicating critical path activities where any delay extends the project, and positive float indicating scheduling flexibility.",
     simple: "The amount of spare time available for an activity before it delays the whole project.",
     usage: "In a restaurant opening project with 14-week critical path, the activity 'design menus' has EST of week 4, LFT of week 10, and duration of 3 weeks, giving float of 3 weeks (10 - 4 - 3)—meaning the designer can start anytime between weeks 4 and 7 without delaying the opening, allowing the manager to prioritise resources on zero-float critical activities like kitchen installation and licensing applications instead.",
     related: ["Critical Path Analysis", "Node", "Earliest Start Time (EST)", "Latest Finish Time (LFT)"]
-  },
-  {
+  },{
     term: "Earliest Start Time (EST)",
     category: "Operations Management",
     technical: "The earliest possible time an activity or event can begin, determined by a forward pass through the network diagram, calculated by adding the duration of preceding activities and taking the highest value where multiple paths converge at a node, establishing the minimum project timeline.",
     simple: "The earliest possible time an activity can start, based on how long all the activities before it will take.",
     usage: "In constructing a new warehouse, if 'lay foundations' takes 4 weeks and 'install drainage' takes 6 weeks, and both must complete before 'build walls' can begin, the EST for 'build walls' is week 6 (the longer of the two preceding paths)—project managers use ESTs to create realistic schedules, identify the earliest possible completion date, and determine which activities can run simultaneously to compress the overall timeline.",
     related: ["Latest Finish Time (LFT)", "Critical Path Analysis", "Node", "Float Time"]
-  },
-  {
+  },{
     term: "Latest Finish Time (LFT)",
     category: "Operations Management",
     technical: "The latest possible time an activity or event can be completed without delaying the overall project, determined by a backward pass through the network diagram from the project end date, calculated by subtracting activity durations and taking the lowest value where paths diverge, essential for calculating float and identifying the critical path.",
     simple: "The latest time an activity can finish without making the whole project late.",
     usage: "If a 20-week building project requires 'install electrics' (3 weeks) to finish before 'final inspection' at week 20, the LFT for electrics is week 17 (20 - 3)—but if electrics' EST is week 14, there is float of 0 weeks (17 - 14 - 3 = 0), placing it on the critical path, whereas 'paint walls' with LFT of 19, EST of 12, and duration of 4 weeks has 3 weeks float (19 - 12 - 4), allowing flexible scheduling.",
     related: ["Earliest Start Time (EST)", "Critical Path Analysis", "Node", "Float Time"]
-  },
-  {
+  },{
     term: "Dummy Activity",
     category: "Operations Management",
     technical: "A fictitious activity with zero duration and zero resource requirement, represented by a dashed arrow in network diagrams, used to show logical dependencies between activities without implying additional work, necessary to maintain correct precedence relationships when two activities share the same start and end nodes.",
     simple: "A fake activity shown as a dashed line in a network diagram that takes no time but shows that one activity depends on another.",
     usage: "When planning a product launch where both 'design packaging' and 'arrange distribution' must complete before 'stock retailers', but 'print brochures' only depends on 'design packaging' completing—a dummy activity from 'design packaging' end node to 'arrange distribution' end node shows the dependency without implying extra work, preventing the network diagram from incorrectly suggesting 'print brochures' must also wait for distribution arrangements.",
     related: ["Critical Path Analysis", "Node", "Network Diagrams", "Float Time"]
-  },
-
-  // ==================== DECISION TREE COMPONENTS ====================
+  },// ==================== DECISION TREE COMPONENTS ====================
   {
     term: "Expected Value",
     category: "Business Strategy & Foundations",
@@ -4923,41 +4847,35 @@ const glossaryTerms = [
     simple: "The average financial outcome of a decision, calculated by multiplying each possible result by how likely it is to happen.",
     usage: "A retailer considering a new store location calculates expected value: 60% probability of high footfall generating £800,000 annual profit (0.6 × £800,000 = £480,000) plus 40% probability of low footfall generating £200,000 profit (0.4 × £200,000 = £80,000), giving expected value of £560,000—compared to an alternative location with expected value of £420,000, the first location appears superior, though the 40% chance of only £200,000 may concern a risk-averse business owner.",
     related: ["Decision Tree", "Net Gain", "Probability", "Risk"]
-  },
-  {
+  },{
     term: "Net Gain",
     category: "Business Strategy & Foundations",
     technical: "The expected value of a decision minus the initial cost of pursuing that option, representing the anticipated net financial benefit, used to compare decision tree options on a like-for-like basis accounting for differing investment requirements, with positive net gain indicating the option is expected to generate returns exceeding its cost.",
     simple: "The expected profit from a decision after subtracting the initial cost of that option.",
     usage: "A bakery deciding whether to invest £50,000 in a new oven calculates: expected value of £120,000 (based on probability-weighted outcomes of high and low demand scenarios) minus £50,000 investment cost = £70,000 net gain—compared to a smaller £20,000 oven with expected value of £65,000 giving £45,000 net gain, the larger oven shows higher net gain despite greater risk, though the £30,000 cost difference may matter for a cash-constrained small business.",
     related: ["Expected Value", "Decision Tree", "Investment Appraisal", "Probability"]
-  },
-  {
+  },{
     term: "Decision Node",
     category: "Business Strategy & Foundations",
     technical: "A point in a decision tree diagram, represented by a square, where the decision-maker must choose between two or more alternative courses of action, each leading to different branches with associated costs, probabilities, and outcomes, with the optimal choice determined by comparing expected values or net gains of each branch.",
     simple: "A square on a decision tree where the business must make a choice between different options.",
     usage: "A hotel chain's decision tree starts with a decision node (square) presenting three options: expand existing hotel (£2 million), build new hotel (£8 million), or do nothing (£0)—each branch then leads to chance nodes representing uncertain outcomes (high/low demand), with the decision-maker selecting the option generating the highest net gain, though qualitative factors like brand positioning and competitor moves may override the purely quantitative analysis.",
     related: ["Chance Node", "Decision Tree", "Expected Value", "Net Gain"]
-  },
-  {
+  },{
     term: "Chance Node",
     category: "Business Strategy & Foundations",
     technical: "A point in a decision tree diagram, represented by a circle, where uncertain outcomes occur beyond the decision-maker's control, with branches showing different possible outcomes and their associated probabilities (which must sum to 1.0), each leading to estimated financial payoffs used to calculate expected values.",
     simple: "A circle on a decision tree where different outcomes might happen based on chance, each with a probability attached.",
     usage: "After the decision to launch a new product (decision node), a chance node shows three possible market outcomes: strong demand with 30% probability yielding £500,000, moderate demand with 50% probability yielding £200,000, and weak demand with 20% probability yielding -£100,000—giving expected value of £230,000 [(0.3 × £500k) + (0.5 × £200k) + (0.2 × -£100k)], with the probabilities based on market research though inherently uncertain.",
     related: ["Decision Node", "Decision Tree", "Expected Value", "Probability"]
-  },
-  {
+  },{
     term: "Probability",
     category: "Business Strategy & Foundations",
     technical: "The likelihood of a particular event or outcome occurring, expressed as a decimal between 0 (impossible) and 1 (certain) or as a percentage, estimated from historical data, market research, or expert judgement, used in decision trees, expected value calculations, and risk assessment, with all probabilities for mutually exclusive outcomes at a chance node summing to 1.0.",
     simple: "How likely something is to happen, expressed as a number between 0 (won't happen) and 1 (definitely will happen).",
     usage: "When Tesco assesses the probability of a new Express store succeeding, historical data from 300 similar openings informs estimates: 0.45 probability of exceeding targets (135 stores did), 0.40 probability of meeting targets (120 stores), and 0.15 probability of underperforming (45 stores)—these probabilities feed into expected value calculations for the investment appraisal, though managers recognise that past performance doesn't guarantee future results, especially when entering unfamiliar locations or demographics.",
     related: ["Expected Value", "Decision Tree", "Risk", "Chance Node"]
-  },
-
-  // ==================== BREAK-EVEN COMPONENTS ====================
+  },// ==================== BREAK-EVEN COMPONENTS ====================
   {
     term: "Break-even Point",
     category: "Finance",
@@ -4965,17 +4883,14 @@ const glossaryTerms = [
     simple: "The exact number of units a business must sell so that its income exactly covers all its costs, with no profit or loss.",
     usage: "A gym charging £40 monthly membership with variable costs of £8 per member and fixed costs of £16,000 monthly breaks even at 500 members (£16,000 ÷ £32 contribution)—with 650 current members, the gym makes £4,800 monthly profit and has a margin of safety of 150 members (23%), meaning it could lose nearly a quarter of members before making a loss, providing confidence to invest £5,000 in new equipment that would raise the break-even point to 520 members.",
     related: ["Break-even Analysis", "Contribution", "Fixed Costs", "Margin of Safety"]
-  },
-  {
+  },{
     term: "Total Revenue",
     category: "Finance",
     technical: "The complete income generated from all sales of goods or services over a given period, calculated as Selling Price × Quantity Sold for single-product firms, or the sum of revenue across all product lines, represented as an upward-sloping line on break-even charts and used alongside total costs to determine profit or loss at any output level.",
     simple: "The total amount of money a business receives from selling all its products or services.",
     usage: "A cinema's total revenue from 200,000 annual admissions at average £11.50 ticket price equals £2.3 million from tickets, plus £1.8 million from food and drinks (average £9 spend per visitor), plus £400,000 from advertising and screen hire—totalling £4.5 million, with the food revenue at 72% gross margin being far more profitable than ticket sales at 15% margin, explaining why cinemas invest heavily in premium food offerings and tolerate thin margins on admissions.",
     related: ["Revenue", "Average Revenue", "Break-even Analysis", "Profit"]
-  },
-
-  // ==================== INVESTMENT APPRAISAL COMPONENTS ====================
+  },// ==================== INVESTMENT APPRAISAL COMPONENTS ====================
   {
     term: "Discount Factor",
     category: "Finance",
@@ -4983,33 +4898,28 @@ const glossaryTerms = [
     simple: "A number used to calculate what money received in the future is worth today, getting smaller the further into the future it is.",
     usage: "At a 10% discount rate, £1 received in different years has different present values: Year 1 discount factor 0.909 (£1 worth 90.9p today), Year 3 factor 0.751 (worth 75.1p), Year 5 factor 0.621 (worth 62.1p)—so a project promising £100,000 in Year 5 is actually worth only £62,100 in today's money, explaining why NPV analysis often rejects projects with large but distant returns in favour of projects generating earlier cash flows.",
     related: ["Discount Rate", "Net Present Value (NPV)", "Time Value of Money", "Investment Appraisal"]
-  },
-  {
+  },{
     term: "Discount Rate",
     category: "Finance",
     technical: "The interest rate used to convert future cash flows into present values in NPV calculations, typically reflecting the firm's cost of capital (weighted average of debt and equity costs), the minimum required rate of return, or an adjusted rate incorporating project-specific risk, with higher discount rates reducing NPV and making project acceptance less likely.",
     simple: "The interest rate used in NPV calculations to work out what future money is worth today, usually based on the cost of borrowing or the return expected by investors.",
     usage: "When Tesco evaluates a new store investment, the discount rate choice significantly affects the decision: at 8% discount rate (reflecting low-risk grocery investment), a project shows NPV of +£2.1 million (accept); at 12% (reflecting higher-risk emerging market entry), the same cash flows produce NPV of -£400,000 (reject)—demonstrating that discount rate selection is a critical judgement reflecting risk assessment, not merely a technical calculation, with firms typically adding 2-5% risk premium above base cost of capital for uncertain projects.",
     related: ["Discount Factor", "Net Present Value (NPV)", "Time Value of Money", "Cost of Capital"]
-  },
-  {
+  },{
     term: "Time Value of Money",
     category: "Finance",
     technical: "The financial principle that money available today is worth more than the identical amount in the future due to its potential earning capacity through investment, inflation eroding purchasing power, and the risk of non-receipt, underpinning NPV calculations, discount factors, and the preference for earlier cash flows over later ones in investment appraisal.",
     simple: "The idea that money today is worth more than the same amount in the future, because today's money can be invested to earn more.",
     usage: "If offered £100,000 today or £100,000 in 3 years, the time value of money explains why today's payment is superior: invested at 8% it becomes £125,971 in 3 years, inflation at 4% means £100,000 in 3 years buys only £88,900 of today's goods, and there's risk the payer defaults—this principle explains why businesses demand higher returns for longer projects, why early-paying customers are more valuable, and why NPV is considered superior to payback and ARR which ignore or underweight this concept.",
     related: ["Discount Factor", "Discount Rate", "Net Present Value (NPV)", "Investment Appraisal"]
-  },
-  {
+  },{
     term: "Cumulative Cash Flow",
     category: "Finance",
     technical: "The running total of net cash flows over a project's life, calculated by adding each period's net cash flow to the previous cumulative total, starting with the initial investment as a negative figure, used to determine the payback period (when cumulative cash flow turns positive) and to visualise the cash profile of an investment over time.",
     simple: "A running total of all the money coming in and going out of a project over time, showing when the initial investment is paid back.",
     usage: "A £200,000 factory investment generating annual net cash flows of £60,000, £70,000, £80,000, £90,000 produces cumulative cash flows of: Year 0: -£200,000, Year 1: -£140,000, Year 2: -£70,000, Year 3: +£10,000, Year 4: +£100,000—the cumulative figure turning positive during Year 3 identifies payback at 2 years and 10.5 months (£70,000 remaining ÷ £80,000 Year 3 flow × 12 months), while the Year 4 cumulative of +£100,000 shows total net return of 50% over the project life.",
     related: ["Payback Period", "Cash Flow", "Investment Appraisal", "Net Present Value (NPV)"]
-  },
-
-  // ==================== RATIO ANALYSIS COMPONENTS ====================
+  },// ==================== RATIO ANALYSIS COMPONENTS ====================
   {
     term: "Ratio Analysis",
     category: "Finance",
@@ -5017,33 +4927,28 @@ const glossaryTerms = [
     simple: "Using calculations from financial accounts to measure and compare a business's profitability, liquidity, efficiency, and financial health.",
     usage: "An investor comparing Tesco and Sainsbury's uses ratio analysis across four dimensions: profitability (Tesco ROCE 9.8% vs Sainsbury's 7.2%), liquidity (current ratios 0.78 vs 0.62), efficiency (inventory turnover 22 days vs 18 days), and gearing (45% vs 52%)—no single ratio tells the full story, but together they reveal Tesco's stronger profitability and lower financial risk versus Sainsbury's slightly better stock management, informing investment decisions alongside qualitative factors like management quality and strategy.",
     related: ["Profitability Ratios", "Liquidity Ratios", "Efficiency Ratios", "Gearing Ratio"]
-  },
-  {
+  },{
     term: "Profitability Ratios",
     category: "Finance",
     technical: "Financial ratios measuring a firm's ability to generate profit relative to revenue, assets, or capital employed, including gross profit margin, operating profit margin, profit for the year margin, and return on capital employed (ROCE), enabling assessment of pricing power, cost control, and management effectiveness at converting resources into returns.",
     simple: "Ratios that measure how good a business is at turning revenue or capital into profit.",
     usage: "Analysing Next plc's profitability ratios over three years reveals strategic effectiveness: gross profit margin stable at 51% (strong buying and pricing power), operating margin improving from 16% to 18% (cost efficiency gains from online shift), and ROCE rising from 32% to 41% (better capital utilisation as online requires less physical infrastructure)—the improving trend across all measures confirms successful strategic execution, while comparison with Primark (GPM 52%, OPM 11%, ROCE 28%) reveals different business model trade-offs.",
     related: ["Ratio Analysis", "Gross Profit Margin", "Operating Profit Margin", "Return on Capital Employed (ROCE)"]
-  },
-  {
+  },{
     term: "Efficiency Ratios",
     category: "Finance",
     technical: "Financial ratios measuring how effectively a business manages its assets and working capital, including inventory turnover (days stock is held), receivables days (time to collect customer payments), payables days (time taken to pay suppliers), and asset turnover (revenue generated per pound of assets), indicating operational effectiveness and working capital management.",
     simple: "Ratios measuring how well a business manages its stock, collects money owed, and uses its assets.",
     usage: "Comparing efficiency ratios reveals operational differences: Zara holds inventory for just 24 days (fast fashion model requiring rapid turnover) versus M&S at 42 days (broader range, slower-moving lines), while Tesco collects receivables in 8 days (mostly cash/card sales) versus a construction firm at 65 days (invoice-based B2B)—efficiency ratio deterioration often provides early warning of problems, with Carillion's receivables days extending from 45 to 78 days in the year before collapse signalling customers were delaying payments.",
     related: ["Ratio Analysis", "Working Capital", "Inventory", "Receivables"]
-  },
-  {
+  },{
     term: "Liquidity Ratios",
     category: "Finance",
     technical: "Financial ratios assessing a firm's ability to meet short-term financial obligations, primarily the current ratio (current assets ÷ current liabilities) and acid test ratio ((current assets − inventory) ÷ current liabilities), with adequate liquidity ensuring operational continuity while excessive liquidity suggests inefficient use of resources that could be invested productively.",
     simple: "Ratios that measure whether a business has enough cash and short-term assets to pay its bills on time.",
     usage: "Supermarkets typically operate with current ratios below 1.0 (Tesco 0.78, Aldi 0.65) because cash sales mean no receivables waiting, high inventory turnover converts stock to cash within days, and supplier credit provides free short-term financing—this would alarm a bank assessing a manufacturer, where current ratio below 1.5 suggests danger, demonstrating that liquidity ratio interpretation must consider industry context, business model, and cash conversion cycle rather than applying universal benchmarks.",
     related: ["Ratio Analysis", "Current Ratio", "Acid Test Ratio", "Working Capital"]
-  },
-
-  // ==================== PRODUCT LIFE CYCLE STAGES ====================
+  },// ==================== PRODUCT LIFE CYCLE STAGES ====================
   {
     term: "Introduction Stage",
     category: "Marketing",
@@ -5051,33 +4956,28 @@ const glossaryTerms = [
     simple: "The launch phase of a product's life when sales are low, costs are high, and the business spends heavily on promotion to build awareness.",
     usage: "When Dyson launched its first air purifier at £500, the introduction stage involved: £3.2 million TV and digital advertising campaign to educate consumers about air quality (most didn't know they needed the product), distribution limited to Dyson.com and John Lewis (selective placement), high unit costs of £280 due to low initial production volumes of 5,000 units monthly, and negative contribution for the first 8 months—typical introduction stage characteristics where building awareness and trial precedes profitability.",
     related: ["Product Life Cycle", "Growth Stage", "Extension Strategy", "Price Skimming"]
-  },
-  {
+  },{
     term: "Growth Stage",
     category: "Marketing",
     technical: "The second phase of the product life cycle characterised by rapidly increasing sales as market awareness builds, expanding distribution channels, improving unit costs through economies of scale, growing profits, and increasing competition as rivals enter the market attracted by the product's success, requiring investment in production capacity and brand differentiation.",
     simple: "The phase when sales grow rapidly as more customers discover the product and it becomes widely available.",
     usage: "Oat milk brand Oatly experienced explosive growth stage from 2018-2022: UK sales growing 71% annually from £18 million to £120 million, distribution expanding from health food shops to every major supermarket and 15,000 coffee shops, unit production costs falling 35% as Swedish factory scaled from 10 million to 300 million litres capacity—but growth attracted competitors (Alpro, Minor Figures, supermarket own-label), with 23 oat milk brands by 2023 versus 4 in 2018, requiring continued differentiation investment to maintain market leadership during growth.",
     related: ["Product Life Cycle", "Introduction Stage", "Maturity Stage", "Economies of Scale"]
-  },
-  {
+  },{
     term: "Maturity Stage",
     category: "Marketing",
     technical: "The third phase of the product life cycle where sales growth slows and stabilises at peak levels, the market becomes saturated with competitors, price competition intensifies, profits plateau or begin declining, and businesses focus on defending market share through extension strategies, cost reduction, and brand loyalty rather than market expansion.",
     simple: "The phase when sales level off at their highest point, competition is fierce, and the market is full of similar products.",
     usage: "The UK smartphone market reached maturity by 2020: 95% adult ownership (saturated market), annual sales stable at 30 million units, replacement cycle extending from 24 to 36 months, price competition compressing margins (mid-range phones falling from £400 to £250), and innovation becoming incremental (slightly better cameras) rather than revolutionary—forcing Apple to pursue extension strategies including trade-in programmes, subscription services (Apple One), and ecosystem lock-in to maintain revenue growth when unit sales plateau.",
     related: ["Product Life Cycle", "Growth Stage", "Decline Stage", "Extension Strategy"]
-  },
-  {
+  },{
     term: "Decline Stage",
     category: "Marketing",
     technical: "The final phase of the product life cycle where sales fall persistently due to changing consumer preferences, technological obsolescence, or superior substitute products, forcing decisions about harvesting remaining profits, investing in extension strategies, or withdrawing the product, with costs of maintaining declining products including management distraction and shelf space that could be allocated to growing products.",
     simple: "The final phase when sales fall steadily as customers switch to newer products or alternatives.",
     usage: "Physical DVD/Blu-ray sales demonstrate decline stage: UK sales falling from £2.3 billion (2008) to £280 million (2023) as streaming services replaced physical media, with HMV entering administration twice, Blockbuster closing all 528 UK stores, and supermarkets reducing DVD shelf space 80%—yet some businesses profit in decline through harvesting (minimal marketing investment while collecting remaining loyal customer revenue) or niche repositioning (collector's editions and special packaging commanding premium prices from enthusiasts).",
     related: ["Product Life Cycle", "Maturity Stage", "Extension Strategy", "Retrenchment"]
-  },
-
-  // ==================== PORTER'S GENERIC STRATEGIES ====================
+  },// ==================== PORTER'S GENERIC STRATEGIES ====================
   {
     term: "Cost Leadership",
     category: "Business Strategy & Foundations",
@@ -5085,17 +4985,14 @@ const glossaryTerms = [
     simple: "A strategy of being the cheapest producer in the market by keeping costs as low as possible.",
     usage: "Ryanair pursues cost leadership through: single aircraft type (Boeing 737 reducing maintenance costs 25%), secondary airports (60% lower landing fees), 25-minute turnarounds (maximising aircraft utilisation at 10.5 hours daily versus 7 hours for British Airways), no free services (generating £2.5 billion ancillary revenue), and direct online sales (zero commission costs)—achieving operating costs of £28 per passenger versus easyJet's £42 and BA's £95, enabling average fares of £37 while maintaining 19% operating margins.",
     related: ["Competitive Advantage", "Differentiation", "Focus Strategy", "Porter's Five Forces"]
-  },
-  {
+  },{
     term: "Focus Strategy",
     category: "Business Strategy & Foundations",
     technical: "A competitive strategy concentrating on serving a specific market niche, segment, or geographic area particularly well, achieving either cost focus (lowest cost within the niche) or differentiation focus (unique value proposition for the niche), sacrificing broad market coverage for deep understanding and superior service of chosen segments.",
     simple: "A strategy of targeting a specific niche market and serving it better than competitors who target the whole market.",
     usage: "Rolls-Royce Motor Cars pursues differentiation focus: targeting only the ultra-luxury segment (2,000-6,000 UK sales annually versus 1.6 million total car market), offering bespoke handcrafting (each car requiring 800 hours), personalisation (any colour from a supplied paint sample, starlight headliner with 1,600 fibre-optic lights), and relationship management (personal concierge for each owner)—commanding £300,000-£500,000 prices with 30% margins, impossible in the mass market but sustainable within a niche too small for volume manufacturers to contest profitably.",
     related: ["Cost Leadership", "Differentiation", "Competitive Advantage", "Niche Market"]
-  },
-
-  // ==================== ELASTICITY ====================
+  },// ==================== ELASTICITY ====================
   {
     term: "Cross Elasticity of Demand (XED)",
     category: "Marketing",
@@ -5103,9 +5000,7 @@ const glossaryTerms = [
     simple: "How much demand for one product changes when the price of a related product changes—positive for substitutes, negative for complementary goods.",
     usage: "When Coca-Cola raised UK prices 8%, Pepsi's sales increased 5.2%, giving XED of +0.65 (strong substitutes)—Coca-Cola uses this data to predict competitive impact of pricing decisions, knowing that for every 1% price increase, Pepsi gains 0.65% volume, limiting pricing freedom, while Apple iPhone and AirPods show XED of -0.3 (complements: 10% iPhone price increase reduces AirPods demand 3%), informing Apple's ecosystem pricing strategy where iPhone pricing affects accessory revenue.",
     related: ["Price Elasticity of Demand", "Income Elasticity of Demand", "Elasticity of Demand", "Pricing"]
-  },
-
-  // ==================== LEWIN COMPONENTS ====================
+  },// ==================== LEWIN COMPONENTS ====================
   {
     term: "Unfreeze",
     category: "Business Strategy & Foundations",
@@ -5113,33 +5008,28 @@ const glossaryTerms = [
     simple: "The first stage of Lewin's change model—preparing people for change by showing them why the current way of doing things needs to change.",
     usage: "When LEGO faced bankruptcy in 2003 (-£174 million loss), CEO Jørgen Vig Knudstorp unfroze the organisation by: sharing financial data showing 5 years of declining sales with all 8,000 employees, inviting media to report on the crisis (creating external pressure), benchmarking against thriving competitors (Playmobil, Mattel), and personally visiting 50 factories and offices to discuss the need for radical change—breaking through complacency and 'we've always done it this way' resistance before implementing painful restructuring that ultimately restored profitability.",
     related: ["Lewin's Force Field Analysis", "Change Management", "Refreeze", "Barriers to Change"]
-  },
-  {
+  },{
     term: "Refreeze",
     category: "Business Strategy & Foundations",
     technical: "The third stage of Lewin's three-step change model, involving stabilising and reinforcing new behaviours, processes, and culture after change implementation, through embedding changes in policies, reward systems, training programmes, and organisational norms, ensuring the organisation doesn't revert to previous practices.",
     simple: "The final stage of Lewin's change model—making sure changes stick by embedding them into everyday working practices and culture.",
     usage: "After Burberry's transformation from outdated brand to digital luxury leader, refreezing involved: embedding social media into every employee's KPIs (not just marketing), restructuring bonuses around digital engagement metrics, replacing 60% of store fixtures with interactive screens as permanent infrastructure, rewriting training manuals to include digital storytelling, and promoting digital-native managers to senior roles—ensuring the digital-first culture became permanent rather than a temporary initiative, with 5-year staff retention of digital practices reaching 92%.",
     related: ["Lewin's Force Field Analysis", "Change Management", "Unfreeze", "Organisational Culture"]
-  },
-  {
+  },{
     term: "Driving Forces",
     category: "Business Strategy & Foundations",
     technical: "In Lewin's Force Field Analysis, the factors pushing for and supporting organisational change, including competitive pressure, customer demand shifts, technological innovation, regulatory requirements, financial necessity, and leadership vision, which must be strengthened or leveraged to overcome restraining forces and enable successful change implementation.",
     simple: "In Lewin's model, the pressures and reasons pushing a business towards making a change.",
     usage: "When Jaguar announced its shift to all-electric vehicles by 2025, driving forces included: UK government's 2030 petrol car ban (regulatory), Tesla's market disruption reducing Jaguar's luxury market share 8% (competitive), battery costs falling 89% making EVs economically viable (technological), customer surveys showing 62% of luxury buyers considering EVs (demand), and £500 million government EV manufacturing grants (financial incentive)—collectively creating overwhelming pressure for change despite significant restraining forces.",
     related: ["Lewin's Force Field Analysis", "Restraining Forces", "Change Management", "Unfreeze"]
-  },
-  {
+  },{
     term: "Restraining Forces",
     category: "Business Strategy & Foundations",
     technical: "In Lewin's Force Field Analysis, the factors resisting and opposing organisational change, including employee fear of job loss, cost of change, cultural attachment to current practices, skills gaps, customer resistance, and structural inertia, which must be weakened or addressed for change to succeed, with Kotter and Schlesinger's six approaches providing strategies for overcoming each type.",
     simple: "In Lewin's model, the factors holding a business back and resisting change.",
     usage: "Restraining forces against Jaguar's EV transition included: 3,000 engine workers fearing redundancy (addressed through £800 million retraining programme), £15 billion retooling cost (mitigated by government grants and phased investment), supplier dependency on combustion components (managed through 3-year transition contracts), customer range anxiety limiting EV appeal (countered by 400-mile battery development), and dealer resistance to lower-margin EVs (overcome through revised commission structures)—successful change required systematically weakening each restraining force.",
     related: ["Lewin's Force Field Analysis", "Driving Forces", "Change Management", "Barriers to Change"]
-  },
-
-  // ==================== STAKEHOLDER MODEL ====================
+  },// ==================== STAKEHOLDER MODEL ====================
   {
     term: "Mendelow's Matrix",
     category: "Business Strategy & Foundations",
@@ -5147,9 +5037,7 @@ const glossaryTerms = [
     simple: "A grid for categorising stakeholders by their power and interest, helping businesses decide how much attention to give each group.",
     usage: "When Heathrow planned its third runway expansion, Mendelow's Matrix guided stakeholder management: Key Players (government ministers with power to approve and strong political interest—weekly briefings), Keep Satisfied (institutional shareholders with voting power but limited day-to-day interest—quarterly updates), Keep Informed (local residents with high interest but limited individual power—community newsletters and public consultations), Minimal Effort (general public with low power and interest—occasional press releases), enabling efficient allocation of the £45 million stakeholder engagement budget.",
     related: ["Stakeholder Mapping", "Stakeholders", "Stakeholder Conflict", "Strategic Planning"]
-  },
-
-  // ==================== VALUE CHAIN & CORE COMPETENCIES ====================
+  },// ==================== VALUE CHAIN & CORE COMPETENCIES ====================
   {
     term: "Value Chain",
     category: "Business Strategy & Foundations",
@@ -5157,17 +5045,14 @@ const glossaryTerms = [
     simple: "A model showing all the activities a business performs to create value for customers, from receiving materials to after-sales service.",
     usage: "Analysing Zara's value chain reveals competitive advantage sources: inbound logistics (proximity sourcing from Spain/Portugal enabling 2-day delivery versus competitors' 2-month Asian shipping), operations (small batch production of 450 million garments in responsive factories), outbound logistics (twice-weekly store deliveries from single Spanish distribution centre), marketing (minimal advertising—spending 0.3% of revenue versus H&M's 4%), service (real-time RFID tracking informing replenishment)—each activity optimised for speed, collectively creating fast-fashion advantage competitors cannot replicate by copying individual elements.",
     related: ["Competitive Advantage", "Core Competencies", "Cost Leadership", "Differentiation"]
-  },
-  {
+  },{
     term: "Core Competencies",
     category: "Business Strategy & Foundations",
     technical: "The distinctive capabilities, knowledge, and resources that provide a firm's fundamental competitive advantage, as defined by Prahalad and Hamel, meeting three criteria: providing access to multiple markets, contributing significantly to perceived customer benefits, and being difficult for competitors to imitate, guiding strategic decisions about diversification, outsourcing, and resource allocation.",
     simple: "The key strengths and capabilities that make a business uniquely competitive and are very difficult for rivals to copy.",
     usage: "Apple's core competencies include: design excellence (intuitive interfaces across all products), ecosystem integration (seamless connection between iPhone, iPad, Mac, Watch, and services creating switching costs), silicon engineering (M-series chips delivering 40% performance advantage), and brand management (commanding 40% price premium with 92% brand loyalty)—these competencies extend across phones, computers, wearables, and services, are deeply embedded in organisational culture, and require decades of investment to replicate, meeting all three Prahalad and Hamel criteria.",
     related: ["Competitive Advantage", "Value Chain", "Kay's Distinctive Capabilities", "Differentiation"]
-  },
-
-  // ==================== FORECASTING & STATISTICS ====================
+  },// ==================== FORECASTING & STATISTICS ====================
   {
     term: "Extrapolation",
     category: "Business Strategy & Foundations",
@@ -5175,41 +5060,35 @@ const glossaryTerms = [
     simple: "Predicting future trends by extending past patterns forward, assuming things will continue in the same way.",
     usage: "A restaurant group extrapolating 8% annual sales growth from 2019-2023 would forecast £12.6 million revenue for 2024—but extrapolation failed spectacularly during COVID-19 when actual sales fell 65%, and similarly misleads when markets saturate (extending 2015-2019 UK smartphone growth of 5% annually would predict 100%+ penetration by 2025, an impossibility), demonstrating extrapolation's fundamental limitation: it assumes the future resembles the past, which is precisely when forecasting matters least.",
     related: ["Forecasting", "Moving Average", "Time Series Analysis", "Decision Making"]
-  },
-  {
+  },{
     term: "Moving Average",
     category: "Business Strategy & Foundations",
     technical: "A statistical technique smoothing time-series data by calculating the average of a specified number of consecutive data points, then advancing one period and recalculating, filtering out random fluctuations and seasonal variations to reveal underlying trends, commonly using 3-month, 4-quarter, or 12-month periods depending on data characteristics.",
     simple: "A way of smoothing out data over time by calculating rolling averages, making it easier to spot the underlying trend.",
     usage: "An ice cream company's monthly sales fluctuate wildly (£15,000 in January, £85,000 in July), obscuring whether the business is growing—a 12-month moving average smooths seasonal variation, revealing the underlying trend increased from £42,000 to £48,000 over two years (14% growth), informing capacity investment decisions that raw monthly data would make impossible, though the moving average always lags behind turning points by half the averaging period.",
     related: ["Extrapolation", "Time Series Analysis", "Forecasting", "Correlation"]
-  },
-  {
+  },{
     term: "Time Series Analysis",
     category: "Business Strategy & Foundations",
     technical: "A statistical method analysing data collected at regular intervals over time to identify four components: long-term trend (underlying direction), seasonal variation (regular recurring patterns), cyclical variation (longer-term economic cycle effects), and random variation (unpredictable fluctuations), enabling more accurate forecasting by separating and projecting each component independently.",
     simple: "Analysing data collected over time to identify trends, seasonal patterns, and cycles that help predict the future.",
     usage: "A hotel chain's time series analysis of 5-year occupancy data identifies: upward trend from 65% to 74% (underlying growth), seasonal variation (85% summer, 52% winter—33 percentage point swing), cyclical component (occupancy dipping 8% during economic slowdowns), and random variation (unexplained fluctuations of ±3%)—enabling revenue management pricing that charges £180/night in peak season and £89 in January, staffing rotas matching seasonal demand patterns, and investment decisions based on trend rather than misleading single-month figures.",
     related: ["Moving Average", "Extrapolation", "Forecasting", "Correlation"]
-  },
-  {
+  },{
     term: "Normal Distribution",
     category: "Operations Management",
     technical: "A symmetrical bell-shaped probability distribution where data clusters around the mean, with 68% of observations falling within one standard deviation, 95% within two standard deviations, and 99.7% within three standard deviations, used in quality control, market research sampling, and risk assessment to understand variation and set tolerance limits.",
     simple: "A bell-shaped pattern showing that most results cluster around the average, with fewer results at the extremes.",
     usage: "A biscuit manufacturer targeting 200g packets uses normal distribution in quality control: if filling machine produces mean weight 203g with standard deviation 2g, 95% of packets weigh between 199g and 207g (within 2 standard deviations)—setting the mean slightly above 200g ensures only 2.5% of packets fall below legal minimum weight, while excessive overfilling wastes £180,000 annually in 'giveaway' product, requiring calibration to optimise the trade-off between legal compliance and material costs.",
     related: ["Standard Deviation", "Quality Control", "Confidence Intervals", "Operations Management"]
-  },
-  {
+  },{
     term: "Standard Deviation",
     category: "Operations Management",
     technical: "A statistical measure of the dispersion or spread of data points around the mean, calculated as the square root of variance, indicating consistency in production processes, demand patterns, or financial returns, with lower standard deviation reflecting greater consistency and predictability, used alongside normal distribution for quality control limits and risk assessment.",
     simple: "A measure of how spread out numbers are from the average—a low standard deviation means results are consistent, a high one means they vary a lot.",
     usage: "Comparing two suppliers' delivery times: Supplier A averages 5 days with standard deviation of 0.5 days (95% of deliveries between 4-6 days—highly reliable), Supplier B averages 5 days with standard deviation of 2.5 days (95% between 0-10 days—unreliable)—despite identical means, Supplier A's consistency enables JIT production scheduling while Supplier B requires buffer stock costing £45,000 annually, demonstrating why standard deviation matters more than averages for operational planning.",
     related: ["Normal Distribution", "Quality Control", "Consistency", "Operations Management"]
-  },
-
-  // ==================== STRATEGY ====================
+  },// ==================== STRATEGY ====================
   {
     term: "SMART Objectives",
     category: "Business Strategy & Foundations",
@@ -5217,25 +5096,21 @@ const glossaryTerms = [
     simple: "A way of setting goals that are Specific, Measurable, Achievable, Relevant, and Time-bound to make them clear and actionable.",
     usage: "Compare vague versus SMART objectives for a restaurant: 'increase sales' is unmeasurable and undirected, while 'increase average spend per customer from £22 to £26 by December 2025 through introducing premium dessert menu and wine pairing recommendations' is SMART—enabling the manager to track weekly progress (measurable), train staff specifically on upselling techniques (specific), assess whether the £4 increase is realistic based on competitor pricing (achievable), confirm alignment with the premium repositioning strategy (relevant), and create urgency with the December deadline (time-bound).",
     related: ["Business Objectives", "Mission Statement", "Corporate Strategy", "Key Performance Indicators"]
-  },
-  {
+  },{
     term: "Lean Startup",
     category: "Business Strategy & Foundations",
     technical: "An entrepreneurial methodology developed by Eric Ries emphasising rapid experimentation, validated learning, and iterative product development through the Build-Measure-Learn cycle, using minimum viable products to test market assumptions before committing significant resources, reducing the risk and cost of failure by identifying unviable concepts early.",
     simple: "An approach to starting a business that focuses on quickly testing ideas with real customers, learning from feedback, and adapting before spending too much money.",
     usage: "Deliveroo founder Will Shu tested the lean startup approach: rather than building a full app and delivery infrastructure, he personally cycled restaurant deliveries in Chelsea using a simple WordPress website to take orders (MVP), measuring demand over 3 months with just £5,000 investment, learning that customers valued speed over restaurant choice, then iterating the business model based on real data before raising £100,000 seed funding—contrasting with traditional approaches spending months writing business plans and £500,000+ before discovering whether customers actually want the product.",
     related: ["Minimum Viable Product", "Entrepreneurship", "Innovation", "Calculated Risk"]
-  },
-  {
+  },{
     term: "Minimum Viable Product (MVP)",
     category: "Business Strategy & Foundations",
     technical: "The simplest version of a product that can be released to test core value propositions with real customers, collecting maximum validated learning with minimum development effort and cost, central to lean startup methodology, enabling rapid iteration based on customer feedback rather than assumptions, with successful MVPs evolving into full products and unsuccessful ones failing cheaply.",
     simple: "The simplest possible version of a product that can be tested with real customers to see if the idea works before investing heavily.",
     usage: "Dropbox's MVP was a 3-minute video demonstrating how the product would work before any software was built—generating 75,000 email sign-ups overnight validating demand at zero development cost, compared to the £1.2 million and 18 months required to build the actual product. Similarly, Innocent Smoothies' MVP involved selling homemade smoothies at a festival with a 'Should we quit our jobs?' sign and Yes/No bins, with overwhelming 'Yes' votes validating the concept before founders invested their £250,000 savings.",
     related: ["Lean Startup", "Entrepreneurship", "Market Research", "Innovation"]
-  },
-
-  // ==================== TECHNOLOGY ====================
+  },// ==================== TECHNOLOGY ====================
   {
     term: "Big Data",
     category: "Operations Management",
@@ -5243,48 +5118,42 @@ const glossaryTerms = [
     simple: "Huge amounts of data collected from many sources that businesses analyse using powerful computers to find patterns and make better decisions.",
     usage: "Tesco Clubcard generates 1.5 billion data points monthly from 20 million households, analysed to: identify 5,000 customer segments for targeted promotional mailings (generating £500 million incremental revenue), predict individual household purchasing patterns enabling personalised vouchers (redeemed at 4x rate of generic offers), optimise store layouts based on shopping journey analysis, and inform range decisions (identifying that customers buying organic vegetables also buy premium wine, justifying adjacent shelf placement increasing basket spend 12%).",
     related: ["Artificial Intelligence (AI)", "Internet of Things (IoT)", "Digital Technology", "Market Research"]
-  },
-  {
+  },{
     term: "Cloud Computing",
     category: "Operations Management",
     technical: "The delivery of computing services including servers, storage, databases, networking, software, and analytics over the internet ('the cloud'), enabling businesses to access scalable IT resources on-demand without owning physical infrastructure, paying per-use rather than making capital investments, with providers including AWS, Microsoft Azure, and Google Cloud.",
     simple: "Using the internet to access computing power, storage, and software on demand instead of owning your own servers and equipment.",
     usage: "When ASOS migrated to cloud computing (Microsoft Azure), capital expenditure on servers fell from £45 million annually to near-zero, replaced by £28 million operating expenditure on cloud services—enabling instant capacity scaling during Black Friday (handling 4x normal traffic without purchasing permanent server capacity), 99.99% website uptime versus previous 99.5% (preventing £8 million annual lost sales from downtime), and faster feature deployment from 6-week to daily release cycles, though creating dependency on Microsoft and ongoing costs that compound over time.",
     related: ["Digital Technology", "Technology", "E-commerce", "Big Data"]
-  },
-  {
+  },{
     term: "M-commerce",
     category: "Marketing",
     technical: "Mobile commerce—the buying and selling of goods and services through wireless mobile devices including smartphones and tablets, a subset of e-commerce offering location-based services, push notifications, mobile payment integration, and app-based shopping experiences, representing the fastest-growing retail channel with distinct user behaviour patterns compared to desktop shopping.",
     simple: "Buying and selling through mobile phones and tablets, including apps and mobile websites.",
     usage: "M-commerce now accounts for 73% of UK online retail sales (up from 40% in 2018), with ASOS reporting 85% of traffic and 68% of orders from mobile devices—mobile-specific features like visual search (photograph an item to find similar products), AR try-on (virtually wearing clothes), one-tap Apple Pay checkout (reducing basket abandonment from 75% to 55%), and push notification flash sales (generating 3x engagement versus email) demonstrate how m-commerce is not simply 'small screen e-commerce' but a fundamentally different shopping channel requiring dedicated investment.",
     related: ["E-commerce", "Digital Marketing", "Technology", "Consumer Behaviour"]
-  },
-  {
+  },{
     term: "Overtrading",
     category: "Finance",
     technical: "A dangerous situation where a business expands sales faster than its working capital can support, taking on more orders than it can fund through the cash cycle, leading to cash flow crisis despite apparent profitability, commonly affecting fast-growing businesses that must pay suppliers before receiving customer payments, potentially causing insolvency even while the order book is full.",
     simple: "When a business tries to grow too quickly and runs out of cash to fund its operations, even though it has plenty of orders and is making a profit on paper.",
     usage: "A construction firm winning £5 million in new contracts sounds positive, but overtrading emerges when it must pay £2 million upfront for materials and subcontractors while clients pay on 90-day terms—creating a £2 million cash gap that the firm's £400,000 overdraft cannot cover, forcing it into administration despite a full order book and 15% profit margins on every contract, explaining why 60% of UK construction insolvencies occur in profitable, growing companies rather than loss-making ones.",
     related: ["Working Capital", "Cash Flow", "Insolvency", "Growth"]
-  },
-  {
+  },{
     term: "Long-term Funding",
     category: "Finance",
     technical: "Capital sources providing finance for periods exceeding one year, used to fund significant investments in non-current assets, expansion, or acquisitions, including equity finance (ordinary shares, retained profit), long-term debt (bank loans, mortgages, debentures), and alternative sources (venture capital, private equity, crowdfunding), with the optimal mix balancing cost, risk, control, and availability.",
     simple: "Sources of money that a business can use for more than a year to fund major investments, including shares, long-term loans, and retained profit.",
     usage: "When Jaguar Land Rover needed £15 billion for electric vehicle development, long-term funding options included: retained profits (£1.8 billion available—insufficient alone), corporate bonds at 5.5% fixed rate (£3 billion raised, predictable repayments but increased gearing to 55%), government grants (£500 million from Automotive Transformation Fund—free but restricted to UK battery facilities), and parent company Tata Motors equity injection (£4 billion, no repayment but creating dependency)—the blended approach spread risk across multiple sources while matching long-term investment horizons to long-term funding.",
     related: ["Sources of Finance", "Equity", "Long-term Finance", "Capital Expenditure"]
-  },
-  {
+  },{
     term: "Streamlining",
     category: "Operations Management",
     technical: "The process of simplifying and improving business operations by removing unnecessary steps, reducing complexity, eliminating waste, and optimising workflows to increase efficiency, reduce costs, and improve speed of delivery, often involving process mapping, automation, organisational restructuring, and removal of bureaucratic layers.",
     simple: "Making business operations simpler and more efficient by removing unnecessary steps, processes, or layers of management.",
     usage: "When Nationwide Building Society streamlined its mortgage application process, it reduced steps from 47 to 18, eliminated 12 manual approval stages through automated credit scoring, consolidated three separate IT systems into one platform, and removed two management layers from the approval chain—cutting average processing time from 28 days to 8 days, reducing cost-per-application from £1,200 to £450, and improving customer satisfaction scores from 62% to 84%, though 340 processing roles were made redundant in the transition.",
     related: ["Efficiency", "Lean Production", "Delayering", "Automation"]
-  },
-  // ==================== STRATEGY TYPES ====================
+  },// ==================== STRATEGY TYPES ====================
   {
     term: "Planned Strategy",
     category: "Business Strategy & Foundations",
@@ -5292,17 +5161,14 @@ const glossaryTerms = [
     simple: "A deliberate strategy developed in advance by senior management through careful analysis and planning before being implemented.",
     usage: "IKEA's planned strategy exemplifies the prescriptive approach: founder Ingvar Kamprad's original 1950s vision of affordable, flat-pack furniture for the masses still guides strategic decisions 70 years later, with 5-year plans detailing store openings (targeting 500 globally by 2025), sustainability targets (100% renewable energy by 2030), and range development (2,500 new products annually)—providing consistency across 62 countries, though critics argue IKEA's slow response to e-commerce (launching online sales 15 years after Amazon) demonstrates planned strategy's inflexibility.",
     related: ["Emergent Strategy", "Corporate Strategy", "Strategic Planning", "SWOT Analysis"]
-  },
-  {
+  },{
     term: "Emergent Strategy",
     category: "Business Strategy & Foundations",
     technical: "A strategy that develops incrementally through patterns of decisions, experimentation, and adaptation to changing circumstances rather than through formal advance planning, associated with Mintzberg's view that strategy emerges from the interaction between intended plans and real-world responses, particularly relevant in uncertain, fast-moving, or innovative environments.",
     simple: "A strategy that develops gradually through trial and error, adapting to events as they happen rather than following a fixed plan.",
     usage: "Honda's entry into the US motorcycle market demonstrates emergent strategy: the planned strategy targeted large touring bikes competing with Harley-Davidson, but when Honda staff riding small 50cc Super Cubs around Los Angeles attracted public interest, the company pivoted to selling small bikes through sporting goods stores rather than motorcycle dealers—this unplanned, emergent strategy captured 63% of the US market, demonstrating Mintzberg's argument that successful strategies often emerge from unexpected opportunities rather than boardroom analysis.",
     related: ["Planned Strategy", "Corporate Strategy", "Agile Business", "Innovation"]
-  },
-
-  // ==================== ORGANISATIONAL STRUCTURES ====================
+  },// ==================== ORGANISATIONAL STRUCTURES ====================
   {
     term: "Organic Structures",
     category: "Human Resources",
@@ -5310,41 +5176,35 @@ const glossaryTerms = [
     simple: "Flexible, flat organisational structures with loose roles and open communication, suited to fast-changing and creative industries.",
     usage: "Spotify's organic structure organises 4,000 engineers into autonomous 'squads' of 6-12 people who choose their own projects, set their own priorities, and communicate freely across the organisation without management gatekeeping—enabling weekly product releases versus competitors' quarterly cycles, but requiring strong cultural alignment to prevent fragmentation, with 'tribes' (groups of related squads) and 'guilds' (cross-tribe knowledge networks) providing loose coordination without imposing rigid hierarchy.",
     related: ["Mechanistic Structures", "Organisational Structure", "Decentralisation", "Agile Business"]
-  },
-  {
+  },{
     term: "Mechanistic Structures",
     category: "Human Resources",
     technical: "Rigid organisational structures characterised by tall hierarchies, centralised decision-making, narrow job specialisation, formal rules and procedures, and vertical communication channels, associated with Burns and Stalker's research showing mechanistic structures suit stable, predictable environments where efficiency, consistency, and control are priorities.",
     simple: "Rigid, formal organisational structures with clear hierarchies, strict rules, and defined job roles, suited to stable and predictable industries.",
     usage: "McDonald's operates a mechanistic structure: every process is documented in detailed operations manuals (from burger cooking times to cleaning schedules), strict hierarchy runs from crew member to shift manager to restaurant manager to regional director, decision-making is centralised (individual restaurants cannot change menus or pricing), and communication flows vertically through formal channels—delivering remarkable consistency (identical Big Mac across 40,000 restaurants) but limiting local adaptation and innovation, requiring separate 'innovation centres' to develop new products outside the rigid structure.",
     related: ["Organic Structures", "Organisational Structure", "Centralisation", "Bureaucracy"]
-  },
-  {
+  },{
     term: "Matrix Structure",
     category: "Human Resources",
     technical: "An organisational structure where employees report to two or more managers simultaneously, typically combining functional departments (marketing, finance, operations) with project teams, product divisions, or geographic regions, enabling flexible resource allocation and cross-functional collaboration but creating dual authority, potential confusion, and competing priorities.",
     simple: "An organisational structure where employees have two bosses—usually their department head and a project or product manager.",
     usage: "Unilever uses a matrix structure where a brand manager for Dove in Germany reports to both the German country manager (geographic axis) and the global Dove brand director (product axis)—enabling local market responsiveness (adapting Dove campaigns for German cultural preferences) while maintaining global brand consistency (ensuring Dove's self-esteem messaging is universal), though matrix conflicts arise when the country manager prioritises local profitability while the brand director prioritises global brand investment, requiring negotiation skills and clear escalation processes.",
     related: ["Organisational Structure", "Organic Structures", "Regional Structure", "Product Based Structure"]
-  },
-  {
+  },{
     term: "Product Based Structure",
     category: "Business Strategy & Foundations",
     technical: "An organisational structure dividing the business into separate divisions based on product lines or brands, each containing its own functional departments (marketing, operations, finance), enabling specialised focus on each product category's distinct market, customers, and competitive dynamics, but potentially duplicating resources across divisions.",
     simple: "An organisational structure where the business is divided into separate divisions, each responsible for a different product or brand.",
     usage: "Procter & Gamble organises into five product-based divisions: Beauty (Olay, Head & Shoulders), Grooming (Gillette), Health Care (Oral-B), Fabric & Home Care (Ariel, Fairy), and Baby & Family Care (Pampers)—each division operates as a semi-autonomous business with its own marketing, R&D, and supply chain teams, enabling Gillette's male-focused innovation culture to coexist with Pampers' family-focused approach, though P&G maintains centralised finance and HR to avoid duplicating £2 billion in administrative costs across five separate structures.",
     related: ["Organisational Structure", "Matrix Structure", "Regional Structure", "Divisional Structure"]
-  },
-  {
+  },{
     term: "Regional Structure",
     category: "Business Strategy & Foundations",
     technical: "An organisational structure dividing the business into geographic divisions (e.g. Europe, Asia-Pacific, Americas), each with autonomy over operations, marketing, and strategy within their region, enabling local market responsiveness, cultural adaptation, and regulatory compliance, but risking inconsistency, duplication, and coordination difficulties across regions.",
     simple: "An organisational structure where the business is divided into geographic regions, each managing its own operations.",
     usage: "HSBC operates a regional structure with four divisions: Asia-Pacific (60% of profit, headquartered in Hong Kong), Europe (London), Middle East & North Africa (Dubai), and Americas (New York)—each region adapts products to local markets (Islamic banking in MENA, wealth management in Asia), complies with regional regulations (12 different regulatory regimes), and makes autonomous lending decisions, though the 2012 money-laundering scandal revealed how regional autonomy without sufficient central oversight enabled compliance failures across multiple jurisdictions.",
     related: ["Organisational Structure", "Matrix Structure", "Product Based Structure", "Multinational Corporations"]
-  },
-
-  // ==================== CHANGE TYPES ====================
+  },// ==================== CHANGE TYPES ====================
   {
     term: "Incremental Change",
     category: "Business Strategy & Foundations",
@@ -5352,33 +5212,28 @@ const glossaryTerms = [
     simple: "Small, gradual improvements made continuously over time, rather than sudden dramatic changes.",
     usage: "Toyota's kaizen approach embodies incremental change: production workers submit 700,000 improvement suggestions annually (averaging 10 per employee), each typically saving seconds or pence per unit—individually trivial, but collectively reducing manufacturing costs 3-5% annually, with cumulative efficiency gains over 40 years making Toyota the world's most profitable car manufacturer, though critics argue incremental improvement cannot address disruptive threats like Tesla's electric vehicle revolution requiring transformational rather than incremental response.",
     related: ["Disruptive Change", "Kaizen", "Change Management", "Continuous Improvement"]
-  },
-  {
+  },{
     term: "Internal Change",
     category: "Business Strategy & Foundations",
     technical: "Organisational change originating from within the business, driven by factors such as new leadership, restructuring, cultural transformation, process improvement, or strategic repositioning, typically more controllable and plannable than externally-driven change, though internal resistance from employees and established culture can be significant barriers.",
     simple: "Change that comes from within the business itself, such as a new leader deciding to restructure or introduce new systems.",
     usage: "When Satya Nadella became Microsoft CEO in 2014, he drove internal change transforming the company's culture from competitive internal rivalry ('stack ranking' where colleagues competed against each other) to collaborative 'growth mindset'—changing performance management systems, restructuring from product silos to customer-focused teams, and shifting strategy from Windows-centric to cloud-first, generating £180 billion revenue growth over 8 years, demonstrating how internally-driven change led by new leadership can revitalise stagnating organisations.",
     related: ["External Change", "Change Management", "Organisational Culture", "Leadership"]
-  },
-  {
+  },{
     term: "External Change",
     category: "Business Strategy & Foundations",
     technical: "Organisational change forced by factors outside the business's control, including economic shifts, technological disruption, legislative changes, competitive moves, demographic trends, and environmental events, requiring reactive adaptation and often creating urgency that overcomes internal resistance but allowing less time for planned implementation.",
     simple: "Change forced on a business by outside factors it cannot control, such as new laws, economic shifts, or competitor actions.",
     usage: "COVID-19 forced external change across UK businesses: restaurants pivoted to delivery within days (Dishoom launching meal kits generating £8 million revenue), retailers accelerated e-commerce adoption by 5 years in 5 months (Primark forced to build online presence from zero), and offices adopted remote working overnight (KPMG's 16,000 UK staff transitioning in one weekend)—demonstrating that external change, while uncontrollable, can drive innovation faster than internal change programmes that typically take 12-18 months to implement.",
     related: ["Internal Change", "Change Management", "External Environment", "PESTLE Analysis"]
-  },
-  {
+  },{
     term: "Disruptive Change",
     category: "Business Strategy & Foundations",
     technical: "Fundamental, transformational change that overturns established business models, market structures, or industry norms, typically driven by technological innovation or radical new approaches, creating new markets while destroying existing ones, as described by Clayton Christensen's disruptive innovation theory where initially inferior products improve to displace incumbents.",
     simple: "Major change that completely transforms an industry or market, often driven by new technology that replaces existing ways of doing things.",
     usage: "Netflix disrupted the entertainment industry through three waves: DVD-by-mail destroyed Blockbuster's £3 billion rental empire (5,000 stores closed), streaming eliminated physical media (UK DVD sales falling 88%), and original content challenged traditional studios (spending £12 billion annually, winning Academy Awards)—each wave of disruptive change gave incumbents limited response time, with Blockbuster famously declining to acquire Netflix for $50 million in 2000, demonstrating how disruptive change often appears unthreatening until it's too late to respond.",
     related: ["Incremental Change", "Change Management", "Innovation", "Strategic Risk"]
-  },
-
-  // ==================== DATA & INFORMATION ====================
+  },// ==================== DATA & INFORMATION ====================
   {
     term: "Knowledge and Information Management",
     category: "Business Strategy & Foundations",
@@ -5386,33 +5241,28 @@ const glossaryTerms = [
     simple: "How a business collects, organises, shares, and uses information and expertise to make better decisions and stay competitive.",
     usage: "When experienced engineers at Rolls-Royce retire, knowledge management systems capture their expertise through recorded problem-solving sessions, annotated design files, and structured mentoring programmes—preventing loss of 30+ years' specialist knowledge that would cost £2 million per engineer to rebuild, while McKinsey's global knowledge management system enables a consultant in London to access relevant project insights from 30,000 colleagues across 65 countries within hours, turning individual expertise into organisational competitive advantage.",
     related: ["Big Data", "Data Mining", "Decision Making", "Intellectual Property"]
-  },
-  {
+  },{
     term: "Data Mining",
     category: "Operations Management",
     technical: "The process of discovering patterns, correlations, and insights from large datasets using statistical analysis, machine learning, and database techniques, applied in business for customer segmentation, demand forecasting, fraud detection, and market basket analysis, transforming raw data into actionable business intelligence.",
     simple: "Analysing large amounts of data using computers to find useful patterns and insights that help a business make better decisions.",
     usage: "Tesco's data mining of 20 million Clubcard holders revealed that customers buying nappies on Friday evenings also frequently purchased beer—leading to strategic adjacent placement increasing beer sales 12% in stores trialling the layout, while data mining of purchase timing patterns identified 5,000 distinct customer segments enabling personalised voucher campaigns with 4x redemption rates versus generic promotions, generating £500 million incremental revenue annually from insights invisible without computational pattern analysis.",
     related: ["Big Data", "Market Research", "Knowledge and Information Management", "Artificial Intelligence (AI)"]
-  },
-  {
+  },{
     term: "Database",
     category: "Operations Management",
     technical: "An organised, structured collection of data stored electronically for efficient access, management, and updating, used in business for customer relationship management, inventory tracking, financial records, and employee information, with relational databases linking related data across tables and enabling complex queries, analysis, and reporting.",
     simple: "An organised electronic collection of information that a business can search, sort, and analyse quickly.",
     usage: "Amazon's customer database contains 310 million active accounts with purchase history, browsing behaviour, delivery preferences, and payment methods—enabling personalised recommendations generating 35% of total sales (£120 billion annually), predictive inventory positioning (shipping products to nearby warehouses before customers order), and dynamic pricing adjusting 2.5 million prices daily, demonstrating how a well-managed database becomes a core competitive asset rather than merely an administrative record-keeping tool.",
     related: ["Data Mining", "Big Data", "Customer Relationship Management (CRM)", "Market Research"]
-  },
-  {
+  },{
     term: "Census",
     category: "Marketing",
     technical: "A complete survey or count of every member of a defined population, providing comprehensive data without sampling error, conducted nationally by the Office for National Statistics every 10 years in the UK, and used by businesses as secondary research for market sizing, demographic analysis, location planning, and workforce analysis.",
     simple: "A survey that collects information from every person in a population, rather than just a sample, providing complete and reliable data.",
     usage: "Tesco's location planning team uses Census data to assess potential new store sites: analysing population density within 10-minute drive time, household income levels (determining product range—premium versus value), age demographics (stores near universities stock differently from those near retirement communities), car ownership (predicting parking requirements), and ethnicity data (informing world food range size)—Census data being freely available and covering 100% of the population makes it invaluable secondary research, though its 10-year cycle means data becomes increasingly outdated between counts.",
     related: ["Market Research", "Secondary Research", "Sampling Methods", "Demographics"]
-  },
-
-  // ==================== FINANCE & ECONOMICS ====================
+  },// ==================== FINANCE & ECONOMICS ====================
   {
     term: "Operating Profit",
     category: "Finance",
@@ -5420,49 +5270,42 @@ const glossaryTerms = [
     simple: "The profit a business makes from its normal trading activities, after all operating costs but before interest and tax.",
     usage: "Marks & Spencer's operating profit of £845 million (from £12 billion revenue, giving 7% operating margin) measures management's trading effectiveness—separate from £110 million interest costs (reflecting past borrowing decisions) and £180 million tax (reflecting government policy), enabling like-for-like comparison with Next's 18% operating margin revealing M&S generates less profit per pound of sales despite similar revenue, pointing to higher operating costs from maintaining 247 full-line stores versus Next's efficient online-focused model.",
     related: ["Operating Profit Margin", "Gross Profit", "Net Profit", "Revenue"]
-  },
-  {
+  },{
     term: "FDI Flows",
     category: "Business Strategy & Foundations",
     technical: "The movement of foreign direct investment capital into (inward FDI) and out of (outward FDI) a country, measured annually as net flows, indicating economic attractiveness, business confidence, and international competitiveness, influenced by labour costs, market access, political stability, tax regimes, and infrastructure quality.",
     simple: "The amount of investment flowing into and out of a country from foreign businesses, showing how attractive a country is for international investment.",
     usage: "UK inward FDI of £36 billion (2023) included: Nissan's £1 billion Sunderland battery factory (attracted by skilled workforce and government subsidies), Google's £790 million London headquarters (accessing UK tech talent), and Tata's £4 billion Somerset gigafactory (leveraging UK automotive supply chain)—while outward FDI of £28 billion included Vodafone's European network investments and BP's US renewable energy projects, with net positive FDI flows indicating the UK remains attractive despite Brexit uncertainty increasing compliance costs for EU-facing investors.",
     related: ["Foreign Direct Investment", "Globalisation", "International Trade", "Balance of Payments"]
-  },
-  {
+  },{
     term: "Balance of Payments",
     category: "Business Strategy & Foundations",
     technical: "A comprehensive record of all economic transactions between a country's residents and the rest of the world over a period, comprising the current account (trade in goods and services, income, transfers), capital account (asset transfers), and financial account (investment flows), with persistent current account deficits indicating a country imports more value than it exports.",
     simple: "A record of all the money flowing into and out of a country from trade, investment, and other transactions with the rest of the world.",
     usage: "The UK's persistent current account deficit of £78 billion (2023, approximately 3% of GDP) means the UK imports significantly more goods than it exports (£160 billion goods trade deficit), partially offset by a £68 billion services surplus (financial services, consulting, education)—this deficit must be financed by attracting foreign investment, explaining government emphasis on maintaining the UK's attractiveness to FDI, with Brexit-related trade friction widening the goods deficit 12% as increased border costs discouraged EU imports while failing to boost domestic production.",
     related: ["Imports", "Exports", "FDI Flows", "Exchange Rates"]
-  },
-  {
+  },{
     term: "Technology and Skills Transfers",
     category: "Business Strategy & Foundations",
     technical: "The movement of technological knowledge, production methods, management practices, and workforce capabilities from one country, organisation, or sector to another, typically occurring through foreign direct investment, joint ventures, licensing, training programmes, and employee mobility, enhancing productivity and capabilities in recipient economies.",
     simple: "When technology, knowledge, and expertise are shared between countries or businesses, helping the receiving side improve its capabilities.",
     usage: "When Nissan established its Sunderland plant, technology and skills transfers included: Japanese lean manufacturing techniques adopted by 200+ UK suppliers (reducing defect rates 60%), robotics expertise developing a local automation skills base (3,000 workers trained), and quality management systems raising standards across the North East automotive cluster—creating a self-sustaining ecosystem where transferred knowledge generates ongoing innovation, with Sunderland-developed battery technology now being exported back to Japan, demonstrating how transfers can become bidirectional over time.",
     related: ["Foreign Direct Investment", "Globalisation", "Multinational Corporations", "Human Capital"]
-  },
-  {
+  },{
     term: "Transfer Pricing",
     category: "Finance",
     technical: "The prices charged for goods, services, or intellectual property transferred between different divisions or subsidiaries of the same multinational corporation, particularly across international borders, used legitimately for internal accounting but controversially exploited to shift profits to low-tax jurisdictions, reducing overall tax liability and attracting regulatory scrutiny.",
     simple: "The prices one part of a multinational company charges another part for goods or services, sometimes used to move profits to countries with lower tax rates.",
     usage: "When Starbucks UK reported £8 million profit on £400 million revenue (2% margin versus 15% globally), HMRC investigation revealed transfer pricing arrangements: UK subsidiary paid 6% royalties to a Dutch entity for brand use, purchased coffee beans from a Swiss trading subsidiary at above-market prices, and paid intercompany interest to a US financing entity—collectively transferring £35 million profit to lower-tax jurisdictions, prompting public outcry, voluntary £20 million UK tax payment, and OECD reforms requiring multinational transfer prices to reflect 'arm's length' market rates.",
     related: ["Multinational Corporations", "Globalisation", "Taxation", "Corporate Governance"]
-  },
-  {
+  },{
     term: "Tax Receipts",
     category: "Business Strategy & Foundations",
     technical: "The total revenue collected by government through various forms of taxation including income tax, corporation tax, VAT, national insurance, business rates, and excise duties, funding public services and representing a key fiscal policy tool, with total UK tax receipts approximately £810 billion annually (37% of GDP).",
     simple: "The total amount of tax money collected by the government from individuals and businesses.",
     usage: "UK tax receipts of £810 billion (2024) come from: income tax £270 billion (33%), national insurance £180 billion (22%), VAT £165 billion (20%), corporation tax £85 billion (10%), and other taxes £110 billion (15%)—businesses contribute directly through corporation tax and employer's NI, and indirectly through collecting VAT and employee PAYE, with the government's dependence on business-generated tax receipts explaining why corporation tax increases from 19% to 25% were accompanied by capital allowances enabling 100% first-year deduction on qualifying investment.",
     related: ["Taxation", "Fiscal Policy", "Government Intervention", "Corporation Tax"]
-  },
-
-  // ==================== INTERNATIONAL BUSINESS ====================
+  },// ==================== INTERNATIONAL BUSINESS ====================
   {
     term: "Cultural Diversity",
     category: "Business Strategy & Foundations",
@@ -5470,25 +5313,21 @@ const glossaryTerms = [
     simple: "The mix of different cultures, backgrounds, and perspectives within a business or market.",
     usage: "HSBC employs 220,000 people across 64 countries, managing cultural diversity through: mandatory cross-cultural training for all managers, local leadership (85% of country CEOs are nationals), flexible policies respecting religious observances (prayer rooms, Ramadan working hours), and diverse decision-making teams shown to produce 19% higher innovation revenue—though cultural diversity challenges include communication styles (direct Western feedback perceived as rude in East Asian cultures), decision-making speed (consensus cultures versus hierarchical), and 23% higher coordination costs in culturally diverse project teams.",
     related: ["Globalisation", "Multinational Corporations", "Glocalisation", "Human Resource Management (HRM)"]
-  },
-  {
+  },{
     term: "Ethnocentric, Geocentric, and Polycentric Approaches",
     category: "Business Strategy & Foundations",
     technical: "Three approaches to managing international operations: Ethnocentric (home-country practices and managers exported to all subsidiaries), Polycentric (each country managed by local nationals using local practices), and Geocentric (best practices and talent selected globally regardless of nationality), influencing staffing, marketing, and strategic decisions of multinational corporations.",
     simple: "Three ways multinationals manage overseas operations: using home-country methods everywhere, adapting fully to local markets, or taking the best approach from anywhere in the world.",
     usage: "Japanese car manufacturers illustrate all three approaches: Toyota initially used ethnocentric management (Japanese executives and production systems in all overseas plants), Nissan shifted to polycentric (appointing Carlos Ghosn, a Brazilian-French CEO, and empowering local management), while Honda adopted geocentric approach (global R&D teams combining Japanese, American, and European engineers, with promotion based on capability regardless of nationality)—each approach reflecting different trade-offs between global consistency and local responsiveness.",
     related: ["Multinational Corporations", "Globalisation", "Glocalisation", "Cultural Diversity"]
-  },
-  {
+  },{
     term: "Single Market",
     category: "Business Strategy & Foundations",
     technical: "An economic area where goods, services, capital, and labour can move freely without internal barriers, tariffs, or customs checks, with harmonised regulations and standards, the most notable example being the EU Single Market of 27 countries and 450 million consumers, enabling businesses to treat the entire area as one domestic market.",
     simple: "A group of countries that allow goods, services, money, and people to move freely between them without border checks or tariffs.",
     usage: "The EU Single Market enables a German car manufacturer to source components from 12 countries without customs documentation, employ engineers from any member state without work permits, sell vehicles across 27 countries meeting one set of regulations, and move capital freely to invest in the most efficient production locations—UK businesses lost these advantages post-Brexit, with exporters facing customs declarations costing £7.5 billion annually, financial services firms relocating £1.3 trillion in assets to EU subsidiaries, and food exporters encountering veterinary checks adding 2 days to delivery times.",
     related: ["Trade Blocs", "International Trade", "Globalisation", "European Union"]
-  },
-
-  // ==================== ECONOMICS ====================
+  },// ==================== ECONOMICS ====================
   {
     term: "Human Development Index (HDI)",
     category: "Business Strategy & Foundations",
@@ -5496,57 +5335,49 @@ const glossaryTerms = [
     simple: "A measure of a country's development that combines life expectancy, education levels, and income, giving a broader picture than just economic output.",
     usage: "Comparing HDI reveals important distinctions GDP misses: Qatar has higher GDP per capita (£52,000) than Norway (£48,000) but lower HDI (0.855 versus 0.961) due to weaker education access and lower life expectancy—businesses use HDI alongside GDP when assessing emerging market entry, as a country with high GDP but low HDI (indicating concentrated wealth and limited education) may offer a smaller addressable middle-class market and less skilled workforce than HDI-richer alternatives despite lower headline GDP.",
     related: ["Gross Domestic Product", "Emerging Markets", "International Trade", "Economic Development"]
-  },
-  {
+  },{
     term: "Gross Domestic Product (GDP)",
     category: "Business Strategy & Foundations",
     technical: "The total monetary value of all finished goods and services produced within a country's borders during a specific period, measured by output, income, or expenditure methods, serving as the primary indicator of economic size and health, with GDP growth indicating expansion and two consecutive quarters of negative growth defining recession.",
     simple: "The total value of everything produced in a country over a period of time, used as the main measure of how well the economy is doing.",
     usage: "UK GDP of £2.3 trillion (2024) makes it the world's sixth largest economy—GDP growth of 0.6% indicates sluggish expansion, concerning businesses because consumer spending (65% of GDP) remains constrained, while GDP per capita of £34,000 positions the UK below Germany (£38,000) and the US (£58,000), suggesting productivity challenges, with businesses using GDP forecasts to plan investment (postponing expansion when GDP growth falls below 1%) and international operations (targeting high-growth GDP markets like India at 6.5% versus stagnant European markets at 0.8%).",
     related: ["Economic Growth", "Business Cycle", "Recession", "Human Development Index (HDI)"]
-  },
-  {
+  },{
     term: "Consumer Price Index (CPI)",
     category: "Business Strategy & Foundations",
     technical: "The official UK measure of inflation tracking the weighted average price change of a representative basket of approximately 730 goods and services purchased by typical households, calculated monthly by the Office for National Statistics, with the Bank of England targeting 2% CPI inflation through monetary policy decisions.",
     simple: "The official measure of how prices are changing for everyday goods and services bought by households, used to track inflation.",
     usage: "When CPI rose to 11.1% (October 2022), the basket revealed uneven impacts: food inflation at 16.4% (affecting low-income households most as food represents 15% of their spending versus 8% for wealthy households), energy at 88%, and clothing at just 6.5%—businesses use CPI data for wage negotiation benchmarks (unions demanded CPI-matching 11% rises), contract price escalation clauses (construction contracts linking material costs to CPI), and pricing strategy (supermarkets tracking CPI food components to set competitive prices).",
     related: ["Inflation", "Interest Rates", "Monetary Policy", "Bank of England"]
-  },
-  {
+  },{
     term: "Currency Appreciation",
     category: "Business Strategy & Foundations",
     technical: "An increase in the value of a currency relative to other currencies in foreign exchange markets, making imports cheaper (reducing business input costs) but exports more expensive (reducing international competitiveness), caused by higher interest rates attracting foreign investment, trade surpluses, economic confidence, or speculative capital flows.",
     simple: "When a currency becomes stronger and worth more compared to other currencies, making imports cheaper but exports dearer.",
     usage: "When sterling appreciated from $1.20 to $1.38 during 2023, UK importers like Primark benefited from 15% cheaper dollar-priced Asian clothing supplies, reducing input costs £180 million, while exporters like Burberry suffered as a £1,000 handbag rose from $1,200 to $1,380 for American customers, contributing to 8% US sales decline—demonstrating that currency appreciation creates importers' gain but exporters' pain, with the net effect depending on whether a country is a net importer (UK benefits) or net exporter (loses competitiveness).",
     related: ["Currency Depreciation", "Exchange Rates", "Imports", "Exports"]
-  },
-  {
+  },{
     term: "Currency Depreciation",
     category: "Business Strategy & Foundations",
     technical: "A decrease in the value of a currency relative to other currencies in foreign exchange markets, making exports cheaper and more competitive internationally but increasing import costs, caused by lower interest rates, trade deficits, political uncertainty, or loss of economic confidence, with impacts transmitted through import prices, export competitiveness, and inflation.",
     simple: "When a currency becomes weaker and worth less compared to other currencies, making exports cheaper but imports more expensive.",
     usage: "Sterling's 15% depreciation following the 2016 Brexit referendum had immediate business impact: import-dependent retailers like Next faced £50 million higher purchasing costs (raising prices 5-8%), food importers saw costs rise 12% feeding through to supermarket prices, while manufacturers like JCB benefited from cheaper exports boosting overseas orders 22%, and UK tourism surged as foreign visitors found Britain 15% cheaper—the J-curve effect meant the trade balance initially worsened before export volume increases eventually improved competitiveness.",
     related: ["Currency Appreciation", "Exchange Rates", "Imports", "Exports"]
-  },
-  {
+  },{
     term: "Minimum Average Cost",
     category: "Finance",
     technical: "The lowest point on the average total cost curve, representing the most efficient level of output where average costs per unit are minimised, achieved when economies of scale are fully exploited before diseconomies set in, informing optimal production level decisions and long-run competitive pricing strategies.",
     simple: "The level of production where the cost per unit is at its lowest, representing the most efficient output level for a business.",
     usage: "A microbrewery producing 10,000 litres monthly has average costs of £3.80/litre (high fixed costs spread thinly), scaling to 50,000 litres reduces average cost to £2.10/litre (optimal, minimum average cost point), but further expansion to 100,000 litres increases average cost to £2.45/litre as diseconomies emerge (larger premises, management layers, quality control complexity)—the 50,000-litre minimum average cost point determines competitive pricing capability, with firms operating above this level having cost disadvantage versus optimally-scaled competitors.",
     related: ["Economies of Scale", "Diseconomies of Scale", "Fixed Costs", "Variable Costs"]
-  },
-  {
+  },{
     term: "Employee Share Ownership",
     category: "Human Resources",
     technical: "Schemes enabling employees to acquire shares in their employer company, including Share Incentive Plans (SIP), Save As You Earn (SAYE), Enterprise Management Incentives (EMI), and employee ownership trusts, aligning employee and shareholder interests, improving motivation and retention, and providing tax advantages, with the UK employee ownership sector growing 30% annually.",
     simple: "When employees own shares in the company they work for, giving them a financial stake in the business's success.",
     usage: "John Lewis's employee ownership model (80,000 'Partners' collectively owning the business through a trust) demonstrates the impact: Partners receive annual profit-sharing bonuses averaging 3-15% of salary (£320 million distributed in peak years), vote on key decisions through elected councils, and demonstrate 25% lower turnover than retail average—while Julian Richer transferred 60% of Richer Sounds to employees, maintaining the UK's highest sales-per-square-foot record, suggesting ownership drives engagement that wages alone cannot achieve.",
     related: ["Motivation", "Equity", "Employee Engagement", "Paternalistic Leadership"]
-  },
-
-  // ==================== FINANCE ====================
+  },// ==================== FINANCE ====================
   {
     term: "Peer-to-Peer Funding",
     category: "Finance",
@@ -5554,9 +5385,7 @@ const glossaryTerms = [
     simple: "Lending and borrowing money directly between individuals through online platforms, cutting out traditional banks.",
     usage: "Funding Circle, the UK's largest P2P business lending platform, has lent £15 billion to 130,000 SMEs since 2010, with investors earning average 5-7% returns versus 1-2% in savings accounts, while borrowers access funds in days versus weeks for bank loans at rates 2-3% lower—though the platform's 2-3% default rate means investors can lose capital, and COVID-19 saw defaults spike to 8%, with Lendy and Collateral's collapse demonstrating that P2P lending carries genuine risk despite platform marketing emphasising returns over risk.",
     related: ["Crowdfunding", "Sources of Finance", "Business Angels", "Long-term Funding"]
-  },
-
-  // ==================== BUSINESS TYPES ====================
+  },// ==================== BUSINESS TYPES ====================
   {
     term: "Lifestyle Businesses",
     category: "Business Strategy & Foundations",
@@ -5564,9 +5393,7 @@ const glossaryTerms = [
     simple: "A business set up mainly to support the owner's desired way of life, rather than to grow as large or profitable as possible.",
     usage: "A surfing instructor running a small school in Cornwall generating £45,000 annually exemplifies a lifestyle business: the owner prioritises flexible hours, beach proximity, and doing work they love over scaling to multiple locations, hiring staff, or maximising profit—contrasting with entrepreneurial businesses like Deliveroo where growth, market share, and investor returns drive every decision, with lifestyle businesses representing 70% of UK sole traders but receiving minimal attention in business education despite supporting millions of livelihoods.",
     related: ["Entrepreneurship", "Small and Medium Enterprises (SMEs)", "Business Objectives", "Sole Trader"]
-  },
-
-  // ==================== MARKETING ====================
+  },// ==================== MARKETING ====================
   {
     term: "Emotional Branding",
     category: "Marketing",
@@ -5574,32 +5401,28 @@ const glossaryTerms = [
     simple: "Building a brand that connects with customers' feelings and emotions rather than just promoting product features.",
     usage: "John Lewis's Christmas advertisements exemplify emotional branding: the 2023 campaign cost £7 million to produce and £20 million in media placement, generating 50 million YouTube views and £1.2 billion in attributed Christmas sales—the ads never mention prices or product features but create emotional associations (warmth, family, generosity) that transfer to the John Lewis brand, with 78% of customers citing 'how John Lewis makes me feel' as their primary reason for choosing it over cheaper alternatives, demonstrating emotional branding's power to justify premium pricing.",
     related: ["Branding", "Brand Loyalty", "Viral Marketing", "Promotion"]
-  },
-  {
+  },{
     term: "Viral Marketing",
     category: "Marketing",
     technical: "A marketing strategy encouraging consumers to share promotional content with their social networks, creating exponential message spread at minimal cost, leveraging social media platforms, word-of-mouth, and shareable content formats (videos, memes, challenges), with successful viral campaigns reaching millions organically but outcomes being inherently unpredictable and uncontrollable.",
     simple: "Marketing that encourages people to share content with their friends, spreading the message rapidly like a virus through social media.",
     usage: "When Aldi's 'Kevin the Carrot' Christmas campaign generated 15 million social media shares and #KevinTheCarrot trended nationally, the viral spread delivered estimated £35 million in equivalent advertising value from £2 million production cost—1,750% return on investment, with Kevin merchandise selling out within hours generating additional £8 million revenue, though viral marketing's unpredictability means Aldi's 2019 caterpillar cake dispute with M&S generated even more viral attention (80 million impressions) entirely unplanned, demonstrating that viral outcomes cannot be reliably manufactured.",
     related: ["Digital Marketing", "Social Media", "Emotional Branding", "Promotion"]
-  },
-  {
+  },{
     term: "Design Mix",
     category: "Marketing",
     technical: "The combination of three elements in product design: Function (how well the product performs its intended purpose), Aesthetics (how the product looks, feels, and appeals to the senses), and Cost (the expense of manufacturing and the resulting impact on selling price), with the optimal balance depending on target market, competitive positioning, and brand strategy.",
     simple: "The balance between three elements of product design: how well it works (function), how good it looks (aesthetics), and how much it costs to make (cost).",
     usage: "Comparing design mix priorities: Dyson prioritises function and aesthetics over cost (vacuum engineering excellence with award-winning design at £400+, accepting higher manufacturing costs for premium positioning), Primark prioritises cost and acceptable aesthetics over function (trendy-looking clothing at £5-15 with limited durability), while Toyota balances all three (reliable engineering, clean design, competitive pricing at £25,000-35,000)—each design mix reflects target market expectations, with misalignment causing failure (expensive products that don't work or cheap products that look ugly).",
     related: ["Product Development", "Differentiation", "Competitive Advantage", "Market Positioning"]
-  },
-  {
+  },{
     term: "Market",
     category: "Marketing",
     technical: "Any arrangement where buyers and sellers come together to exchange goods, services, or resources, existing as physical locations (shops, markets), virtual platforms (e-commerce, apps), or conceptual spaces (the housing market, labour market), defined by geographic scope, product category, customer segment, and competitive dynamics.",
     simple: "Any place or system where buyers and sellers come together to trade goods or services.",
     usage: "The UK coffee market illustrates market complexity: valued at £4.8 billion (defined by product), comprising 28,000 outlets (physical market), growing 8% annually through delivery platforms (virtual market), segmented into high street chains (Costa 22% share), independents (45% of outlets), and at-home consumption (£1.2 billion through supermarkets)—understanding market definition matters strategically, as Starbucks competes differently depending on whether it defines its market as 'coffee shops' (competing with Costa), 'hot beverages' (competing with tea), or 'third places between work and home' (competing with pubs and co-working spaces).",
     related: ["Market Conditions", "Market Share", "Dynamic Markets", "Niche Market"]
-  },
-  {
+  },{
     term: "Dynamic Markets",
     category: "Marketing",
     technical: "Markets characterised by rapid, continuous change in consumer preferences, technology, competition, and market conditions, requiring businesses to be agile, innovative, and responsive, contrasting with stable markets where change is gradual and predictable, with digital disruption, globalisation, and changing consumer behaviour accelerating market dynamism across most sectors.",

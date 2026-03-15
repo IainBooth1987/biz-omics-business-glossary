@@ -219,6 +219,98 @@ body::before {
 }
 
 .filter-chip:hover { border-color: var(--accent-light); color: var(--text); }
+/* Specification Selector */
+.spec-selector-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.spec-clear-btn {
+  display: none;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: transparent;
+  color: var(--text-muted);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.spec-clear-btn:hover { border-color: var(--danger); color: var(--danger); }
+.spec-clear-btn.visible { display: flex; }
+
+.spec-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.spec-label svg { flex-shrink: 0; }
+
+.spec-select {
+  flex: 1;
+  min-width: 220px;
+  max-width: 420px;
+  padding: 10px 36px 10px 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  cursor: pointer;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%235a8a75' stroke-width='2.5'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  transition: all 0.2s;
+}
+
+.spec-select:focus, .spec-select:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.spec-select option {
+  background: #112520;
+  color: var(--text);
+  font-weight: 500;
+}
+
+.spec-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: rgba(16,185,129,0.12);
+  border: 1px solid rgba(16,185,129,0.3);
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent);
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+
+.spec-badge.hidden-badge { display: none; }
+
 .filter-chip.active {
   background: var(--accent);
   border-color: var(--accent);
@@ -1352,7 +1444,7 @@ body::before {
   <div class="stats-bar">
     <div class="stat">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-      Total Terms: <span class="stat-num" id="total-terms">0</span>
+      <span id="total-label">Total Terms:</span> <span class="stat-num" id="total-terms">0</span>
     </div>
     <div class="stat">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
@@ -1369,6 +1461,42 @@ body::before {
       <div class="search-box">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
         <input type="text" id="search-input" placeholder="Search business terms..." oninput="filterTerms()">
+      </div>
+      <div class="spec-selector-row">
+        <span class="spec-label">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          Board &amp; Level
+        </span>
+        <select class="spec-select" id="board-select" onchange="setBoard(this.value)">
+          <option value="">— Select board &amp; level —</option>
+          <optgroup label="── A-Level ──">
+            <option value="AQA_ALEVEL">AQA · A-Level Business (7132)</option>
+            <option value="EDEXCEL_ALEVEL">Edexcel · A-Level Business (9BS0)</option>
+            <option value="OCR_ALEVEL">OCR · A-Level Business (H431)</option>
+          </optgroup>
+          <optgroup label="── GCSE ──">
+            <option value="AQA_GCSE">AQA · GCSE Business (8132)</option>
+            <option value="EDEXCEL_GCSE">Edexcel · GCSE Business (1BS0)</option>
+            <option value="OCR_GCSE">OCR · GCSE Business (J204)</option>
+          </optgroup>
+        </select>
+
+        <span class="spec-label" id="paper-label" style="display:none;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          Paper
+        </span>
+        <select class="spec-select" id="paper-select" onchange="setSpec(this.value)" style="display:none;" disabled>
+          <option value="All">Full specification (all papers)</option>
+        </select>
+
+        <span class="spec-badge hidden-badge" id="spec-badge">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <span id="spec-badge-text"></span>
+        </span>
+        <button class="spec-clear-btn" id="spec-clear-btn" onclick="clearBoardFilter()">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          Clear filter
+        </button>
       </div>
       <div class="filter-row" id="filter-row"></div>
     </div>
@@ -6211,6 +6339,635 @@ const glossaryTerms = [
 
 
 
+  ,
+  // ==================== ADDITIONAL SPEC TERMS ====================
+  {
+    term: "Accounting Rate of Return (ARR)",
+    category: "Finance",
+    technical: "An investment appraisal technique that calculates average annual profit as a percentage of initial investment cost, enabling comparison of profitability across projects without discounting future cash flows, calculated as (average annual profit ÷ initial investment) × 100.",
+    simple: "A way of measuring how profitable an investment is by comparing average annual profit to the amount invested.",
+    usage: "A retailer comparing two store refurbishments: Project A costs £200,000 generating average annual profit of £30,000 (ARR 15%); Project B costs £150,000 generating £18,000 average profit (ARR 12%). Project A's higher ARR makes it preferable if the firm's target rate is 13%, despite the lower absolute monetary return.",
+    related: ["Investment Appraisal","Net Present Value (NPV)","Payback Period","Discounted Cash Flow"]
+  },{
+    term: "Asset Turnover",
+    category: "Finance",
+    technical: "A financial efficiency ratio measuring how effectively a business uses its assets to generate revenue, calculated as revenue divided by total assets, with a higher ratio indicating more efficient asset utilisation relative to sales generated.",
+    simple: "A measure of how much revenue a business generates for every pound of assets it owns.",
+    usage: "Tesco's asset turnover of 1.3 (£61bn revenue ÷ £47bn assets) versus a luxury hotel chain's 0.3 illustrates how asset-light retailers generate more revenue per pound of assets than capital-intensive businesses, making cross-sector comparisons misleading without context.",
+    related: ["Return on Capital Employed (ROCE)","Ratio Analysis","Revenue","Gearing Ratio"]
+  },{
+    term: "Best Practice",
+    category: "Operations Management",
+    technical: "The most effective and efficient methods, techniques, or processes identified across an industry or profession, established through benchmarking, research, and accumulated experience, used as a standard against which organisations measure and improve their own performance.",
+    simple: "The most effective way of doing something, identified by comparing what works best across different organisations.",
+    usage: "NHS hospitals adopting surgical best practice checklists developed by WHO reduced post-operative complications by 36%. The same principle applies to Toyota's lean production methods becoming manufacturing best practice globally — systematically applying proven procedures rather than individual variation improves outcomes.",
+    related: ["Benchmarking","Continuous Improvement","Kaizen","Total Quality Management (TQM)"]
+  },{
+    term: "Competition",
+    category: "Business Strategy & Foundations",
+    technical: "The rivalry between businesses supplying similar products or services to the same market, influencing pricing decisions, product development, marketing strategies, and resource allocation, with intensity determined by number of competitors, product differentiation, barriers to entry, and switching costs.",
+    simple: "The rivalry between businesses trying to win the same customers in a market.",
+    usage: "The UK supermarket sector demonstrates intense competition: Tesco, Sainsbury's, Asda, Morrisons, Aldi, and Lidl compete across price, quality, location, and loyalty schemes — driving down margins to 2-4% and resulting in Tesco's market share falling from 31% to 27% as discounters grew from 2% to 18% between 2010 and 2023.",
+    related: ["Competition Policy","Market Share","Competitive Advantage","Barriers to Entry"]
+  },{
+    term: "Consumer Confidence",
+    category: "Business Strategy & Foundations",
+    technical: "A measure of households' optimism about their current and future financial situation and the broader economy, tracked through surveys, influencing consumer spending decisions, saving rates, and demand for discretionary goods and services, acting as a leading indicator of economic activity.",
+    simple: "How optimistic consumers feel about their finances and the economy, which affects how much they spend.",
+    usage: "UK consumer confidence fell to -49 in January 2023 as inflation hit 11.1% — the lowest since 1974 — causing consumers to cut spending on big-ticket items: new car registrations fell 8%, home improvement spending dropped 15%, and major retailers warned of volume declines, demonstrating how sentiment directly translates into revenue impact.",
+    related: ["Economic Climate","Business Cycle","GDP","Fiscal Policy"]
+  },{
+    term: "Continuous Improvement",
+    category: "Operations Management",
+    technical: "A systematic, ongoing approach to incrementally improving products, processes, and services through small regular enhancements rather than large occasional changes, embedded in organisational culture and involving all employees in identifying and implementing improvements at every level.",
+    simple: "Making small but regular improvements to processes and products over time rather than waiting for big one-off changes.",
+    usage: "Toyota's continuous improvement philosophy drives staff to submit 1 million improvement suggestions annually with 90% implemented — reducing assembly time per vehicle from 31 to 27 hours over a decade and achieving defect rates of 0.5 per vehicle versus an industry average of 1.5, showing that aggregated small gains create substantial competitive advantage.",
+    related: ["Kaizen","Total Quality Management (TQM)","Lean Production","Best Practice"]
+  },{
+    term: "Costs",
+    category: "Finance",
+    technical: "The total expenditure incurred by a business in producing goods or services, encompassing all expenses including materials, labour, overheads, and financing charges, classified as fixed (unaffected by output), variable (proportional to output), or semi-variable (partially fixed, partially variable).",
+    simple: "All the money a business spends to produce and sell its products or services.",
+    usage: "Ryanair's cost management — variable costs of £28 per passenger (fuel, handling, crew) and fixed costs of £3.2bn (aircraft leases, staff, maintenance) giving a total cost per seat of £37 versus legacy carriers' £95 — demonstrates how understanding the full cost structure enables pricing strategies that build market share while maintaining profitability.",
+    related: ["Fixed Costs","Variable Costs","Semi-variable Costs","Break-even Analysis"]
+  },{
+    term: "Customer Needs",
+    category: "Marketing",
+    technical: "The specific requirements, desires, and problems that consumers seek to satisfy through purchasing products or services, encompassing functional needs (practical utility), emotional needs (psychological satisfaction), and social needs (identity and belonging), forming the foundation of effective marketing strategy.",
+    simple: "What customers actually want or need from a product or service in order to buy it.",
+    usage: "Dyson identified unmet customer needs — vacuum cleaners losing suction as bags filled and requiring expensive replacement bags — and designed products addressing these specific frustrations, generating £4bn annual revenue from customers willing to pay £300-700 per unit versus £50 conventional alternatives, demonstrating that deep need identification creates premium pricing power.",
+    related: ["Market Research","Marketing Mix","Product","Value Proposition"]
+  },{
+    term: "Demographics",
+    category: "Marketing",
+    technical: "Statistical characteristics of a population used to segment markets and target customers, including age, gender, income, education, occupation, family size, ethnicity, and geographic location, providing measurable bases for identifying customer groups with similar needs and purchasing behaviours.",
+    simple: "Statistical characteristics of a population such as age, gender, and income, used to understand and target customer groups.",
+    usage: "Saga exploits UK demographic trends — 16.5 million people over 50 controlling 47% of disposable income — by providing targeted insurance, holidays, and financial services to this group, achieving 2.9 million customers and £1.4bn revenue by deeply understanding the specific needs, values, and purchasing behaviour of the 50+ demographic.",
+    related: ["Market Segmentation","Target Market","Consumer Confidence","Market Research"]
+  },{
+    term: "Differentiation",
+    category: "Business Strategy & Foundations",
+    technical: "A competitive strategy in which a business distinguishes its products or services from competitors through unique features, quality, branding, customer service, or innovation, enabling premium pricing and reduced price sensitivity by creating perceived or actual superiority in customers' minds.",
+    simple: "Making a product or service stand out from competitors in ways that customers value, allowing higher prices to be charged.",
+    usage: "Apple's differentiation through design aesthetics, ecosystem integration, retail experience, and brand aspiration enables iPhone pricing of £999-1599 versus Android equivalents at £300-600 — commanding 87% of global smartphone profits despite only 17% market share, demonstrating differentiation's power to decouple profit from volume.",
+    related: ["Competitive Advantage","Porter's Generic Strategies","Brand","Unique Selling Point (USP)"]
+  },{
+    term: "Discounted Cash Flow",
+    category: "Finance",
+    technical: "An investment appraisal method that adjusts future cash flows to their present value using a discount rate reflecting the time value of money and investment risk, recognising that £1 received in the future is worth less than £1 today due to opportunity cost, inflation, and uncertainty.",
+    simple: "A method of valuing an investment by adjusting future cash flows to what they are worth today, recognising that money now is worth more than money later.",
+    usage: "A manufacturer evaluating a £500,000 machine investment using a 10% discount rate: Year 1 cash flow £200,000 discounted to £182,000, Year 2 to £165,000, Year 3 to £150,000 — total present value £497,000 against £500,000 cost gives a negative NPV suggesting rejection, whereas simple payback (2.5 years) would suggest acceptance.",
+    related: ["Net Present Value (NPV)","Accounting Rate of Return (ARR)","Payback Period","Investment Appraisal"]
+  },{
+    term: "Divestiture",
+    category: "Business Strategy & Foundations",
+    technical: "The partial or complete disposal of a business unit, product line, subsidiary, or asset through sale, spin-off, or closure, undertaken to raise capital, reduce debt, focus on core competencies, respond to regulatory requirements, or improve overall business performance by eliminating underperforming operations.",
+    simple: "Selling off or closing part of a business to raise cash, reduce debt, or focus on what the business does best.",
+    usage: "GlaxoSmithKline's divestiture of its consumer healthcare division Haleon in 2022 via demerger raised £7bn and freed management to focus on pharmaceutical R&D, with the remaining business achieving 10% revenue growth versus flat growth pre-divestiture, showing how strategic asset disposal can sharpen focus and improve parent company performance.",
+    related: ["Corporate Strategy","Acquisitions","Turnaround Strategy","Asset Turnover"]
+  },{
+    term: "Economic Climate",
+    category: "Business Strategy & Foundations",
+    technical: "The prevailing macroeconomic conditions affecting business activity at a particular time, characterised by GDP growth rates, unemployment levels, inflation, interest rates, and consumer and business confidence, creating an external environment that influences demand, costs, access to finance, and strategic decision-making across all organisations.",
+    simple: "The overall state of the economy at a given time, including growth, employment, and inflation levels, which affects all businesses.",
+    usage: "The 2022-23 UK economic climate combined 11.1% inflation, Bank Rate rising from 0.1% to 5.25%, real wage falls of 3%, and GDP contraction — simultaneously raising input costs, reducing consumer spending power, and dampening investment intentions, forcing businesses across all sectors to cut costs, raise prices, and revise growth plans simultaneously.",
+    related: ["GDP","Inflation","Interest Rates","Business Cycle"]
+  },{
+    term: "Entrepreneurial Structure",
+    category: "Human Resources",
+    technical: "An informal, flat organisational structure typically found in small or start-up businesses where the founder makes most decisions centrally, with few management layers, minimal bureaucracy, and direct communication between owner and all employees, enabling rapid decision-making but creating bottlenecks as the business grows.",
+    simple: "A simple, informal business structure where the owner makes most decisions directly, with few management layers.",
+    usage: "Brewdog in its early years operated an entrepreneurial structure — founders making all product, pricing, and marketing decisions personally across a team of 10 — enabling rapid innovation and strong culture, but as the company grew to 2,000 staff this created decision bottlenecks, forcing a transition to a more formal hierarchical structure with functional departments.",
+    related: ["Organisational Structure","Flat Organisational Structure","Centralisation","Delegation"]
+  },{
+    term: "Exit Strategy",
+    category: "Business Strategy & Foundations",
+    technical: "A planned approach to concluding involvement in an investment or business venture, including options such as trade sale, management buyout, stock market flotation, merger, or liquidation, designed to maximise return on investment or minimise losses while ensuring an orderly transition.",
+    simple: "A plan for how the owners of a business will eventually sell or close it to realise their investment.",
+    usage: "Private equity firm Bain Capital's exit from Domino's Pizza UK involved floating the company on AIM in 2014 at 135p per share — having acquired it for approximately £30m in 2003, the IPO valued the business at £265m delivering a 9x return, demonstrating how exit strategy planning from the point of investment shapes all subsequent operational and financial decisions.",
+    related: ["Initial Public Offering","Liquidation","Mergers","Corporate Strategy"]
+  },{
+    term: "Expectancy Theory",
+    category: "Human Resources",
+    technical: "Vroom's motivational theory proposing that employee motivation depends on three factors: expectancy (belief that effort leads to performance), instrumentality (belief that performance leads to reward), and valence (value placed on the reward), with motivation being the product of all three multiplied together.",
+    simple: "Vroom's theory that people are motivated when they believe their effort will lead to good performance, which will lead to a reward they value.",
+    usage: "A sales team's motivation requires: expectancy (believing hard work will hit targets — undermined if targets are unrealistic), instrumentality (trusting commission will actually be paid), and valence (wanting the financial reward). Managers must align all three: achievable targets, reliable reward systems, and understanding what each individual values.",
+    related: ["Motivation","Vroom","Maslow's Hierarchy of Needs","Performance-related Pay"]
+  },{
+    term: "Franchise",
+    category: "Business Strategy & Foundations",
+    technical: "A business model in which a franchisor grants franchisees the right to operate under the franchisor's brand, systems, and support in exchange for initial fees and ongoing royalties, enabling rapid expansion with lower capital requirements while franchisees benefit from an established brand and proven business model.",
+    simple: "A business arrangement where someone pays to use an established brand's name, systems, and support to run their own outlet.",
+    usage: "McDonald's franchise model covers 93% of its 40,000+ global restaurants — franchisees invest £1-2 million, pay 5% of sales as royalties, and benefit from global brand recognition and operational systems, while McDonald's achieves £8bn annual franchise revenue with minimal capital deployment, explaining why franchise royalties generate 70% higher margins than company-owned restaurants.",
+    related: ["Organic Growth","Sole Trader","Private Limited Company","Licensing"]
+  },{
+    term: "Grants",
+    category: "Finance",
+    technical: "Non-repayable financial awards provided by government bodies, local authorities, charitable foundations, or international organisations to businesses meeting specific criteria, typically to stimulate economic activity, support R&D, enable business start-ups, or encourage investment in deprived areas without requiring equity or interest repayment.",
+    simple: "Free money given to businesses by governments or other organisations that does not need to be repaid.",
+    usage: "Nissan received £500m in UK government grants to build its Sunderland gigafactory for EV battery production — conditional on creating 1,650 jobs and committing to the site long-term. The grant reduced Nissan's capital requirement and secured 6,000 additional supply chain jobs, demonstrating how grants align private investment with public economic development objectives.",
+    related: ["Sources of Finance","Subsidies","Government Intervention","Venture Capital"]
+  },{
+    term: "Growth Strategy",
+    category: "Business Strategy & Foundations",
+    technical: "A plan to increase a business's size, revenue, market share, or profitability through organic methods (internal expansion via new products, markets, or customers) or inorganic methods (external expansion via mergers, acquisitions, or joint ventures), guided by the Ansoff Matrix framework of market penetration, development, product development, and diversification.",
+    simple: "A plan for how a business intends to expand its sales, market share, or overall size.",
+    usage: "Amazon's growth strategy evolved through the Ansoff Matrix: market penetration (deeper US sales), market development (global expansion to 20+ countries), product development (Prime, AWS, Alexa), and diversification (healthcare, logistics, groceries) — growing from a £1bn bookseller in 1999 to a £1.4 trillion business by 2023 by systematically pursuing all four growth quadrants simultaneously.",
+    related: ["Ansoff Matrix","Organic Growth","Inorganic Growth","Market Development"]
+  },{
+    term: "HR Planning",
+    category: "Human Resources",
+    technical: "The strategic process of forecasting an organisation's future human resource requirements — in terms of numbers, skills, and roles — and developing plans to meet them through recruitment, training, redeployment, or redundancy, ensuring the workforce aligns with organisational objectives at minimum cost.",
+    simple: "Planning how many workers with what skills a business will need in the future, and working out how to get them.",
+    usage: "Network Rail's HR planning for HS2 construction forecast requirements for 34,000 workers with specialist civil engineering and tunnelling skills over 15 years — identifying a gap of 8,000 workers unavailable in current labour markets, prompting a 10-year apprenticeship programme with universities to build the required skills pipeline rather than rely entirely on external hiring.",
+    related: ["Workforce Planning","Recruitment","Training","labour Turnover"]
+  },{
+    term: "Human Resource Management",
+    category: "Human Resources",
+    technical: "The strategic and operational function responsible for recruiting, developing, motivating, rewarding, and retaining employees to achieve organisational objectives, encompassing workforce planning, performance management, training and development, compensation, employee relations, and compliance with employment legislation.",
+    simple: "The management of all aspects of an organisation's workforce, from hiring and training to pay and employee wellbeing.",
+    usage: "Google's HRM approach combines competitive compensation (median salary £180,000), extensive development (20% time for personal projects, tuition reimbursement), wellbeing benefits (free meals, extended parental leave), and data-driven performance management — achieving voluntary turnover of 7% versus a tech industry average of 14%.",
+    related: ["Recruitment","Training","Motivation","Performance Management"]
+  },{
+    term: "Induction Training",
+    category: "Human Resources",
+    technical: "A structured programme introducing new employees to the organisation, covering company culture, policies, procedures, health and safety requirements, job-specific tasks, and key relationships, designed to accelerate integration, reduce early-stage turnover, and ensure compliance with legal obligations from the first day of employment.",
+    simple: "Training given to new employees to help them settle in, understand company rules, and learn how to do their job.",
+    usage: "John Lewis's 5-day induction programme for new Partners covers company history and partnership principles, department orientation and buddy system, compliance and digital systems training, and role-specific product knowledge — reducing the 90-day turnover rate from 22% to 8% and recovering its £3,200 average recruitment cost within 6 months rather than losing it to early departures.",
+    related: ["Training","On-the-Job Training","Off-the-Job Training","Recruitment"]
+  },{
+    term: "Inventory Control",
+    category: "Operations Management",
+    technical: "The systematic management of stock levels to ensure sufficient materials or finished goods are available to meet demand without excess holdings that tie up working capital, typically involving reorder levels, buffer stocks, economic order quantities, and just-in-time approaches to balance availability against holding costs.",
+    simple: "Managing the amount of stock a business holds to avoid running out while not holding too much unnecessary stock.",
+    usage: "Amazon's inventory control algorithm monitors 350 million product lines in real time across 175 fulfilment centres, using machine learning to predict demand 18 months ahead — achieving 99.9% in-stock availability while turning inventory 12 times per year versus traditional retailers' 4 times, demonstrating how technology-enabled inventory optimisation creates competitive advantage.",
+    related: ["Just-in-Time (JIT)","Buffer Stock","Supply Chain","Working Capital"]
+  },{
+    term: "Lewin's Change Model",
+    category: "Business Strategy & Foundations",
+    technical: "A three-stage model of organisational change comprising Unfreeze (creating awareness that change is necessary and breaking down existing attitudes), Change (implementing new processes, behaviours, and structures), and Refreeze (embedding changes into culture and making them the new norm), providing a structured framework for managing transitions.",
+    simple: "A three-stage model for managing change: preparing people for change, making the change, then embedding it permanently.",
+    usage: "When Barclays implemented mandatory digital banking training for 25,000 branch staff, it applied Lewin's model: Unfreeze (sharing data showing 60% of transactions now digital), Change (12-week blended learning programme with coaches), Refreeze (new performance metrics including digital referrals and celebrating adoption in team meetings) — achieving 94% digital competency versus 45% baseline.",
+    related: ["Change Management","Kotter and Schlesinger","Lewin's Force Field Analysis","Resistance to Change"]
+  },{
+    term: "Liquidation",
+    category: "Finance",
+    technical: "The formal process of winding up a company by selling its assets to pay creditors in a legally prescribed priority order — secured creditors first, then preferential creditors (employees), then unsecured creditors, with shareholders receiving any remaining proceeds — resulting in the company ceasing to exist as a legal entity.",
+    simple: "The process of closing a business by selling all its assets to pay off debts, after which the business ceases to exist.",
+    usage: "Wilko's 2023 liquidation after failing to secure a buyer saw 12,500 staff made redundant, 400 stores closed, and creditors recovering approximately 7p per pound owed — suppliers receiving nothing for £52m in outstanding invoices while HMRC recovered £18m as a preferential creditor, illustrating the harsh hierarchy of claims when liquidation is unavoidable.",
+    related: ["Business Failure","Exit Strategy","Insolvency","Creditors"]
+  },{
+    term: "Management",
+    category: "Human Resources",
+    technical: "The process of planning, organising, directing, and controlling resources — human, financial, physical, and informational — to achieve organisational objectives efficiently and effectively, distinguished from leadership by its focus on systems, processes, and task execution rather than vision, inspiration, and change.",
+    simple: "The process of organising people and resources to get things done and achieve business goals.",
+    usage: "Amazon's management practices include working backwards (starting with a customer press release before building a product), OKRs (objectives and key results set quarterly), 6-page narrative memos replacing PowerPoint, and two-pizza team rules (no team larger than can be fed by two pizzas) — demonstrating how systematic management can coordinate 1.5 million employees globally.",
+    related: ["Leadership","Autocratic Leadership","Organisational Structure","Delegation"]
+  },{
+    term: "Operations Management",
+    category: "Operations Management",
+    technical: "The management of processes that transform inputs (materials, labour, equipment, information) into outputs (goods and services), encompassing production planning, quality management, supply chain management, capacity planning, inventory control, and continuous improvement to deliver value efficiently and meet customer requirements.",
+    simple: "Managing the day-to-day processes that turn raw materials and resources into finished products or services for customers.",
+    usage: "Toyota's operations management integrates just-in-time delivery eliminating £2bn in inventory holding costs, automated quality detection stopping production immediately on defects, production levelling matching output to demand, and standardised work — achieving defect rates of 44 per million vehicles versus competitors' 200+, showing that operational excellence creates sustainable competitive advantage.",
+    related: ["Lean Production","Just-in-Time (JIT)","Total Quality Management (TQM)","Supply Chain"]
+  },{
+    term: "Organisational Structure",
+    category: "Human Resources",
+    technical: "The formal system defining how activities, responsibilities, authority, and communication flows are coordinated and controlled within an organisation, typically represented as a hierarchy showing reporting relationships, with variations including tall (many layers), flat (few layers), matrix, and entrepreneurial structures affecting communication speed, control, and employee motivation.",
+    simple: "The way a business is organised, showing who reports to whom and how authority and responsibility are divided.",
+    usage: "Unilever's reorganisation from a product-based structure (separate divisions for food, home care, personal care) to a geography-based structure reduced duplication across 190 markets, cut 1,500 management roles, and improved speed-to-market from 18 to 12 months for new products — demonstrating how structural decisions directly affect operational efficiency and competitive responsiveness.",
+    related: ["Tall Organisational Structure","Flat Organisational Structure","Centralisation","Delegation"]
+  },{
+    term: "Payables Days",
+    category: "Finance",
+    technical: "A liquidity ratio measuring the average number of days a business takes to pay its suppliers, calculated as (trade payables ÷ cost of sales) × 365, with a higher figure indicating longer payment periods that improve short-term cash flow but may damage supplier relationships if excessive.",
+    simple: "How many days on average a business takes to pay its suppliers after receiving goods or services.",
+    usage: "Tesco's average payables days of 48 versus a small independent retailer's 14 days illustrates how market power enables extended payment terms — Tesco effectively receives £4.2bn of interest-free financing from its supplier base, improving working capital significantly, though extended terms contributed to the 2014 accounting scandal when supplier payment timing was manipulated to inflate reported profits.",
+    related: ["Working Capital","Receivables Days","Cash Flow","Trade Credit"]
+  },{
+    term: "People",
+    category: "Marketing",
+    technical: "The seventh element of the extended marketing mix (7Ps), encompassing all individuals involved in service delivery including customer-facing staff, support personnel, and management, whose behaviour, skills, knowledge, and attitude directly influence customer perceptions of service quality and overall brand experience.",
+    simple: "The people involved in delivering a service to customers, whose behaviour and skills affect how customers experience the brand.",
+    usage: "Pret a Manger's competitive advantage centres on the People element: staff selection based on personality over experience, 30% higher wages than competitors, empowerment to give free drinks, and daily huddles reinforcing culture — creating consistent exceptional service generating 40% higher customer return rates than the industry average.",
+    related: ["Marketing Mix","Process","Physical Evidence","Customer Service"]
+  },{
+    term: "Performance Management",
+    category: "Human Resources",
+    technical: "A continuous process of setting objectives aligned with organisational goals, monitoring progress, providing feedback and coaching, assessing achievement, and linking outcomes to development and reward decisions, designed to maximise individual and team contribution to business performance.",
+    simple: "The ongoing process of setting goals for employees, monitoring their progress, and giving feedback to help them improve.",
+    usage: "Google's performance management uses twice-yearly OKR reviews, 360-degree feedback from peers and reports, a 5-point rating scale, and calibration meetings where managers collectively review ratings to reduce bias — with performance outcomes linked to compensation adjustments of up to 30%, balancing development conversations with accountability.",
+    related: ["HR Planning","Motivation","Training","Appraisal"]
+  },{
+    term: "Physical Evidence",
+    category: "Marketing",
+    technical: "The tangible elements of a service environment that customers encounter, including premises, equipment, signage, packaging, uniforms, and digital interfaces, which shape perceptions of service quality and provide visible proof of a business's professionalism and brand values in the absence of a physical product.",
+    simple: "The tangible elements customers see and experience in a service environment, such as store design, uniforms, and packaging, that shape their impression of the brand.",
+    usage: "Apple Stores' physical evidence — glass facades, minimalist white interiors, wooden tables displaying products untethered for hands-on testing, and staff in branded T-shirts — generates £5,500 revenue per square foot versus a retail average of £500, demonstrating how physical environment directly drives commercial outcomes in service businesses.",
+    related: ["Marketing Mix","People","Process","Customer Service"]
+  },{
+    term: "Porter's Generic Strategies",
+    category: "Business Strategy & Foundations",
+    technical: "Michael Porter's framework of three fundamental competitive strategies: Cost Leadership (being the lowest-cost producer in an industry), Differentiation (offering unique products commanding premium prices), and Focus (targeting a narrow market segment with either cost or differentiation), with firms pursuing more than one risking being 'stuck in the middle' with no clear advantage.",
+    simple: "Porter's three ways businesses can compete: being cheapest overall, being unique and charging more, or specialising in a niche market.",
+    usage: "Ryanair's cost leadership delivers fares averaging £37 versus Easyjet's £62. BMW's differentiation commands £8,000-15,000 premiums over equivalent Volkswagen models. Rolls-Royce's focus strategy targets ultra-high-net-worth buyers with bespoke vehicles at £300,000+ — all three strategies operating simultaneously within the same and adjacent industries.",
+    related: ["Competitive Advantage","Differentiation","Cost Leadership","Ansoff Matrix"]
+  },{
+    term: "Process",
+    category: "Marketing",
+    technical: "The systems, procedures, and mechanisms through which a service is delivered to customers, encompassing the sequence of activities from first contact to service completion, including waiting times, service steps, self-service options, and complaint handling, directly affecting customer experience and operational efficiency.",
+    simple: "The steps and systems involved in delivering a service to customers, from start to finish.",
+    usage: "McDonald's process standardisation — order taking under 60 seconds, food delivery in 90 seconds, digital kiosk ordering reducing queue times by 25% — enables 69 million customers to receive consistent experiences daily across 40,000 outlets in 100 countries, demonstrating how process design is a core competitive weapon in high-volume service businesses.",
+    related: ["Marketing Mix","People","Physical Evidence","Operations Management"]
+  },{
+    term: "Profit Margin",
+    category: "Finance",
+    technical: "A profitability ratio expressing profit as a percentage of revenue, measuring how much of each pound of sales is retained as profit after deducting costs, with key variants including gross profit margin (after direct costs), operating profit margin (after operating expenses), and net profit margin (after all costs including interest and tax).",
+    simple: "The percentage of sales revenue that becomes profit after deducting costs.",
+    usage: "Apple's net profit margin of 25% compared to Amazon's 3% illustrates the difference between premium differentiated products and high-volume low-margin operations — Apple retains £25 of every £100 of revenue versus Amazon's £3, explaining why Apple generates more profit on £350bn revenue than Amazon on £500bn, and why margin analysis is more informative than revenue comparisons alone.",
+    related: ["Gross Profit Margin","Operating Profit Margin","Net Profit Margin","Ratio Analysis"]
+  },{
+    term: "Receivables Days",
+    category: "Finance",
+    technical: "A working capital efficiency ratio measuring the average number of days between making a sale and receiving payment from customers, calculated as (trade receivables ÷ revenue) × 365, with a lower figure indicating faster cash collection but potentially less competitive credit terms for customers.",
+    simple: "How many days on average it takes a business to collect payment from customers after a sale.",
+    usage: "A construction firm with £2m trade receivables and £12m annual revenue has receivables days of 61 — customers taking over 2 months to pay — compared to a supermarket's 3 days (immediate card payments). This 61-day gap means the construction firm must continuously finance £2m of working capital, costing £40,000-100,000 annually in overdraft interest.",
+    related: ["Working Capital","Cash Flow","Payables Days","Trade Credit"]
+  },{
+    term: "Reorder Level",
+    category: "Operations Management",
+    technical: "The predetermined stock level at which a new order must be placed with a supplier to ensure inventory is replenished before buffer stock is exhausted, calculated by considering average daily demand, lead time from supplier, and desired safety stock, forming a key parameter in inventory control systems.",
+    simple: "The stock level at which a new order must be placed to avoid running out before the next delivery arrives.",
+    usage: "A hospital pharmacy sets a reorder level of 200 units for a critical medicine based on daily usage of 20 units, supplier lead time of 7 days, plus a 60-unit buffer stock for demand variability — triggering automatic reordering at 200 units ensures deliveries arrive before the buffer is consumed, preventing potentially harmful stockouts.",
+    related: ["Inventory Control","Buffer Stock","Just-in-Time (JIT)","Supply Chain"]
+  },{
+    term: "Resistance to Change",
+    category: "Business Strategy & Foundations",
+    technical: "The tendency of individuals, groups, or organisations to oppose, obstruct, or minimise changes to established routines, processes, or structures, arising from fear of the unknown, perceived threats to job security or status, lack of trust in management, poor communication, or genuine concerns about the wisdom of proposed changes.",
+    simple: "The reluctance of employees or organisations to accept or implement changes to established ways of working.",
+    usage: "British Airways' attempt to move staff to new contracts in 2010 faced significant resistance — cabin crew strikes costing £150m in revenue — driven by perceived threats to pay, distrust following senior management remuneration controversies, and inadequate communication. Resolution required 18 months, independent mediation, and contract modifications, demonstrating the cost of failing to address resistance systematically.",
+    related: ["Change Management","Kotter and Schlesinger","Lewin's Change Model","Corporate Culture"]
+  },{
+    term: "Resource Audit",
+    category: "Business Strategy & Foundations",
+    technical: "A systematic assessment of an organisation's existing resources — physical (premises, equipment, technology), human (skills, experience, knowledge), financial (capital, credit, cash flow), and intangible (brand, intellectual property, relationships) — used to identify strengths and weaknesses as the internal component of strategic analysis.",
+    simple: "A review of all the resources a business has available, including physical assets, staff skills, finances, and brand reputation.",
+    usage: "When Marks & Spencer undertook a resource audit ahead of its 2016 transformation plan, it identified physical strength (900 stores, premium locations), human weakness (skills gap in digital analytics), financial strength (£1.4bn cash), and intangible strength (high brand trust) — enabling targeted investment in digital recruitment and disposal of loss-making international stores.",
+    related: ["SWOT Analysis","Competitive Advantage","Core Competencies","Strategic Planning"]
+  },{
+    term: "Risk",
+    category: "Business Strategy & Foundations",
+    technical: "The possibility of an outcome differing from expectations, encompassing financial risk (loss of capital), operational risk (production failures), market risk (demand changes), strategic risk (competitive threats), and reputational risk, with risk management involving identification, assessment, mitigation, and monitoring of potential adverse events.",
+    simple: "The possibility that something will go wrong in a business, resulting in financial loss or failure to achieve objectives.",
+    usage: "Elon Musk's acquisition of Twitter for $44bn carried multiple materialised risks: an advertiser boycott reducing revenue by 50%, debt interest of $1.5bn annually, key staff departures depleting engineering capability, and regulatory risk in multiple jurisdictions — demonstrating that risk assessment must consider the probability, magnitude, and correlation of multiple risk factors simultaneously.",
+    related: ["Entrepreneurship","Business Failure","Scenario Planning","Opportunity Cost"]
+  },{
+    term: "Satisficing",
+    category: "Business Strategy & Foundations",
+    technical: "A decision-making approach in which managers accept a satisfactory solution that meets minimum required criteria rather than searching exhaustively for the optimal solution, reflecting real-world constraints of incomplete information, bounded rationality, time pressure, and the cost of further search exceeding likely improvements.",
+    simple: "Making decisions that are good enough rather than searching for the absolute best solution, due to time or information constraints.",
+    usage: "Herbert Simon's satisficing theory explains why Boots do not exhaustively optimise pricing algorithms across 3,400 stores daily — instead applying satisficing rules (match competitors within 5%, review monthly) that are computationally tractable and deliver acceptable profits, accepting some theoretical profit sacrifice in exchange for manageable decision complexity.",
+    related: ["Profit Maximisation","Scientific Decision Making","Corporate Strategy","Expectancy Theory"]
+  },{
+    term: "Scientific Decision Making",
+    category: "Business Strategy & Foundations",
+    technical: "A rational, evidence-based approach to management decisions inspired by Frederick Taylor's principles, using systematic data collection, analysis, experimentation, and quantitative techniques to determine objectively the best methods, timings, and resource allocations, removing guesswork and tradition from operational management.",
+    simple: "Using data, experiments, and analysis to make business decisions rather than relying on guesswork or tradition.",
+    usage: "Amazon's scientific decision making permeates operations: A/B testing 2,000 website experiments simultaneously to optimise conversion rates, algorithm-determined pricing changing 2.5 million prices daily based on demand data, and workforce scheduling models predicting labour requirements 4 weeks ahead — applying Taylor's scientific approach at unprecedented scale.",
+    related: ["Taylor's Scientific Management","Decision Tree","Data Mining","Operations Management"]
+  },{
+    term: "Semi-variable Costs",
+    category: "Finance",
+    technical: "Costs that contain both a fixed element (unchanging regardless of output) and a variable element (changing with production volume), such as telephone bills with a line rental plus usage charge, or sales force costs with a base salary plus commission, requiring careful analysis when modelling cost behaviour across different output levels.",
+    simple: "Costs that have both a fixed part and a variable part, such as a phone bill with a fixed monthly charge plus a usage charge.",
+    usage: "A call centre's costs include semi-variable elements: 200 permanent staff at £8m fixed annually plus temporary agents at £15/hour variable with call volume, and IT infrastructure with a £30m fixed platform plus £0.50 per transaction variable — requiring allocation to both fixed and variable categories for accurate break-even analysis.",
+    related: ["Fixed Costs","Variable Costs","Costs","Break-even Analysis"]
+  },{
+    term: "Shareholder Value",
+    category: "Business Strategy & Foundations",
+    technical: "The financial return delivered to equity shareholders through share price appreciation and dividend payments, with Milton Friedman's shareholder primacy doctrine arguing this should be management's primary objective, contrasting with stakeholder theory's broader focus on all affected parties.",
+    simple: "The financial returns delivered to shareholders through rising share prices and dividend payments.",
+    usage: "Apple's shareholder value creation includes a $110bn annual share buyback programme reducing shares outstanding by 40% since 2012 and $14.5bn annual dividends, generating total shareholder returns of 1,200% over a decade. Critics argue this diverts capital from R&D, workforce development, and supplier fair pay that would sustain long-term value creation.",
+    related: ["Dividend","Share Price","Corporate Strategy","Stakeholders"]
+  },{
+    term: "Situational Leadership",
+    category: "Human Resources",
+    technical: "Hersey and Blanchard's leadership model proposing that no single style is universally effective; instead, leaders should adapt between directing (high task, low relationship), coaching (high task, high relationship), supporting (low task, high relationship), and delegating (low task, low relationship) based on each follower's competence and commitment for the specific task.",
+    simple: "A leadership approach that adapts the management style used depending on the employee's skill level and motivation for a specific task.",
+    usage: "A new graduate joining a marketing team requires a directing style (clear instructions on campaign briefs), progressing to coaching (involving them in decisions while explaining rationale), then supporting (stepping back but remaining available), and eventually delegating (handing over full ownership) — the manager flexing through four styles as competence and confidence develop.",
+    related: ["Autocratic Leadership","Democratic Leadership","Laissez-faire Leadership","Tannenbaum and Schmidt Continuum"]
+  },{
+    term: "Stakeholder Management",
+    category: "Business Strategy & Foundations",
+    technical: "The systematic process of identifying, analysing, and engaging with all parties who affect or are affected by an organisation's activities, developing tailored communication and relationship strategies for each stakeholder group based on their power and interest, to build support, manage conflicts, and align decisions with broader expectations.",
+    simple: "The process of identifying all groups affected by a business and managing relationships with them to build support and avoid conflict.",
+    usage: "HS2's stakeholder management challenge involved 4,000 landowners, 300 local authorities, environmental groups, heritage organisations, and 20,000 construction workers — requiring differentiated engagement: compulsory purchase negotiations, environmental mitigation commitments, heritage impact assessments, and parliamentary approval, demonstrating that complex projects require sophisticated multi-stakeholder management.",
+    related: ["Stakeholders","Stakeholder Mapping","Corporate Social Responsibility (CSR)","Ethics"]
+  },{
+    term: "Stock Market",
+    category: "Finance",
+    technical: "A regulated exchange where shares in public limited companies are traded between buyers and sellers, providing companies with access to equity capital through Initial Public Offerings and subsequent share issuances, while offering investors liquidity and price transparency, with share prices reflecting collective investor assessments of future earnings potential.",
+    simple: "A market where shares in public companies are bought and sold, allowing companies to raise capital and investors to buy ownership stakes.",
+    usage: "ARM Holdings' 2023 Nasdaq IPO at a £51bn valuation — having been taken private by SoftBank in 2016 for £24bn — raised £4.2bn in new capital, provided SoftBank a partial exit, and created a liquid market for ARM's shares, requiring compliance with continuous disclosure obligations including quarterly results and major shareholder notifications.",
+    related: ["Initial Public Offering","Shares","Shareholder Value","Public Limited Company"]
+  },{
+    term: "Strategic Alliance",
+    category: "Business Strategy & Foundations",
+    technical: "A cooperative agreement between two or more independent businesses to pursue mutually beneficial objectives while remaining independent entities, sharing resources, capabilities, risks, and rewards without the permanence of a merger, typically used to access new markets, share R&D costs, or combine complementary capabilities.",
+    simple: "A partnership agreement between separate businesses to work together on specific projects or goals while remaining independent companies.",
+    usage: "The Renault-Nissan-Mitsubishi Alliance — with cross-shareholdings but separate companies — shares vehicle platforms (reducing development costs by £2bn annually), manufacturing plants (94% utilisation versus 72% industry average), and purchasing scale (£35bn combined procurement), while each brand maintains distinct identity and market positioning.",
+    related: ["Joint Ventures","Mergers","Acquisitions","Organic Growth"]
+  },{
+    term: "Strategic Leadership",
+    category: "Human Resources",
+    technical: "Leadership focused on defining and communicating organisational direction, making high-level resource allocation decisions, building capabilities for future competitive advantage, managing the external environment, and creating a culture aligned with long-term goals, distinct from operational leadership's focus on day-to-day execution.",
+    simple: "Leadership focused on setting the long-term direction and priorities of an organisation, rather than managing day-to-day operations.",
+    usage: "Satya Nadella's strategic leadership at Microsoft involved four pivots: from Windows-centric to cloud-first (Azure growing from 2% to 23% of revenue), from competing with to partnering with open source, from consumer devices to enterprise software, and from fixed-mindset to growth-mindset culture — growing market capitalisation from $300bn to $2.5 trillion in 10 years.",
+    related: ["Leadership","Corporate Strategy","Change Management","Succession Planning"]
+  },{
+    term: "Strategic Planning",
+    category: "Business Strategy & Foundations",
+    technical: "The formal process of defining long-term organisational direction, setting objectives, analysing the competitive environment through SWOT, PESTLE, and Porter's Five Forces, allocating resources, and developing plans to achieve sustainable competitive advantage over a 3-10 year horizon, resulting in a strategic plan guiding all functional decisions.",
+    simple: "The process of setting long-term goals and working out how a business will achieve them over several years.",
+    usage: "John Lewis Partnership's 2023-28 strategic plan involved analysis identifying declining market share in department stores, growing private label opportunity, and digital capability gaps, resulting in £500m investment in own-brand manufacturing, withdrawal from unprofitable stores, and a £250m technology investment — demonstrating how structured planning translates strategic analysis into operational priorities.",
+    related: ["Corporate Strategy","SWOT Analysis","PESTLE Analysis","Resource Audit"]
+  },{
+    term: "Strategy",
+    category: "Business Strategy & Foundations",
+    technical: "A plan of action designed to achieve a long-term or overall organisational aim, involving choices about where to compete (markets and segments), how to compete (basis of competitive advantage), and how to allocate resources to build and sustain that advantage, requiring trade-offs that define what the organisation will not do as much as what it will.",
+    simple: "A plan for how a business will achieve its long-term goals by choosing where and how to compete.",
+    usage: "Aldi's strategy involves explicit trade-offs: private label products only (80% fewer SKUs than Tesco), edge-of-town stores (lower rents), minimal store design (products displayed on pallets reducing labour), and single specification per product type — each decision sacrificing customer choice and convenience to deliver consistently lowest prices and drive sustained market share growth.",
+    related: ["Strategic Planning","Competitive Advantage","Porter's Generic Strategies","Ansoff Matrix"]
+  },{
+    term: "Succession Planning",
+    category: "Human Resources",
+    technical: "The proactive process of identifying and developing internal candidates to fill key leadership and specialist roles when they become vacant, ensuring organisational continuity by building a pipeline of capable individuals ready to step into critical positions, reducing dependence on external recruitment for senior roles.",
+    simple: "Planning ahead to ensure there are suitable people ready to take over important roles when they fall vacant.",
+    usage: "Amazon's leadership succession — Jeff Bezos replaced as CEO by Andy Jassy in 2021 — was the product of a decade-long succession plan: Jassy founded and grew AWS from 2003, was publicly identified as a likely successor, given increasing operational responsibility, and had already developed his own leadership team before the handover, enabling continuity of culture and strategy.",
+    related: ["HR Planning","Strategic Leadership","Corporate Culture","Change Management"]
+  },{
+    term: "Technology in Operations",
+    category: "Operations Management",
+    technical: "The application of digital systems, automation, robotics, artificial intelligence, and advanced manufacturing techniques to production and service delivery processes, transforming how businesses create outputs through improvements in speed, quality, consistency, cost, and flexibility compared to traditional manual methods.",
+    simple: "The use of technology such as robots, computers, and AI to improve how products are made or services delivered.",
+    usage: "Ocado's Andover fulfilment centre uses 3,000 robots moving at 4 metres per second on a grid the size of Wembley pitch, AI-powered demand forecasting reducing waste to 0.1% versus 4% in traditional supermarkets, and automated picking achieving 50 items per minute versus 5 for human pickers — enabling a cost per order 30% below traditional supermarkets.",
+    related: ["Automation","Operations Management","Artificial Intelligence (AI)","Lean Production"]
+  },{
+    term: "Turnaround Strategy",
+    category: "Business Strategy & Foundations",
+    technical: "A set of actions implemented to rescue a declining or failing business, typically involving rapid cost reduction (redundancies, asset disposal, overhead cuts), revenue stabilisation (pricing, marketing, customer retention), operational restructuring, and refinancing (debt restructuring, equity injection) to return the organisation to profitability and viability.",
+    simple: "A plan to rescue a failing or declining business by cutting costs, improving performance, and returning it to profitability.",
+    usage: "Marks & Spencer's turnaround under Stuart Machin from 2022 involved closing 67 full-line stores (reducing fixed costs by £200m), exiting 11 international markets, accelerating own-brand food development, and rebuilding the website (reducing online returns from 35% to 22%) — reversing five consecutive years of profit decline to deliver record profits of £716m in 2023.",
+    related: ["Retrenchment","Divestiture","Change Management","Corporate Strategy"]
+  },{
+    term: "Vroom",
+    category: "Human Resources",
+    technical: "Victor Vroom, a management theorist who developed Expectancy Theory (1964), proposing that motivation is determined by the product of expectancy (effort-performance link), instrumentality (performance-reward link), and valence (reward desirability), providing a more nuanced cognitive model of motivation than earlier needs-based theories like Maslow and Herzberg.",
+    simple: "Victor Vroom, who developed the theory that motivation depends on believing your effort will lead to good performance, which will then be rewarded with something you value.",
+    usage: "Vroom's framework explains why some salespeople respond to commission structures while others do not: high-performing staff with strong expectancy (confidence in achieving targets) and high instrumentality (trust the commission will be paid) show high motivation even with modest valence, while demotivated staff often suffer low expectancy due to unrealistic targets regardless of the reward on offer.",
+    related: ["Expectancy Theory","Motivation","Maslow's Hierarchy of Needs","Herzberg's Two-Factor Theory"]
+  }
+,
+  // ==================== OCR A-LEVEL SPECIFIC TERMS ====================
+  {
+    term: "Blake and Mouton's Managerial Grid",
+    category: "Human Resources",
+    technical: "A two-dimensional leadership model developed by Blake and Mouton plotting concern for production (task) against concern for people (relationship) on 9-point scales, identifying five leadership styles: Impoverished (1,1), Country Club (1,9), Authority-Compliance (9,1), Middle-of-the-Road (5,5), and Team Management (9,9), with Team Management considered the most effective style.",
+    simple: "A model that classifies leadership styles based on how much a leader focuses on getting tasks done versus caring about people, identifying five distinct approaches.",
+    usage: "A factory manager scoring (9,1) — high task, low people — drives output but suffers 28% annual staff turnover and quality complaints from disengaged workers. Coaching the manager towards (9,9) Team Management, involving workers in problem-solving and recognising effort, cuts turnover to 12% and raises output by 15%, demonstrating that concern for people and production are complementary rather than competing priorities.",
+    related: ["Leadership","Autocratic Leadership","Democratic Leadership","Situational Leadership","Tannenbaum and Schmidt Continuum"]
+  },{
+    term: "McGregor's Theory X and Y",
+    category: "Human Resources",
+    technical: "Douglas McGregor's motivational theory proposing two contrasting sets of assumptions managers hold about workers: Theory X assumes employees are inherently lazy, dislike work, avoid responsibility, and require close supervision and control; Theory Y assumes employees are self-motivated, seek responsibility, exercise self-direction, and find work fulfilling, with management style flowing from whichever assumption is held.",
+    simple: "McGregor's theory that managers hold one of two assumptions about workers — either that people are lazy and need controlling (Theory X) or that people are motivated and want responsibility (Theory Y) — which shapes how they manage.",
+    usage: "Comparison: Amazon warehouse management applying Theory X assumptions (strict monitoring, productivity targets, timed toilet breaks) generates high output but 150% annual turnover, costing £3,000 per replacement. Contrast with Buurtzorg's Theory Y nursing teams (self-organising, no managers, full autonomy over schedules) achieving 33% lower costs, 60% fewer hospital admissions, and staff turnover below 10% — suggesting Y assumptions unlock discretionary effort that X cannot.",
+    related: ["Motivation","Blake and Mouton's Managerial Grid","Autocratic Leadership","Democratic Leadership","Herzberg's Two-Factor Theory"]
+  },{
+    term: "Adair's Action-Centred Leadership",
+    category: "Human Resources",
+    technical: "John Adair's functional leadership model presenting three overlapping circles of equal importance that leaders must continuously balance: Task (achieving the objective), Team (building and maintaining the group), and Individual (developing and motivating each person), arguing that neglecting any one area undermines the others and that leadership is a set of learnable behaviours rather than innate traits.",
+    simple: "Adair's model that effective leaders must simultaneously manage three overlapping needs: completing the task, maintaining the team, and developing each individual.",
+    usage: "A project manager launching a new product system applies Adair's model: Task (defining milestones, clearing blockers, monitoring progress against deadline), Team (running daily stand-ups, resolving interpersonal conflict between developers and designers, celebrating sprint completions), Individual (giving a junior developer stretch assignments, coaching an anxious tester, recognising a senior engineer's extra hours) — neglecting any circle collapses delivery, morale, or key person retention.",
+    related: ["Leadership","Management","Situational Leadership","Blake and Mouton's Managerial Grid","Motivation"]
+  },{
+    term: "Trait Theory of Leadership",
+    category: "Human Resources",
+    technical: "An early leadership theory associated with Carlyle and Galton proposing that effective leaders possess innate, distinguishing personal characteristics — such as intelligence, drive, self-confidence, integrity, and charisma — that differentiate them from followers, implying leaders are born rather than made and that identifying these traits enables leader selection, though criticised for lack of consistent evidence and cultural bias.",
+    simple: "The theory that great leaders are born with natural qualities such as confidence, intelligence, and charisma that make them naturally suited to lead.",
+    usage: "Victorian-era organisations selected officers from aristocratic backgrounds on trait theory assumptions — believing breeding produced natural leaders — a belief that persisted into early 20th century management selection. Modern research contradicts this: a McKinsey study of 500 executives found traits explain only 24% of leadership effectiveness, with learned behaviours, contextual adaptation, and emotional intelligence accounting for the majority, supporting the shift from trait to behavioural and contingency theories.",
+    related: ["Leadership","Situational Leadership","Blake and Mouton's Managerial Grid","Adair's Action-Centred Leadership","McGregor's Theory X and Y"]
+  },{
+    term: "McClelland's Acquired Needs Theory",
+    category: "Human Resources",
+    technical: "David McClelland's motivational theory proposing that individuals develop three dominant needs through experience and culture: Need for Achievement (nAch — drive to excel, solve problems, meet standards), Need for Affiliation (nAff — desire for friendly relationships and belonging), and Need for Power (nPow — desire to influence and control others), with effective management requiring understanding which need dominates each employee.",
+    simple: "McClelland's theory that people are motivated by different learned needs — achievement, affiliation, or power — and that understanding which dominates each person helps managers motivate them effectively.",
+    usage: "A sales director identifies three team members with distinct dominant needs: a high-nAch rep (responds to individual targets, data feedback, and personal recognition), a high-nAff account manager (motivated by team success and customer relationship building), and a high-nPow senior rep (engaged by mentoring responsibilities and leading pitches). Tailoring roles and incentives to these profiles increases team revenue 22% without changing base pay.",
+    related: ["Motivation","Expectancy Theory","Maslow's Hierarchy of Needs","Herzberg's Two-Factor Theory","Vroom"]
+  },{
+    term: "Locke's Goal-Setting Theory",
+    category: "Human Resources",
+    technical: "Edwin Locke's motivational theory proposing that specific, challenging goals with clear feedback produce higher performance than vague or easy goals, with five goal-setting principles: Clarity (specific, measurable), Challenge (difficult but achievable), Commitment (employee buy-in), Feedback (regular progress information), and Task Complexity (sufficient support for complex tasks), forming the basis of SMART objectives and Management by Objectives.",
+    simple: "Locke's theory that people perform better when given specific, challenging goals with regular feedback, rather than vague instructions to 'do their best'.",
+    usage: "A call centre replacing vague 'do your best' culture with specific goals (resolve 85% of calls first-time within 6 minutes, receive satisfaction score above 4.2/5) with weekly individual feedback dashboards sees first-call resolution improve from 71% to 88% and satisfaction scores rise from 3.9 to 4.4 within three months — supporting Locke's finding that specificity and feedback drive performance more than financial incentives alone.",
+    related: ["Motivation","Management by Objectives","SMART Objectives","Performance Management","Expectancy Theory"]
+  },{
+    term: "Management by Objectives",
+    category: "Human Resources",
+    technical: "A performance management approach developed by Peter Drucker in which managers and subordinates jointly set specific, measurable objectives aligned to organisational goals, with performance then evaluated against those agreed targets, creating clarity, alignment, and accountability while developing employee ownership of outcomes rather than mere compliance with instructions.",
+    simple: "A management approach where managers and employees agree specific targets together, and performance is then judged against those agreed goals.",
+    usage: "Intel's adoption of Management by Objectives under Andy Grove evolved into the OKR (Objectives and Key Results) system now used by Google, LinkedIn, and Twitter — each employee sets 3-5 objectives with 3-4 measurable key results per quarter, reviewed weekly. Google attributes 10x growth from 1999-2009 partly to OKR alignment ensuring all 20,000 employees' work connected to company-level objectives, demonstrating MBO's scalability from Intel's factory floor to tech giants.",
+    related: ["Locke's Goal-Setting Theory","SMART Objectives","Performance Management","HR Planning","Motivation"]
+  },{
+    term: "Peters' Excellence Theory",
+    category: "Human Resources",
+    technical: "Tom Peters and Robert Waterman's management theory from 'In Search of Excellence' (1982) identifying eight attributes of excellent companies: bias for action, close to the customer, autonomy and entrepreneurship, productivity through people, hands-on value-driven, stick to the knitting (core competencies), simple form/lean staff, and simultaneous loose-tight properties, arguing culture and people-focus drive sustained business excellence over financial management alone.",
+    simple: "Peters and Waterman's theory that excellent companies share eight key practices, including empowering staff, staying close to customers, and maintaining a strong culture.",
+    usage: "Johnson & Johnson's Tylenol crisis response in 1982 — immediately recalling 31 million bottles at a cost of $100 million without government mandate — exemplifies Peters' 'hands-on value-driven' attribute: the Credo document's explicit customer-first values enabled rapid, decentralised decision-making that protected brand trust, demonstrating how embedded culture enables faster, better crisis responses than rule-following organisations can achieve.",
+    related: ["Corporate Culture","Motivation","Leadership","Human Resource Management","Management by Objectives"]
+  },{
+    term: "McKinsey 7-S Model",
+    category: "Business Strategy & Foundations",
+    technical: "A change management and organisational analysis framework developed by McKinsey consultants identifying seven interdependent elements that must be aligned for an organisation to function effectively: Strategy, Structure, Systems (hard elements) and Shared Values, Skills, Staff, Style (soft elements), with the model highlighting that changing one element requires corresponding adjustments in others to achieve successful change.",
+    simple: "A framework that identifies seven interconnected elements of an organisation — strategy, structure, systems, staff, skills, style, and shared values — that must all align for change to succeed.",
+    usage: "When Tesco appointed a new CEO in 2014 following its accounting scandal, the McKinsey 7-S framework revealed misalignment: Strategy (growth) conflicted with Systems (supplier payment manipulation), Staff (high turnover in senior team), Skills (insufficient financial governance expertise), Style (aggressive, target-focused culture), Structure (complex, 17 business units) and Shared Values (customer focus undermined by internal pressure) — requiring simultaneous changes across all seven elements rather than just strategy revision.",
+    related: ["Change Management","Corporate Culture","Lewin's Change Model","Kotter and Schlesinger","Strategic Planning"]
+  },{
+    term: "Delphi Technique",
+    category: "Business Strategy & Foundations",
+    technical: "A structured qualitative forecasting method using multiple rounds of questionnaires sent to a panel of experts, with anonymised aggregated responses fed back after each round so panellists can revise their views, continuing until consensus or stable divergence is reached, eliminating dominant personality bias while capturing collective expertise for long-range forecasting where quantitative data is unavailable.",
+    simple: "A forecasting method that gathers opinions from a panel of experts through multiple anonymous rounds, feeding back group responses until the experts converge on a prediction.",
+    usage: "Shell used the Delphi Technique in 1970 to forecast global energy scenarios through 2000, with 50 expert panellists across six rounds converging on predictions of an oil price shock (materialised 1973), renewable energy growth, and demand for natural gas — enabling Shell to prepare strategically while competitors were caught off-guard by the OPEC embargo, demonstrating how structured expert consensus can anticipate discontinuities that quantitative trend extrapolation misses.",
+    related: ["Forecasting","Time Series Analysis","Seasonal Variation","Cyclical Variation","Scientific Decision Making"]
+  },{
+    term: "Accounting Conventions",
+    category: "Finance",
+    technical: "The fundamental principles and assumptions underlying the preparation of financial accounts, established by Generally Accepted Accounting Practice (GAAP), including going concern, accruals (matching), consistency, prudence, materiality, and objectivity, ensuring financial statements are comparable, reliable, and give a true and fair view of a business's financial position.",
+    simple: "The agreed rules and principles that accountants follow when preparing financial accounts to ensure they are fair, consistent, and reliable.",
+    usage: "When Carillion prepared its 2016 accounts, auditors later found violations of multiple accounting conventions: prudence (overstating the value of construction contracts by recognising revenue before completion), consistency (changing how pension deficits were classified between years), and going concern (not disclosing material doubt about continuing as a business) — contributing to the £5bn eventual liability discovered only when the company collapsed in 2018.",
+    related: ["Going Concern","Accruals","Prudence","Consistency","Ratio Analysis"]
+  },{
+    term: "Going Concern",
+    category: "Finance",
+    technical: "An accounting convention assuming that a business will continue to operate for the foreseeable future (at least 12 months from the balance sheet date) and has no intention or necessity of liquidation, underpinning asset valuations at cost rather than forced sale value; if going concern is in doubt, accounts must be prepared on a break-up basis and the doubt disclosed.",
+    simple: "The accounting assumption that a business will continue operating normally for the foreseeable future, affecting how its assets are valued.",
+    usage: "When Thomas Cook's auditors issued a going concern warning in June 2019 — flagging material uncertainty about whether it could continue without refinancing — the disclosure triggered a sharp fall in its share price and accelerated the very liquidity crisis it flagged, as suppliers demanded faster payment and customers switched bookings, demonstrating how going concern disclosures can become self-fulfilling when they erode stakeholder confidence.",
+    related: ["Accounting Conventions","Prudence","Liquidation","Business Failure","Ratio Analysis"]
+  },{
+    term: "Accruals",
+    category: "Finance",
+    technical: "An accounting convention (also called the matching principle) requiring revenues and expenses to be recognised in the accounting period in which they are earned or incurred, regardless of when cash is received or paid, ensuring the income statement reflects economic activity rather than cash flows and enabling meaningful comparison of profitability across periods.",
+    simple: "The accounting rule that income and expenses are recorded when they are earned or incurred, not when cash is actually received or paid.",
+    usage: "A construction company completing a £2m project in December but receiving payment in February must recognise the £2m revenue in December's accounts (when earned) under the accruals convention, even though no cash arrived — simultaneously recording the associated costs in the same period. Without this, December's accounts would show a large loss and February's an unexplained profit, destroying comparability and misleading users about business performance.",
+    related: ["Accounting Conventions","Going Concern","Prudence","Revenue","Profit"]
+  },{
+    term: "Prudence",
+    category: "Finance",
+    technical: "An accounting convention requiring that assets and income are not overstated and liabilities and expenses are not understated, meaning revenues should only be recognised when reasonably certain while potential losses should be provided for as soon as they become probable, prioritising caution over optimism to protect users of accounts from misleading over-statement of financial strength.",
+    simple: "The accounting rule that businesses should not overstate their assets or income, and should recognise potential losses as soon as they become likely.",
+    usage: "When KPMG audited Patisserie Valerie's accounts, they failed to apply prudence — accepting management's inflated cash balance figures without independent bank confirmation. The true position was a £94m fraud creating a £9.8m overdraft against a stated £28m cash balance, demonstrating that prudence requires sceptical independent verification rather than accepting management assertions, and that its absence enables fraud to go undetected.",
+    related: ["Accounting Conventions","Going Concern","Accruals","Consistency","Ratio Analysis"]
+  },{
+    term: "Consistency",
+    category: "Finance",
+    technical: "An accounting convention requiring that the same accounting methods and policies are applied from one period to the next, so that financial statements are comparable over time, with any changes in policy requiring disclosure, explanation of the reason for the change, and restatement of prior period figures to show what the results would have been under the new policy.",
+    simple: "The accounting rule that the same methods should be used from year to year, so that financial results can be fairly compared over time.",
+    usage: "When Tesco changed its policy for recognising commercial income from suppliers in 2014 — having previously brought forward income to inflate quarterly profit figures — the restatement revealed a £263m overstatement of profits, with the consistency convention requiring disclosure of the change, explanation, and restatement of prior periods, enabling investors to understand the true scale of the accounting manipulation that had occurred.",
+    related: ["Accounting Conventions","Prudence","Accruals","Ratio Analysis","Going Concern"]
+  },{
+    term: "Materiality",
+    category: "Finance",
+    technical: "An accounting convention stating that only items significant enough to influence the decisions of users of financial statements need be separately disclosed or treated with strict accounting precision, allowing immaterial items to be treated in the most practical way, with materiality typically assessed relative to total assets, revenue, or profit, commonly set at 5-10% of pre-tax profit.",
+    simple: "The accounting principle that only information significant enough to affect a reader's decisions needs to be separately disclosed in financial accounts.",
+    usage: "A FTSE 100 company with £4bn turnover misclassifying a £50,000 expense between cost of sales and administrative expenses is immaterial — the error is 0.001% of revenue and would not affect any reasonable user's decision. However, misclassifying £200m of supplier income (as Tesco did) is material at 5% of revenue, requiring restatement and disclosure, illustrating how materiality thresholds distinguish genuine errors from fraud-relevant manipulation.",
+    related: ["Accounting Conventions","Prudence","Consistency","Ratio Analysis","Profit"]
+  },{
+    term: "Interest Cover",
+    category: "Finance",
+    technical: "A solvency ratio measuring how many times a business can cover its annual interest payments from operating profit, calculated as operating profit divided by interest payable, with a higher ratio indicating lower financial risk; a ratio below 1.5 is typically considered a warning sign of potential inability to service debt.",
+    simple: "A measure of how easily a business can pay its interest charges from its operating profit, with a higher number indicating a safer financial position.",
+    usage: "Cineworld's interest cover ratio fell to 0.8x in 2022 — meaning operating profit covered only 80% of interest charges on its £4.5bn debt — signalling that debt servicing was unsustainable. When cinemas closed during COVID-19, with interest obligations continuing regardless, the company filed for Chapter 11 bankruptcy protection, demonstrating that low interest cover transforms an operational disruption into an existential crisis.",
+    related: ["Gearing Ratio","Return on Capital Employed (ROCE)","Ratio Analysis","Profit Margin","Business Failure"]
+  },{
+    term: "Earnings Per Share",
+    category: "Finance",
+    technical: "A shareholder ratio measuring the portion of a company's profit allocated to each ordinary share in issue, calculated as profit after tax divided by the number of ordinary shares, used by investors to assess profitability on a per-share basis and compare performance over time, typically rising when profits increase or when share buybacks reduce the number of shares outstanding.",
+    simple: "The amount of profit a company makes for each share in issue, used by investors to assess how much their individual shares are earning.",
+    usage: "Apple's EPS rose from $6.11 in 2019 to $6.43 in 2023 despite profits growing 65% over the same period — because share buybacks reduced shares outstanding by 22%, mechanically boosting EPS. This illustrates how companies can improve this key investor metric through financial engineering rather than operational improvement, making EPS growth an insufficient standalone measure of genuine business performance.",
+    related: ["Shareholder Value","Dividend Per Share","Price/Earnings Ratio","Return on Equity","Shares"]
+  },{
+    term: "Price/Earnings Ratio",
+    category: "Finance",
+    technical: "A shareholder valuation ratio calculated as share price divided by earnings per share, indicating how much investors are willing to pay for each pound of current earnings, with a high P/E suggesting investors expect strong future growth while a low P/E may indicate undervaluation or poor growth prospects, making cross-sector comparisons meaningful only within similar industries.",
+    simple: "A measure of how much investors are paying for each pound of profit, showing how highly the market values a company's future growth prospects.",
+    usage: "Amazon's P/E ratio of 60 versus Tesco's P/E of 14 reflects investors paying £60 per £1 of Amazon's current earnings versus £14 for Tesco's — not because Amazon earns more but because investors anticipate far higher future earnings growth from cloud computing, advertising, and new markets. The disparity illustrates how P/E measures investor confidence in future prospects rather than current profitability.",
+    related: ["Earnings Per Share","Shareholder Value","Dividend Yield","Return on Equity","Stock Market"]
+  },{
+    term: "Return on Equity",
+    category: "Finance",
+    technical: "A profitability ratio measuring how effectively a company generates profit from shareholders' equity, calculated as net profit after tax divided by total shareholders' equity (expressed as a percentage), indicating the return shareholders receive on their investment in the company and enabling comparison of management efficiency across businesses of different sizes.",
+    simple: "A measure of how much profit a business generates for every pound of money shareholders have invested, showing how efficiently management uses shareholder funds.",
+    usage: "HSBC's Return on Equity of 14% versus Lloyds Banking Group's 18% (2023) indicates Lloyds generates £18 profit per £100 of shareholder equity versus HSBC's £14, suggesting Lloyds deploys shareholder capital more efficiently despite HSBC's larger absolute profits — demonstrating why ROE enables meaningful performance comparisons between businesses of vastly different scales.",
+    related: ["Return on Capital Employed (ROCE)","Earnings Per Share","Shareholder Value","Ratio Analysis","Profit Margin"]
+  },{
+    term: "Goodwill",
+    category: "Finance",
+    technical: "An intangible asset arising when a business is acquired for more than the fair value of its identifiable net assets, representing the premium paid for factors such as brand reputation, customer relationships, skilled workforce, and market position, recorded on the balance sheet but subject to annual impairment reviews rather than regular amortisation under IFRS.",
+    simple: "An intangible asset representing the extra value of a business beyond its physical assets, reflecting its brand, customer loyalty, and reputation.",
+    usage: "When Unilever acquired Dollar Shave Club for $1bn in 2016, the identifiable net assets were worth approximately $150m — the remaining $850m of goodwill represented the value of Dollar Shave Club's brand recognition, 3.2 million subscriber relationships, digital marketing capability, and disruption of traditional retail channels. When the business underperformed, Unilever was forced to write down goodwill by $400m, directly reducing reported profits.",
+    related: ["Intellectual Property","Acquisitions","Ratio Analysis","Depreciation","Statement of Financial Position"]
+  },{
+    term: "Stock Turnover",
+    category: "Finance",
+    technical: "An efficiency ratio measuring how many times a business sells and replaces its stock over a period, calculated as cost of sales divided by average stock (or alternatively as 365 divided by this figure to give stock days), with a higher ratio indicating faster stock movement, lower holding costs, and reduced obsolescence risk, though excessively high turnover may indicate stockout risk.",
+    simple: "A measure of how quickly a business sells through its stock, with a higher number showing stock is being sold faster and held for shorter periods.",
+    usage: "Zara achieves stock turnover of 17 times per year versus the fashion industry average of 4 times — selling through its entire inventory every 21 days by manufacturing in small batches, responding to live sales data within two weeks, and limiting replenishment of popular lines to create scarcity. This fast turnover reduces markdown risk (only 15% of Zara stock is discounted versus 50% for competitors), generating higher margins despite similar retail prices.",
+    related: ["Inventory Control","Working Capital","Lean Production","Just-in-Time (JIT)","Ratio Analysis"]
+  },{
+    term: "Debtor Turnover",
+    category: "Finance",
+    technical: "An efficiency ratio measuring how quickly a business collects money owed by customers, calculated as revenue divided by trade receivables (giving the number of times receivables are collected per year), or expressed as debtor days (receivables ÷ revenue × 365), indicating the effectiveness of credit control — equivalent to Receivables Days but expressed differently.",
+    simple: "A measure of how quickly a business collects payment from customers who have bought on credit, showing the efficiency of its credit control.",
+    usage: "A B2B software company with £5m annual revenue and £1.5m outstanding receivables has debtor turnover of 3.3 times per year (debtor days: 109). Tightening credit terms from 90 to 60 days and introducing automated payment reminders reduces debtor days to 68 — freeing £342,000 of working capital that previously funded customer credit, eliminating the need for a £300,000 overdraft and saving £15,000 annually in interest charges.",
+    related: ["Receivables Days","Working Capital","Cash Flow","Trade Credit","Ratio Analysis"]
+  },{
+    term: "Creditor Turnover",
+    category: "Finance",
+    technical: "An efficiency ratio measuring how quickly a business pays its suppliers, calculated as cost of sales divided by trade payables (giving the number of times payables cycle per year), or expressed as creditor days (payables ÷ cost of sales × 365), indicating working capital management — equivalent to Payables Days but expressed differently, with lower turnover (more days) indicating greater use of supplier financing.",
+    simple: "A measure of how quickly a business pays its suppliers, with a lower number of times per year showing the business is taking longer to pay and using supplier credit more.",
+    usage: "Supermarkets typically show creditor turnover of 6-8 times per year (45-60 creditor days), while the manufacturers supplying them often operate at 15-18 times (20-24 days) — the power imbalance meaning Tesco uses £4bn of supplier financing at no cost while small food producers must fund their own 45-day wait for payment. This asymmetry in creditor turnover was central to the UK Prompt Payment Code reforms requiring large companies to report their payment practices publicly.",
+    related: ["Payables Days","Working Capital","Trade Credit","Cash Flow","Ratio Analysis"]
+  },{
+    term: "Employment Tribunal",
+    category: "Human Resources",
+    technical: "An independent judicial body that resolves disputes between employers and employees regarding employment rights, hearing claims for unfair dismissal, discrimination, redundancy pay, breach of contract, unlawful deduction from wages, and whistleblowing detriment, with the power to award compensation, reinstatement, or recommendations, operating as a less formal and less costly alternative to civil courts.",
+    simple: "An independent court that hears disputes between employers and employees about workplace rights, such as unfair dismissal or discrimination.",
+    usage: "When a Google software engineer was dismissed after raising concerns about military AI contract ethics, an Employment Tribunal claim for whistleblowing detriment would assess whether the disclosure was protected (reasonable belief of wrongdoing in the public interest), whether the dismissal was substantially caused by it, and if upheld, award compensation of up to £100,000 plus uncapped losses — demonstrating how employment tribunals provide a mechanism for enforcing statutory rights without needing expensive legal representation.",
+    related: ["Dismissal","Redundancy","Employment Law","Equality Act 2010","Trade Unions"]
+  },{
+    term: "Hierarchy of Objectives",
+    category: "Business Strategy & Foundations",
+    technical: "The structured cascade of goals from high-level mission and corporate aims down through strategic objectives, tactical objectives, and operational objectives, ensuring that every level of the organisation works towards targets that collectively contribute to the overarching purpose, with lower-level objectives being more specific, shorter-term, and measurable than higher-level ones.",
+    simple: "The structured cascade of goals from the overall mission at the top down through strategic, tactical, and operational targets, ensuring all parts of a business are working towards the same overall aim.",
+    usage: "Unilever's hierarchy of objectives flows from: Mission ('make sustainable living commonplace'), Corporate objective (halve environmental footprint by 2030), Strategic objective (achieve 100% sustainable sourcing of palm oil by 2025), Tactical objective (audit 500 Indonesian suppliers annually), Operational objective (complete supplier assessments by 31 March each year) — each level specific enough to guide action while remaining clearly connected to the mission.",
+    related: ["Business Objectives","Corporate Strategy","SMART Objectives","Mission Statement","Strategic Planning"]
+  },{
+    term: "Cost Centres",
+    category: "Finance",
+    technical: "Distinct parts of a business — such as a department, function, or project — to which costs are allocated and monitored separately, enabling management to identify where expenditure is incurred, compare costs against budgets, hold managers accountable for their spending, and make decisions about efficiency improvement or resource allocation without requiring revenue attribution.",
+    simple: "A section of a business, such as a department, that records its own costs separately so managers can monitor and control spending in that area.",
+    usage: "NHS hospitals designate clinical departments (cardiology, oncology, A&E) as separate cost centres — enabling the finance director to identify that oncology's cost per patient episode of £4,200 is 40% above the national average, triggering investigation that reveals inefficient drug procurement rather than clinical inefficiency, and enabling targeted intervention rather than blanket budget cuts across all departments.",
+    related: ["Profit Centres","Budgeting","Contribution Costing","Absorption Costing","Management Accounting"]
+  },{
+    term: "Profit Centres",
+    category: "Finance",
+    technical: "Distinct parts of a business — such as a division, product line, or geographic region — to which both revenues and costs are attributed, enabling management to calculate profit contribution separately for each unit, assess relative performance, allocate resources towards higher-performing areas, and hold divisional managers accountable for both income generation and cost control.",
+    simple: "A section of a business, such as a product division or branch, that records both its own revenues and costs so that its individual profit contribution can be measured.",
+    usage: "Tesco operates its convenience stores (Express), supermarkets (Extra), and online (Tesco.com) as separate profit centres — revealing that Express stores generate 14% operating margins versus 3% for large Extra stores, enabling Tesco to accelerate its convenience store rollout while rationalising underperforming Extra sites, demonstrating how profit centre analysis drives capital allocation decisions that aggregate reporting would obscure.",
+    related: ["Cost Centres","Contribution Costing","Budgeting","Ratio Analysis","Strategic Planning"]
+  },{
+    term: "Contribution Costing",
+    category: "Finance",
+    technical: "A costing method that assigns only variable (marginal) costs to products or services and treats fixed costs as period costs to be covered by the total contribution generated, calculating contribution as selling price minus variable cost per unit, used for short-term decision-making including special orders, make-or-buy decisions, and identifying which products to prioritise or discontinue.",
+    simple: "A method of costing that focuses on the contribution each product makes towards covering fixed costs and generating profit, by deducting only variable costs from the selling price.",
+    usage: "An airline considering whether to accept a last-minute booking at £89 versus its standard £159 fare uses contribution costing: the variable cost per seat (fuel, landing fee, in-flight service) is £45, so the discounted ticket generates £44 contribution versus £114 at full price. Since fixed costs (aircraft, crew, airport slot) are incurred regardless, accepting the discounted booking adds £44 to profit rather than leaving the seat empty — a decision invisible to full cost analysis.",
+    related: ["Absorption Costing","Marginal Costing","Break-even Analysis","Contribution","Cost Centres"]
+  },{
+    term: "Absorption Costing",
+    category: "Finance",
+    technical: "A costing method that allocates all costs — both variable and fixed — to products or services, absorbing overheads into unit costs based on an allocation rate (such as labour hours or machine hours), giving a 'full cost' per unit that includes a share of fixed costs, required for external financial reporting under GAAP but potentially misleading for short-term decision-making.",
+    simple: "A costing method that allocates both variable and fixed costs to each product, giving the full cost of producing one unit including a share of overheads.",
+    usage: "A manufacturer producing 10,000 units with £80,000 fixed costs and £3 variable cost per unit calculates an absorbed cost of £11 per unit (£8 fixed cost share + £3 variable). If demand falls to 8,000 units, the absorbed cost rises to £13 per unit — creating pressure to raise prices precisely when demand is weakest, illustrating why managers must understand the difference between absorbed cost and marginal cost when making pricing decisions.",
+    related: ["Contribution Costing","Marginal Costing","Cost Centres","Fixed Costs","Profit Centres"]
+  },{
+    term: "Marginal Costing",
+    category: "Finance",
+    technical: "A costing approach that considers only the additional (variable) cost of producing one more unit, treating fixed costs as irrelevant to short-term production decisions since they are incurred regardless of output, used for decisions where the question is whether additional production covers its incremental cost rather than whether it covers a full absorbed cost including fixed overhead allocation.",
+    simple: "The cost of producing one additional unit, considering only the extra variable costs incurred, ignoring fixed costs that are already committed.",
+    usage: "A hotel with 200 rooms, fixed costs of £4,000 per night, and variable cost of £20 per occupied room considers whether to accept a tour operator's offer of 50 rooms at £35 each. Marginal cost analysis: revenue £1,750 versus variable cost £1,000, generating £750 contribution towards fixed costs already committed — clearly worthwhile. Absorption costing including £20 fixed cost share gives a full cost of £40 per room, suggesting the offer should be rejected, a misleading conclusion for a short-term decision.",
+    related: ["Contribution Costing","Absorption Costing","Fixed Costs","Variable Costs","Break-even Analysis"]
+  },{
+    term: "Stepped Fixed Costs",
+    category: "Finance",
+    technical: "Fixed costs that remain constant within a range of output but increase in discrete steps when capacity limits require additional resources — such as hiring another supervisor when a second production shift starts, renting an additional warehouse when storage is full, or purchasing another machine when existing capacity is fully utilised — creating a staircase pattern on a cost-output graph rather than the flat line of purely fixed costs.",
+    simple: "Costs that stay fixed over a range of output but suddenly jump to a higher level when output exceeds a capacity threshold requiring additional resources.",
+    usage: "A printing company with one supervisor (£35,000 annual cost) can manage up to 50,000 jobs per year. At 50,001 jobs, a second supervisor must be hired (stepped fixed cost rises to £70,000), then again at 100,001 jobs. A client offering 52,000 jobs annually appears profitable at the £35,000 cost base but actually triggers the step, reducing apparent profitability significantly — illustrating why break-even analysis must account for stepped fixed costs rather than assuming constant fixed costs throughout the output range.",
+    related: ["Fixed Costs","Break-even Analysis","Absorption Costing","Contribution Costing","Capacity"]
+  },{
+    term: "Cyclical Variation",
+    category: "Business Strategy & Foundations",
+    technical: "Regular, repeating patterns in business data linked to the economic business cycle — boom, slowdown, recession, recovery — operating over multi-year periods typically lasting 4-10 years, distinct from seasonal variation (within-year patterns) and trend (long-term direction), used in time series analysis to understand how business performance correlates with macroeconomic conditions.",
+    simple: "The regular rise and fall in business performance that follows the economic cycle of boom and recession, operating over several years.",
+    usage: "Barratt Developments' house completions show strong cyclical variation: rising from 12,000 in 2012 to 17,856 in 2018 during economic recovery and growth, then falling to 14,004 in 2023 as rising interest rates and economic slowdown reduced demand — a cycle closely tracking GDP growth, consumer confidence, and mortgage availability rather than seasonal patterns or long-term trend, enabling the business to plan workforce and land bank expansion around the predicted cycle.",
+    related: ["Business Cycle","Seasonal Variation","Time Series Analysis","Forecasting","GDP"]
+  },{
+    term: "Seasonal Variation",
+    category: "Business Strategy & Foundations",
+    technical: "Regular, repeating patterns in business data within a year caused by seasonal factors such as weather, holidays, cultural events, or academic calendars, measured in time series analysis by calculating the difference between actual values and moving average trend values, allowing businesses to distinguish genuine underlying performance changes from predictable seasonal fluctuations.",
+    simple: "Regular, predictable patterns in sales or business activity that repeat within each year due to seasons, holidays, or other recurring events.",
+    usage: "Marks & Spencer's food sales show quarterly seasonal variation: Q4 (October-December) typically runs 18% above trend due to Christmas, Q1 (January-March) falls 12% below trend post-Christmas, Q2 (April-June) runs 5% above trend for Easter and summer, Q3 (July-September) at trend. Isolating these patterns enables M&S to plan supplier contracts, staffing levels, and inventory 12 months ahead rather than misinterpreting the January dip as a trading deterioration.",
+    related: ["Cyclical Variation","Time Series Analysis","Forecasting","Sales Forecasting","Business Cycle"]
+  }
 ];
 
 const termLookup = new Map();
@@ -6218,6 +6975,7 @@ glossaryTerms.forEach(t => termLookup.set(t.term.toLowerCase(), true));
 
 let currentMode = 'glossary';
 let activeCategory = 'All';
+let activeSpec = 'All';
 let filteredTerms = [...glossaryTerms];
 let flashcardIndex = 0;
 let isFlipped = false;
@@ -6337,9 +7095,977 @@ const externalEnvTerms = new Set([
   'External Change', 'SWOT Analysis'
 ]);
 
+// ==================== SPECIFICATION TERM LISTS ====================
+// Each spec maps to an array of term names exactly matching glossaryTerms entries.
+// Terms not in the glossary are silently ignored.
+const specTerms = {
+
+  // ────────────────────────────────────────────────────────────
+  // AQA A-LEVEL BUSINESS (7132) — Full Specification
+  // ────────────────────────────────────────────────────────────
+  AQA_ALEVEL_BUS_FULL: new Set([
+    // 3.1 What is Business?
+    "Entrepreneurship","Intrapreneurship","Business Planning","Business Plan","Opportunity Cost",
+    "Sole Trader","Partnership","Deeds of Partnership","Unlimited Liability","Limited Liability",
+    "Private Limited Company","Public Limited Company","Co-operative","Social Enterprise",
+    "Mission Statement","Business Objectives","Corporate Strategy","Shareholder Value",
+    "Profit Maximisation","Satisficing","Ethics","Corporate Social Responsibility (CSR)",
+    "Stakeholders","Stakeholder Mapping","Triple Bottom Line",
+    // 3.2 Managers, Leadership and Decision Making
+    "Management","Autocratic Leadership","Autocratic Leadership","Democratic Leadership",
+    "Laissez-faire Leadership","Situational Leadership","Tannenbaum and Schmidt Continuum",
+    "Decision Tree","Scientific Decision Making","Decision Tree","Expected Value",
+    "SWOT Analysis","PESTLE Analysis","Ansoff Matrix","Porter's Five Forces",
+    "Corporate Culture","Organisational Culture","Organisational Structure",
+    "Hierarchy","Span of Control","Delayering","Delegation","Centralisation","Decentralisation",
+    "Flat Organisational Structure","Tall Organisational Structure","Matrix Structure","Entrepreneurial Structure",
+    // 3.3 Decision Making to Improve Marketing Performance
+    "Market","Market Research","Primary Research","Secondary Research","Quantitative Research",
+    "Qualitative Research","Sampling Methods","Market Segmentation","Target Market","Market Positioning",
+    "Marketing Mix","Product","Price","Promotion","Place","People","Process","Physical Evidence",
+    "Product Life Cycle","Boston Matrix","Ansoff Matrix","Brand","Brand","Brand Loyalty",
+    "Pricing Strategies","Cost-Plus Pricing","Penetration Pricing","Price Skimming",
+    "Competitive Pricing","Psychological Pricing","Dynamic Pricing","Predatory Pricing",
+    "Promotional Mix","Advertising","Sales Promotion","Public Relations (PR)","Direct Marketing",
+    "Digital Marketing","Social Media","Viral Marketing","Emotional Branding",
+    "Distribution Channels","E-commerce","M-commerce","Market Share","Market Growth",
+    "Income Elasticity of Demand","Price Elasticity of Demand","Design Mix","Dynamic Markets",
+    // 3.4 Decision Making to Improve Operational Performance
+    "Operations Management","Productivity","Efficiency","Capacity","Capacity utilisation",
+    "Economies of Scale","Diseconomies of Scale","Lean Production","Just-in-Time (JIT)",
+    "Kaizen","Total Quality Management (TQM)","Quality Control","Quality Assurance",
+    "Supply Chain","Supply Chain Management","Inventory Control","Buffer Stock",
+    "Reorder Level","Batch Production","Flow Production","Job Production","Cell Production",
+    "Automation","Robotics","Technology in Operations","Research and Development (R&D)",
+    "Innovation","Intellectual Property","Patents","Outsourcing","Offshoring",
+    "Critical Path Analysis","Critical Path Analysis","Float Time","Network Diagrams",
+    // 3.5 Decision Making to Improve Financial Performance
+    "Revenue","Costs","Fixed Costs","Variable Costs","Semi-variable Costs","Total Costs",
+    "Profit","Gross Profit","Operating Profit","Net Profit","Profit Margin",
+    "Gross Profit Margin","Operating Profit Margin","Net Profit Margin",
+    "Break-even Analysis","Break-even Point","Margin of Safety","Contribution","Contribution Per Unit",
+    "Break-even Charts","Cash Flow","Cash Flow Forecast","Working Capital","Liquidity",
+    "Current Ratio","Acid Test Ratio","Gearing Ratio","Gearing Ratio","Return on Capital Employed (ROCE)",
+    "Asset Turnover","Inventory Turnover","Receivables Days","Payables Days",
+    "Budgeting","Budgeting","Budget Variances","Adverse Variance","Favourable Variance","Zero-based Budgeting",
+    "Investment Appraisal","Payback Period","Accounting Rate of Return (ARR)","Net Present Value (NPV)",
+    "Discounted Cash Flow","Sources of Finance","Sources of Finance","Sources of Finance",
+    "Retained Profit","Shares","Loans","Overdraft","Trade Credit",
+    "Crowdfunding","Business Angels","Venture Capital","Leasing","Loans",
+    "Dividend","Dividend Per Share","Dividend Yield","Market Capitalisation","Shares",
+    "Initial Public Offering","Share Price","Stock Market",
+    // 3.6 Decision Making to Improve Human Resource Performance
+    "Human Resource Management","HR Planning","Workforce Planning","Recruitment","Selection",
+    "Training","On-the-Job Training","Off-the-Job Training","Induction Training",
+    "Appraisal","Performance Management","Motivation","Taylor's Scientific Management","Mayo's Human Relations Theory","Maslow's Hierarchy of Needs",
+    "Herzberg's Two-Factor Theory","Vroom","Expectancy Theory","Job Enrichment","Job Enlargement","Job Rotation",
+    "Empowerment","Delegation","Teamwork","Flexible Working","Remote Working",
+    "labour Turnover","Absenteeism","Employee Retention","Redundancy","Dismissal",
+    "Trade Unions","Collective Bargaining","Industrial Action","Strike","Employment Law",
+    "Equality Act 2010","Minimum Wage and National Living Wage","Employment Contract",
+    "Organisational Structure","Span of Control","Hierarchy","Centralisation","Decentralisation",
+    // 3.7 Analysing the Strategic Position of a Business
+    "Strategy","Strategic Planning","Corporate Strategy","Competitive Advantage",
+    "Porter's Generic Strategies","Cost Leadership","Differentiation","Focus Strategy",
+    "Economies of Scale","Core Competencies","Resource Audit","Value Chain",
+    "Ratio Analysis","SWOT Analysis","PESTLE Analysis","Market Conditions",
+    "Economic Climate","GDP","Inflation","Interest Rates","Exchange Rates","Unemployment",
+    "Business Cycle","Consumer Confidence","Demographics","Globalisation",
+    "Multinational Corporations","Trade Blocs","Emerging Markets","Foreign Direct Investment",
+    "Competition and Markets Authority (CMA)","Competition Policy","Government Intervention",
+    "Fiscal Policy","Monetary Policy","Supply-side Policies","Subsidies","Tariffs",
+    "Big Data","Artificial Intelligence (AI)","Digital Technology","E-commerce","Automation",
+    // 3.8 Choosing Strategic Direction
+    "Growth Strategy","Organic Growth","Inorganic Growth","Mergers","Acquisitions","Takeovers",
+    "Joint Ventures","Strategic Alliance","Vertical Integration","Horizontal Integration",
+    "Conglomerate Integration","Diversification","Ansoff Matrix","Market Penetration","Market Development",
+    "Product Development","Porter's Five Forces","Barriers to Entry","Barriers to Exit",
+    "Retrenchment","Turnaround Strategy","Liquidation","Divestiture","Exit Strategy",
+    // 3.9 Strategic Methods: How to Pursue Strategies
+    "Change Management","Kotter and Schlesinger","Lewin's Force Field Analysis","Lewin's Change Model",
+    "Resistance to Change","Change Management","Organisational Culture","Autocratic Leadership",
+    "Project Management","Critical Path Analysis","Contingency Planning",
+    "Kaizen","Benchmarking","Best Practice","Continuous Improvement",
+    // 3.10 Managing Change
+    "Incremental Change","Disruptive Change","Internal Change","External Change",
+    "Knowledge and Information Management","Data Mining","Database","Big Data",
+    "Scenario Planning","Corporate Culture","Change Management","Stakeholder Management",
+    "Communication","Strategic Leadership","Succession Planning"
+  ]),
+
+  // ────────────────────────────────────────────────────────────
+  // AQA A-LEVEL BUSINESS — Paper 1 topics (mostly 3.1–3.4)
+  // ────────────────────────────────────────────────────────────
+  AQA_ALEVEL_BUS_1: new Set([
+    "Entrepreneurship","Intrapreneurship","Business Planning","Business Plan","Opportunity Cost",
+    "Sole Trader","Partnership","Deeds of Partnership","Unlimited Liability","Limited Liability",
+    "Private Limited Company","Public Limited Company","Co-operative","Social Enterprise",
+    "Mission Statement","Business Objectives","Corporate Strategy","Ethics",
+    "Corporate Social Responsibility (CSR)","Stakeholders","Stakeholder Mapping",
+    "Management","Autocratic Leadership","Autocratic Leadership","Democratic Leadership",
+    "Laissez-faire Leadership","Tannenbaum and Schmidt Continuum","Decision Tree","Decision Tree",
+    "Expected Value","SWOT Analysis","PESTLE Analysis","Ansoff Matrix","Porter's Five Forces",
+    "Corporate Culture","Organisational Structure","Hierarchy","Span of Control",
+    "Delayering","Delegation","Centralisation","Decentralisation",
+    "Market","Market Research","Primary Research","Secondary Research","Market Segmentation",
+    "Target Market","Marketing Mix","Product","Price","Promotion","Place",
+    "Product Life Cycle","Boston Matrix","Brand","Brand Loyalty","Pricing Strategies",
+    "Cost-Plus Pricing","Penetration Pricing","Price Skimming","Price Elasticity of Demand",
+    "Income Elasticity of Demand","Promotional Mix","Digital Marketing","Design Mix",
+    "Distribution Channels","E-commerce","Market Share","Market Growth","Dynamic Markets",
+    "Operations Management","Productivity","Efficiency","Capacity","Capacity utilisation",
+    "Economies of Scale","Diseconomies of Scale","Lean Production","Just-in-Time (JIT)",
+    "Kaizen","Total Quality Management (TQM)","Quality Control","Quality Assurance",
+    "Supply Chain","Inventory Control","Buffer Stock","Batch Production","Flow Production",
+    "Job Production","Automation","Research and Development (R&D)","Innovation","Outsourcing",
+    "Critical Path Analysis","Critical Path Analysis","Float Time"
+  ]),
+
+  // ────────────────────────────────────────────────────────────
+  // AQA A-LEVEL BUSINESS — Paper 2 topics (mostly 3.5–3.6)
+  // ────────────────────────────────────────────────────────────
+  AQA_ALEVEL_BUS_2: new Set([
+    "Revenue","Costs","Fixed Costs","Variable Costs","Semi-variable Costs","Total Costs",
+    "Profit","Gross Profit","Operating Profit","Net Profit","Profit Margin",
+    "Gross Profit Margin","Operating Profit Margin","Net Profit Margin",
+    "Break-even Analysis","Break-even Point","Margin of Safety","Contribution","Contribution Per Unit",
+    "Cash Flow","Cash Flow Forecast","Working Capital","Liquidity",
+    "Current Ratio","Acid Test Ratio","Gearing Ratio","Gearing Ratio","Return on Capital Employed (ROCE)",
+    "Asset Turnover","Inventory Turnover","Receivables Days","Payables Days",
+    "Budgeting","Budgeting","Budget Variances","Adverse Variance","Favourable Variance","Zero-based Budgeting",
+    "Investment Appraisal","Payback Period","Accounting Rate of Return (ARR)","Net Present Value (NPV)",
+    "Sources of Finance","Sources of Finance","Sources of Finance","Retained Profit","Shares",
+    "Loans","Overdraft","Trade Credit","Crowdfunding","Business Angels",
+    "Venture Capital","Leasing","Loans","Peer-to-Peer Funding",
+    "Dividend","Dividend Per Share","Dividend Yield","Market Capitalisation","Shares",
+    "Initial Public Offering","Share Price",
+    "Human Resource Management","HR Planning","Workforce Planning","Recruitment","Selection",
+    "Training","On-the-Job Training","Off-the-Job Training","Induction Training",
+    "Appraisal","Performance Management","Motivation","Taylor's Scientific Management","Mayo's Human Relations Theory","Maslow's Hierarchy of Needs",
+    "Herzberg's Two-Factor Theory","Vroom","Expectancy Theory","Job Enrichment","Job Enlargement","Job Rotation",
+    "Empowerment","Delegation","Teamwork","Flexible Working",
+    "labour Turnover","Absenteeism","Employee Retention","Redundancy","Dismissal",
+    "Trade Unions","Collective Bargaining","Industrial Action","Strike",
+    "Equality Act 2010","Minimum Wage and National Living Wage","Employment Contract",
+    "Organisational Structure","Span of Control","Hierarchy","Centralisation","Decentralisation"
+  ]),
+
+  // ────────────────────────────────────────────────────────────
+  // AQA A-LEVEL BUSINESS — Paper 3 topics (3.7–3.10, synoptic)
+  // ────────────────────────────────────────────────────────────
+  AQA_ALEVEL_BUS_3: new Set([
+    "Strategy","Strategic Planning","Corporate Strategy","Competitive Advantage",
+    "Porter's Generic Strategies","Cost Leadership","Differentiation","Focus Strategy",
+    "Economies of Scale","Core Competencies","Value Chain","Ratio Analysis",
+    "SWOT Analysis","PESTLE Analysis","Market Conditions","Economic Climate",
+    "GDP","Inflation","Interest Rates","Exchange Rates","Unemployment",
+    "Business Cycle","Consumer Confidence","Demographics","Globalisation",
+    "Multinational Corporations","Trade Blocs","Emerging Markets","Foreign Direct Investment",
+    "Competition and Markets Authority (CMA)","Competition Policy","Government Intervention",
+    "Fiscal Policy","Monetary Policy","Supply-side Policies","Subsidies","Tariffs",
+    "Big Data","Artificial Intelligence (AI)","Digital Technology","E-commerce","Automation",
+    "Growth Strategy","Organic Growth","Inorganic Growth","Mergers","Acquisitions","Takeovers",
+    "Joint Ventures","Strategic Alliance","Vertical Integration","Horizontal Integration",
+    "Conglomerate Integration","Diversification","Ansoff Matrix","Market Penetration","Market Development",
+    "Product Development","Porter's Five Forces","Barriers to Entry","Barriers to Exit",
+    "Retrenchment","Turnaround Strategy","Liquidation","Divestiture",
+    "Change Management","Kotter and Schlesinger","Lewin's Force Field Analysis","Lewin's Change Model",
+    "Resistance to Change","Change Management","Project Management","Critical Path Analysis",
+    "Kaizen","Benchmarking","Continuous Improvement",
+    "Incremental Change","Disruptive Change","Internal Change","External Change",
+    "Knowledge and Information Management","Data Mining","Database","Big Data",
+    "Corporate Culture","Stakeholder Management","Strategic Leadership","Succession Planning"
+  ]),
+
+  // ────────────────────────────────────────────────────────────
+  // OCR GCSE BUSINESS (J204) — Full Specification
+  // ────────────────────────────────────────────────────────────
+  OCR_GCSE_BUS_FULL: new Set([
+    // 1. Business activity
+    // 1.1 Role of business enterprise and entrepreneurship
+    "Entrepreneurship","Risk","Opportunity Cost",
+    // 1.2 Business planning
+    "Business Plan",
+    // 1.3 Business ownership
+    "Sole Trader","Partnership","Private Limited Company","Public Limited Company",
+    "Limited Liability","Unlimited Liability",
+    // 1.4 Business aims and objectives
+    "Business Objectives",
+    // 1.5 Stakeholders in business
+    "Stakeholders","Internal Stakeholders","External Stakeholders",
+    // 1.6 Business growth
+    "Organic Growth","Inorganic Growth","Mergers","Acquisitions",
+    "Horizontal Integration","Vertical Integration","Economies of Scale",
+    // 2. Marketing
+    // 2.1 Role of marketing
+    "Marketing Mix",
+    // 2.2 Market research
+    "Market Research","Primary Research","Secondary Research",
+    // 2.3 Market segmentation
+    "Market Segmentation","Target Market",
+    // 2.4 Marketing mix
+    "Product","Price","Promotion","Place",
+    "Product Life Cycle",
+    "Pricing Strategies","Price Skimming","Cost-Plus Pricing","Penetration Pricing","Competitive Pricing",
+    "Advertising","Social Media","Brand","Distribution Channels","E-commerce",
+    // 3. People
+    // 3.2 Organisational structures
+    "Organisational Structure","Flat Organisational Structure","Tall Organisational Structure",
+    "Span of Control","Delegation","Flexible Working","Remote Working",
+    // 3.3 Communication in business
+    "Digital Technology",
+    // 3.4 Recruitment and selection
+    "Recruitment","Selection",
+    // 3.5 Motivation and retention
+    "Motivation","Financial Incentives","Non-Financial Incentives",
+    // 3.6 Training and development
+    "Training","Induction Training","On-the-Job Training","Off-the-Job Training",
+    // 3.7 Employment law
+    "Employment Law","Equality Act 2010","Minimum Wage and National Living Wage","Employment Contract",
+    // 4. Operations
+    // 4.1 Production processes
+    "Job Production","Batch Production","Flow Production","Automation",
+    // 4.2 Quality
+    "Quality Control","Quality Assurance",
+    // 4.3 Sales process
+    "E-commerce","Customer Needs",
+    // 4.4 Consumer law
+    "Consumer Protection",
+    // 4.6 Working with suppliers
+    "Supply Chain",
+    // 5. Finance
+    // 5.2 Sources of finance
+    "Sources of Finance","Loans","Overdraft","Trade Credit","Retained Profit",
+    "Shares","Crowdfunding","Grants",
+    // 5.3 Revenue, costs, profit and loss
+    "Revenue","Fixed Costs","Variable Costs","Total Costs","Profit",
+    "Gross Profit","Net Profit","Gross Profit Margin","Net Profit Margin",
+    "Accounting Rate of Return (ARR)",
+    // 5.4 Break-even
+    "Break-even Analysis","Break-even Point","Cash Flow",
+    // 5.5 Cash and cash flow
+    "Cash Flow Forecast",
+    // 6. Influences on business
+    // 6.1 Ethical and environmental
+    "Ethics","Corporate Social Responsibility (CSR)","Environmental Sustainability",
+    // 6.2 Economic climate
+    "Interest Rates","Unemployment",
+    // 6.3 Globalisation
+    "Globalisation","Multinational Corporations","Imports","Exports"
+  ]),
+
+  // ────────────────────────────────────────────────────────────
+  // OCR GCSE BUSINESS — Component 01
+  // ────────────────────────────────────────────────────────────
+  OCR_GCSE_BUS_1: new Set([
+    // Section 1: Business activity
+    "Entrepreneurship","Risk","Opportunity Cost","Business Plan",
+    "Sole Trader","Partnership","Private Limited Company","Public Limited Company",
+    "Limited Liability","Unlimited Liability","Business Objectives",
+    "Stakeholders","Internal Stakeholders","External Stakeholders",
+    "Organic Growth","Inorganic Growth","Mergers","Acquisitions",
+    "Horizontal Integration","Vertical Integration","Economies of Scale",
+    // Section 2: Marketing
+    "Marketing Mix","Market Research","Primary Research","Secondary Research",
+    "Market Segmentation","Target Market",
+    "Product","Price","Promotion","Place","Product Life Cycle",
+    "Pricing Strategies","Price Skimming","Cost-Plus Pricing","Penetration Pricing","Competitive Pricing",
+    "Advertising","Social Media","Brand","Distribution Channels","E-commerce",
+    // Section 3: People
+    "Organisational Structure","Flat Organisational Structure","Tall Organisational Structure",
+    "Span of Control","Delegation","Flexible Working","Remote Working",
+    "Recruitment","Selection","Motivation","Financial Incentives","Non-Financial Incentives",
+    "Training","Induction Training","On-the-Job Training","Off-the-Job Training",
+    "Employment Law","Equality Act 2010","Minimum Wage and National Living Wage","Employment Contract"
+  ]),
+
+  // ────────────────────────────────────────────────────────────
+  // OCR GCSE BUSINESS — Component 02
+  // ────────────────────────────────────────────────────────────
+  OCR_GCSE_BUS_2: new Set([
+    // Section 4: Operations
+    "Job Production","Batch Production","Flow Production","Automation",
+    "Quality Control","Quality Assurance","E-commerce","Supply Chain","Consumer Protection",
+    // Section 5: Finance
+    "Sources of Finance","Loans","Overdraft","Trade Credit","Retained Profit",
+    "Shares","Crowdfunding","Grants",
+    "Revenue","Fixed Costs","Variable Costs","Total Costs","Profit",
+    "Gross Profit","Net Profit","Gross Profit Margin","Net Profit Margin",
+    "Accounting Rate of Return (ARR)",
+    "Break-even Analysis","Break-even Point","Cash Flow","Cash Flow Forecast",
+    // Section 6: Influences on business
+    "Ethics","Corporate Social Responsibility (CSR)","Environmental Sustainability",
+    "Interest Rates","Unemployment","Globalisation","Multinational Corporations",
+    "Imports","Exports"
+  ]),
+
+  // ────────────────────────────────────────────────────────────
+  // AQA GCSE BUSINESS (8132) — Full Specification
+  // ────────────────────────────────────────────────────────────
+  AQA_GCSE_BUS_FULL: new Set([
+    // 3.1 Business in the real world
+    "Entrepreneurship","Opportunity Cost","Risk",
+    "Sole Trader","Partnership","Private Limited Company","Public Limited Company",
+    "Franchise","Social Enterprise","Limited Liability","Unlimited Liability",
+    "Business Objectives","Stakeholders",
+    "Organic Growth","Inorganic Growth","Mergers","Acquisitions","Economies of Scale","Diseconomies of Scale",
+    // 3.2 Influences on business
+    "E-commerce","Digital Technology",
+    "Ethics","Corporate Social Responsibility (CSR)","Environmental Sustainability",
+    "Interest Rates","Unemployment","Exchange Rates",
+    "Employment Law","Minimum Wage and National Living Wage","Equality Act 2010",
+    "Health and Safety at Work Act 1974","Consumer Protection",
+    "Globalisation","Competition",
+    // 3.3 Business operations
+    "Job Production","Flow Production","Lean Production","Just-in-Time (JIT)",
+    "Total Quality Management (TQM)","Quality Control","Quality Assurance",
+    "Supply Chain","Outsourcing",
+    // 3.4 Human resources
+    "Organisational Structure","Flat Organisational Structure","Tall Organisational Structure","Span of Control",
+    "Centralisation","Decentralisation","Delegation",
+    "Recruitment","Selection","Training","Induction Training",
+    "On-the-Job Training","Off-the-Job Training",
+    "Motivation","Financial Incentives","Non-Financial Incentives","Flexible Working",
+    "Employment Contract","Redundancy",
+    // 3.5 Marketing
+    "Market Research","Primary Research","Secondary Research",
+    "Market Segmentation","Target Market","Market Share",
+    "Marketing Mix","Product","Price","Promotion","Place",
+    "Product Life Cycle","Boston Matrix","Brand","Pricing Strategies",
+    "Price Skimming","Penetration Pricing","Cost-Plus Pricing","Competitive Pricing",
+    "Advertising","Social Media","Distribution Channels","E-commerce","Ansoff Matrix",
+    // 3.6 Finance
+    "Revenue","Fixed Costs","Variable Costs","Total Costs","Profit",
+    "Gross Profit","Net Profit","Gross Profit Margin","Net Profit Margin",
+    "Cash Flow","Cash Flow Forecast","Working Capital",
+    "Sources of Finance","Sources of Finance","Sources of Finance","Retained Profit",
+    "Shares","Loans","Overdraft","Trade Credit","Crowdfunding",
+    "Break-even Analysis","Break-even Point","Margin of Safety","Accounting Rate of Return (ARR)"
+  ]),
+
+  // ────────────────────────────────────────────────────────────
+  // OCR A-LEVEL BUSINESS (H431) — Full Specification
+  // All content assessed synoptically across all three components
+  // ────────────────────────────────────────────────────────────
+  OCR_ALEVEL_BUS_FULL: new Set([
+    // Introduction to Business
+    "Entrepreneurship","Risk","Opportunity Cost",
+    "Sole Trader","Partnership","Private Limited Company","Public Limited Company",
+    "Limited Liability","Unlimited Liability","Franchise","Social Enterprise","Co-operative",
+    "Joint Ventures","Strategic Alliance",
+    // Business objectives and strategy
+    "Business Objectives","Corporate Strategy","Mission Statement",
+    "Corporate Social Responsibility (CSR)","Stakeholders","Stakeholder Mapping",
+    "Business Plan","Scenario Planning",
+    "Porter's Five Forces","Porter's Generic Strategies","Competitive Advantage",
+    "Decision Tree","Expected Value","Ansoff Matrix","SWOT Analysis","PESTLE Analysis",
+    "Satisficing","Scientific Decision Making",
+    // External influences
+    "Market Research","Primary Research","Secondary Research",
+    "Qualitative Research","Quantitative Research","Sampling Methods",
+    "Market Segmentation","Target Market","Market Share","Market Growth",
+    "Monopoly","Oligopoly","Barriers to Entry","Barriers to Exit",
+    "Competition","Competition Policy",
+    "Globalisation","Imports","Exports","Exchange Rates","Trade Blocs","Tariffs",
+    "Protectionism","Subsidies","Emerging Markets","Multinational Corporations",
+    "GDP","Business Cycle","Inflation","Interest Rates",
+    "Fiscal Policy","Monetary Policy","Supply-side Policies",
+    "Ethics","Environmental Sustainability","Digital Technology","E-commerce",
+    "Consumer Rights Act 2015","Health and Safety at Work Act 1974",
+    "Equality Act 2010","Data Protection and GDPR","Employment Law","Intellectual Property",
+    // Change
+    "Change Management","Lewin's Change Model","Kotter and Schlesinger","Resistance to Change",
+    // Accounting and Finance
+    "Sources of Finance","Loans","Overdraft","Trade Credit","Retained Profit",
+    "Shares","Venture Capital","Crowdfunding","Grants","Leasing",
+    "Cash Flow","Cash Flow Forecast","Working Capital",
+    "Budgeting","Budget Variances","Adverse Variance","Favourable Variance",
+    "Break-even Analysis","Contribution","Margin of Safety",
+    "Investment Appraisal","Payback Period","Accounting Rate of Return (ARR)",
+    "Net Present Value (NPV)","Discounted Cash Flow",
+    "Gross Profit","Operating Profit","Net Profit",
+    "Gross Profit Margin","Operating Profit Margin","Net Profit Margin",
+    "Return on Capital Employed (ROCE)","Current Ratio","Acid Test Ratio",
+    "Gearing Ratio","Receivables Days","Payables Days","Asset Turnover","Ratio Analysis",
+    "Depreciation","Fixed Costs","Variable Costs","Semi-variable Costs",
+    "Total Costs","Revenue","Costs","Profit","Profit Margin",
+    "Shareholder Value","Dividend","Dividend Per Share","Dividend Yield",
+    // Human Resources
+    "Organisational Structure","Tall Organisational Structure","Flat Organisational Structure",
+    "Centralisation","Decentralisation","Delegation","Span of Control","Corporate Culture",
+    "Workforce Planning","HR Planning","Recruitment","Selection",
+    "Training","Induction Training","On-the-Job Training","Off-the-Job Training",
+    "Performance Management","labour Turnover","Absenteeism",
+    "Redundancy","Dismissal","Trade Unions","Collective Bargaining",
+    "Employment Contract","Minimum Wage and National Living Wage",
+    "Management","Autocratic Leadership","Democratic Leadership",
+    "Laissez-faire Leadership","Tannenbaum and Schmidt Continuum","Situational Leadership",
+    "Motivation","Maslow's Hierarchy of Needs","Herzberg's Two-Factor Theory",
+    "Taylor's Scientific Management","Vroom","Expectancy Theory",
+    "Financial Incentives","Non-Financial Incentives","Human Resource Management",
+    // Marketing
+    "Marketing Mix","Product","Price","Promotion","Place",
+    "Product Life Cycle","Boston Matrix","Brand","Pricing Strategies",
+    "Cost-Plus Pricing","Price Skimming","Penetration Pricing","Competitive Pricing",
+    "Predatory Pricing","Psychological Pricing","Distribution Channels",
+    "Demographics","Customer Needs","Differentiation","Design Mix",
+    "Digital Marketing","Social Media","Viral Marketing","Price Elasticity of Demand",
+    "Income Elasticity of Demand",
+    // Operations
+    "Operations Management","Productivity","Efficiency","Capacity","Capacity utilisation",
+    "Lean Production","Just-in-Time (JIT)","Kaizen","Total Quality Management (TQM)",
+    "Quality Control","Quality Assurance","Supply Chain","Inventory Control",
+    "Buffer Stock","Reorder Level","Job Production","Batch Production",
+    "Flow Production","Cell Production","Research and Development (R&D)","Innovation",
+    "Outsourcing","Offshoring","Automation","Critical Path Analysis",
+    "Float Time","Network Diagrams","Technology in Operations",
+    // OCR H431 specific
+    "Blake and Mouton's Managerial Grid","McGregor's Theory X and Y",
+    "Adair's Action-Centred Leadership","Trait Theory of Leadership",
+    "McClelland's Acquired Needs Theory","Locke's Goal-Setting Theory",
+    "Management by Objectives","Peters' Excellence Theory",
+    "McKinsey 7-S Model","Delphi Technique",
+    "Accounting Conventions","Going Concern","Accruals","Prudence","Consistency","Materiality",
+    "Interest Cover","Earnings Per Share","Price/Earnings Ratio","Return on Equity",
+    "Goodwill","Stock Turnover","Debtor Turnover","Creditor Turnover",
+    "Employment Tribunal","Hierarchy of Objectives",
+    "Cost Centres","Profit Centres",
+    "Contribution Costing","Absorption Costing","Marginal Costing","Stepped Fixed Costs",
+    "Cyclical Variation","Seasonal Variation"
+  ]),
+
+  // OCR A-LEVEL — Component 01: Operating in a Local Business Environment
+  // Focus: enterprise, start-up, local market context, basic finance, marketing, HR
+  OCR_ALEVEL_BUS_1: new Set([
+    "Entrepreneurship","Risk","Opportunity Cost",
+    "Sole Trader","Partnership","Private Limited Company","Franchise","Social Enterprise",
+    "Limited Liability","Unlimited Liability","Co-operative",
+    "Business Objectives","Mission Statement","Corporate Social Responsibility (CSR)",
+    "Stakeholders","Business Plan","Competitive Advantage","Porter's Five Forces",
+    "Decision Tree","Expected Value","Ansoff Matrix","SWOT Analysis",
+    "Market Research","Primary Research","Secondary Research","Market Segmentation",
+    "Target Market","Market Share","Competition","Customer Needs",
+    "Marketing Mix","Product","Price","Promotion","Place","Product Life Cycle",
+    "Brand","Pricing Strategies","Cost-Plus Pricing","Price Skimming",
+    "Penetration Pricing","Competitive Pricing","Distribution Channels","E-commerce",
+    "Sources of Finance","Loans","Overdraft","Trade Credit","Retained Profit",
+    "Crowdfunding","Grants","Cash Flow","Cash Flow Forecast","Working Capital",
+    "Budgeting","Budget Variances","Break-even Analysis","Contribution","Margin of Safety",
+    "Gross Profit","Net Profit","Gross Profit Margin","Net Profit Margin",
+    "Fixed Costs","Variable Costs","Total Costs","Revenue","Costs","Profit",
+    "Organisational Structure","Flat Organisational Structure","Tall Organisational Structure",
+    "Centralisation","Decentralisation","Delegation","Span of Control",
+    "Recruitment","Selection","Training","Induction Training",
+    "On-the-Job Training","Off-the-Job Training","Motivation",
+    "Maslow's Hierarchy of Needs","Herzberg's Two-Factor Theory",
+    "Taylor's Scientific Management","Financial Incentives","Non-Financial Incentives",
+    "Operations Management","Productivity","Quality Control","Quality Assurance",
+    "Job Production","Batch Production","Flow Production","Inventory Control",
+    "Buffer Stock","Reorder Level","Just-in-Time (JIT)","Supply Chain",
+    "Employment Law","Equality Act 2010","Minimum Wage and National Living Wage",
+    "Health and Safety at Work Act 1974","Ethics",
+    // OCR H431 specific for Component 01
+    "Trait Theory of Leadership","Adair's Action-Centred Leadership",
+    "McGregor's Theory X and Y","Blake and Mouton's Managerial Grid",
+    "McClelland's Acquired Needs Theory","Locke's Goal-Setting Theory",
+    "Management by Objectives","Hierarchy of Objectives",
+    "Cost Centres","Profit Centres","Contribution Costing","Stepped Fixed Costs",
+    "Seasonal Variation","Employment Tribunal","Accounting Conventions",
+    "Going Concern","Accruals","Prudence","Consistency","Materiality"
+  ]),
+
+  // OCR A-LEVEL — Component 02: The UK Business Environment
+  // Focus: macro environment, growth, corporate strategy, full financial analysis, HR strategy
+  OCR_ALEVEL_BUS_2: new Set([
+    "Business Objectives","Corporate Strategy","Mission Statement","SWOT Analysis",
+    "PESTLE Analysis","Porter's Five Forces","Porter's Generic Strategies",
+    "Competitive Advantage","Ansoff Matrix","Stakeholders","Stakeholder Mapping",
+    "Scenario Planning","Change Management","Lewin's Change Model",
+    "Kotter and Schlesinger","Resistance to Change",
+    "GDP","Business Cycle","Inflation","Interest Rates","Fiscal Policy",
+    "Monetary Policy","Supply-side Policies","Competition Policy",
+    "Consumer Rights Act 2015","Health and Safety at Work Act 1974",
+    "Equality Act 2010","Data Protection and GDPR","Employment Law",
+    "Environmental Sustainability","Digital Technology","E-commerce",
+    "Mergers","Acquisitions","Organic Growth","Inorganic Growth",
+    "Economies of Scale","Diseconomies of Scale","Joint Ventures","Strategic Alliance",
+    "Investment Appraisal","Payback Period","Accounting Rate of Return (ARR)",
+    "Net Present Value (NPV)","Discounted Cash Flow",
+    "Return on Capital Employed (ROCE)","Current Ratio","Acid Test Ratio",
+    "Gearing Ratio","Receivables Days","Payables Days","Asset Turnover","Ratio Analysis",
+    "Depreciation","Gross Profit","Operating Profit","Net Profit",
+    "Gross Profit Margin","Operating Profit Margin","Net Profit Margin",
+    "Cash Flow Forecast","Budgeting","Budget Variances","Adverse Variance","Favourable Variance",
+    "Working Capital","Shareholder Value","Dividend",
+    "Corporate Culture","Workforce Planning","HR Planning","Human Resource Management",
+    "Recruitment","Selection","Training","Performance Management",
+    "labour Turnover","Absenteeism","Redundancy","Dismissal",
+    "Trade Unions","Collective Bargaining","Employment Contract",
+    "Management","Autocratic Leadership","Democratic Leadership",
+    "Laissez-faire Leadership","Tannenbaum and Schmidt Continuum",
+    "Motivation","Maslow's Hierarchy of Needs","Herzberg's Two-Factor Theory",
+    "Taylor's Scientific Management","Vroom","Expectancy Theory",
+    "Lean Production","Just-in-Time (JIT)","Kaizen","Total Quality Management (TQM)",
+    "Capacity utilisation","Research and Development (R&D)","Innovation",
+    "Outsourcing","Automation","Critical Path Analysis",
+    // OCR H431 specific for Component 02
+    "Blake and Mouton's Managerial Grid","McGregor's Theory X and Y",
+    "Adair's Action-Centred Leadership","McClelland's Acquired Needs Theory",
+    "Locke's Goal-Setting Theory","Management by Objectives","Peters' Excellence Theory",
+    "McKinsey 7-S Model","Delphi Technique","Hierarchy of Objectives",
+    "Accounting Conventions","Going Concern","Accruals","Prudence","Consistency","Materiality",
+    "Interest Cover","Earnings Per Share","Price/Earnings Ratio","Return on Equity",
+    "Goodwill","Stock Turnover","Debtor Turnover","Creditor Turnover",
+    "Cost Centres","Profit Centres","Contribution Costing","Absorption Costing",
+    "Marginal Costing","Stepped Fixed Costs","Cyclical Variation","Seasonal Variation",
+    "Employment Tribunal"
+  ]),
+
+  // OCR A-LEVEL — Component 03: The Global Business Environment
+  // Focus: globalisation, international trade, global strategy, MNCs, synoptic
+  OCR_ALEVEL_BUS_3: new Set([
+    "Globalisation","Imports","Exports","Exchange Rates","Trade Blocs","Tariffs",
+    "Protectionism","Subsidies","Emerging Markets","Multinational Corporations",
+    "Foreign Direct Investment","Balance of Payments","Human Development Index (HDI)",
+    "Offshoring","Joint Ventures","Strategic Alliance","Glocalisation",
+    "Ethnocentric, Geocentric, and Polycentric Approaches","Cultural Diversity",
+    "Transfer Pricing","Technology and Skills Transfers","Pressure Groups",
+    "Porter's Generic Strategies","Competitive Advantage","Ansoff Matrix",
+    "PESTLE Analysis","SWOT Analysis","Corporate Strategy","Stakeholders",
+    "Mergers","Acquisitions","Organic Growth","Inorganic Growth","Growth Strategy",
+    "Economies of Scale","Diseconomies of Scale","Strategic Alliance",
+    "Corporate Social Responsibility (CSR)","Ethics","Environmental Sustainability",
+    "Business Cycle","GDP","Inflation","Interest Rates","Fiscal Policy","Monetary Policy",
+    "Investment Appraisal","Payback Period","Accounting Rate of Return (ARR)",
+    "Net Present Value (NPV)","Return on Capital Employed (ROCE)","Ratio Analysis",
+    "Cash Flow Forecast","Budgeting","Working Capital","Shareholder Value",
+    "Human Resource Management","Workforce Planning","Motivation",
+    "Maslow's Hierarchy of Needs","Herzberg's Two-Factor Theory","Vroom",
+    "Change Management","Lewin's Change Model","Kotter and Schlesinger",
+    "Resistance to Change","Corporate Culture","Succession Planning","Strategic Leadership",
+    "Operations Management","Lean Production","Just-in-Time (JIT)","Automation",
+    "Technology in Operations","Research and Development (R&D)","Innovation",
+    "Digital Marketing","E-commerce","Social Media","Price Elasticity of Demand",
+    // OCR H431 specific for Component 03
+    "McKinsey 7-S Model","Delphi Technique","Cyclical Variation","Seasonal Variation",
+    "Return on Equity","Interest Cover","Earnings Per Share","Price/Earnings Ratio",
+    "Goodwill","Accounting Conventions","Hierarchy of Objectives",
+    "Peters' Excellence Theory","McClelland's Acquired Needs Theory"
+  ]),
+
+  // ────────────────────────────────────────────────────────────
+  // EDEXCEL GCSE BUSINESS (1BS0) — Full Specification
+  // Theme 1 (Paper 1) + Theme 2 (Paper 2)
+  // ────────────────────────────────────────────────────────────
+  EDEXCEL_GCSE_BUS_FULL: new Set([
+    // ── Theme 1: Investigating small business ──
+    // 1.1 Enterprise and entrepreneurship
+    "Entrepreneurship","Risk","Opportunity Cost",
+    // 1.2 Spotting a business opportunity
+    "Market Research","Primary Research","Secondary Research",
+    "Market Segmentation","Target Market","Customer Needs","Competition",
+    // 1.3 Putting a business idea into practice
+    "Business Objectives","Revenue","Fixed Costs","Variable Costs","Total Costs","Profit",
+    "Break-even Analysis","Break-even Point","Margin of Safety",
+    "Cash Flow","Cash Flow Forecast",
+    "Sources of Finance","Overdraft","Trade Credit","Venture Capital",
+    "Shares","Loans","Retained Profit","Crowdfunding",
+    // 1.4 Making the business effective
+    "Limited Liability","Unlimited Liability",
+    "Sole Trader","Partnership","Private Limited Company","Franchise",
+    "Marketing Mix","Product","Price","Promotion","Place","E-commerce",
+    "Business Plan",
+    // 1.5 Understanding external influences on business
+    "Stakeholders","Technology","Social Media","Consumer Protection",
+    "Employment Law","Interest Rates","Unemployment","Exchange Rates",
+    "Inflation","Ethics","Environmental Sustainability",
+    // ── Theme 2: Building a business ──
+    // 2.1 Growing the business
+    "Organic Growth","Inorganic Growth","Mergers","Acquisitions",
+    "Public Limited Company",
+    "Globalisation","Imports","Exports","Multinational Corporations",
+    "Tariffs","Trade Blocs","Pressure Groups",
+    // 2.2 Making marketing decisions
+    "Design Mix","Product Life Cycle","Brand","Pricing Strategies",
+    "Advertising","Distribution Channels",
+    // 2.3 Making operational decisions
+    "Job Production","Batch Production","Flow Production",
+    "Just-in-Time (JIT)","Inventory Control","Supply Chain",
+    "Quality Control","Quality Assurance",
+    // 2.4 Making financial decisions
+    "Gross Profit","Net Profit","Gross Profit Margin","Net Profit Margin",
+    "Accounting Rate of Return (ARR)",
+    // 2.5 Making human resource decisions
+    "Organisational Structure","Flat Organisational Structure","Tall Organisational Structure",
+    "Centralisation","Decentralisation","Flexible Working","Remote Working",
+    "Recruitment","Selection","Training","On-the-Job Training","Off-the-Job Training",
+    "Motivation","Financial Incentives","Non-Financial Incentives",
+    "Job Rotation","Job Enrichment"
+  ]),
+
+  // EDEXCEL GCSE — Paper 1: Investigating small business (Theme 1)
+  EDEXCEL_GCSE_BUS_1: new Set([
+    "Entrepreneurship","Risk","Opportunity Cost",
+    "Market Research","Primary Research","Secondary Research",
+    "Market Segmentation","Target Market","Customer Needs","Competition",
+    "Business Objectives","Revenue","Fixed Costs","Variable Costs","Total Costs","Profit",
+    "Break-even Analysis","Break-even Point","Margin of Safety",
+    "Cash Flow","Cash Flow Forecast",
+    "Sources of Finance","Overdraft","Trade Credit","Venture Capital",
+    "Shares","Loans","Retained Profit","Crowdfunding",
+    "Limited Liability","Unlimited Liability",
+    "Sole Trader","Partnership","Private Limited Company","Franchise",
+    "Marketing Mix","Product","Price","Promotion","Place","E-commerce","Business Plan",
+    "Stakeholders","Technology","Social Media","Consumer Protection",
+    "Employment Law","Interest Rates","Unemployment","Exchange Rates",
+    "Inflation","Ethics","Environmental Sustainability"
+  ]),
+
+  // EDEXCEL GCSE — Paper 2: Building a business (Theme 2)
+  EDEXCEL_GCSE_BUS_2: new Set([
+    "Organic Growth","Inorganic Growth","Mergers","Acquisitions","Public Limited Company",
+    "Globalisation","Imports","Exports","Multinational Corporations",
+    "Tariffs","Trade Blocs","Pressure Groups",
+    "Ethics","Environmental Sustainability",
+    "Design Mix","Product Life Cycle","Brand","Pricing Strategies",
+    "Advertising","Distribution Channels","E-commerce","Social Media",
+    "Job Production","Batch Production","Flow Production",
+    "Just-in-Time (JIT)","Inventory Control","Supply Chain",
+    "Quality Control","Quality Assurance",
+    "Gross Profit","Net Profit","Gross Profit Margin","Net Profit Margin",
+    "Accounting Rate of Return (ARR)",
+    "Organisational Structure","Flat Organisational Structure","Tall Organisational Structure",
+    "Centralisation","Decentralisation","Flexible Working","Remote Working",
+    "Recruitment","Selection","Training","On-the-Job Training","Off-the-Job Training",
+    "Motivation","Financial Incentives","Non-Financial Incentives",
+    "Job Rotation","Job Enrichment"
+  ]),
+
+  // ────────────────────────────────────────────────────────────
+  // EDEXCEL A-LEVEL BUSINESS (9BS0) — Full Specification
+  // Themes 1–4 across Papers 1, 2 and 3
+  // ────────────────────────────────────────────────────────────
+  EDEXCEL_ALEVEL_BUS_FULL: new Set([
+    // ── Theme 1: Marketing and People ──
+    "Market","Dynamic Markets","Market Share","Market Growth","Brand","Brand",
+    "Market Research","Primary Research","Secondary Research","Market Segmentation",
+    "Target Market","Market Positioning","Competitive Advantage","Differentiation",
+    "Price Elasticity of Demand","Income Elasticity of Demand",
+    "Design Mix","Emotional Branding","Viral Marketing","Social Media",
+    "Pricing Strategies","Cost-Plus Pricing","Price Skimming","Penetration Pricing",
+    "Predatory Pricing","Competitive Pricing","Psychological Pricing",
+    "Distribution Channels","E-commerce",
+    "Product Life Cycle","Boston Matrix","Ansoff Matrix",
+    "Marketing Mix","Product","Price","Promotion","Place",
+    "Recruitment","Selection","Training","On-the-Job Training","Off-the-Job Training",
+    "Induction Training","Outsourcing","Redundancy","Dismissal","Employment Contract",
+    "Collective Bargaining","Trade Unions",
+    "Organisational Structure","Organisational Structure","Hierarchy","Span of Control",
+    "Centralisation","Decentralisation","Flat Organisational Structure","Tall Organisational Structure","Matrix Structure",
+    "Motivation","Taylor's Scientific Management","Mayo's Human Relations Theory","Maslow's Hierarchy of Needs","Herzberg's Two-Factor Theory",
+    "Job Enrichment","Job Enlargement","Job Rotation","Empowerment","Delegation",
+    "Teamwork","Flexible Working",
+    "Autocratic Leadership","Autocratic Leadership","Democratic Leadership","Laissez-faire Leadership",
+    "Entrepreneurship","Intrapreneurship","Business Plan","Business Objectives",
+    "Corporate Strategy","Profit Maximisation","Satisficing","Opportunity Cost",
+    "Sole Trader","Partnership","Private Limited Company","Public Limited Company",
+    "Franchise","Social Enterprise","Lifestyle Businesses","Limited Liability","Unlimited Liability",
+    "Mission Statement",
+    // ── Theme 2: Managing Business Activities ──
+    "Sources of Finance","Sources of Finance","Sources of Finance","Retained Profit",
+    "Shares","Loans","Overdraft","Trade Credit","Leasing",
+    "Peer-to-Peer Funding","Business Angels","Crowdfunding","Venture Capital","Grants",
+    "Cash Flow Forecast","Revenue","Costs","Fixed Costs","Variable Costs",
+    "Break-even Analysis","Break-even Point","Contribution","Contribution Per Unit","Margin of Safety",
+    "Budgeting","Budgeting","Budget Variances","Adverse Variance","Favourable Variance","Zero-based Budgeting",
+    "Gross Profit","Operating Profit","Net Profit","Gross Profit Margin",
+    "Operating Profit Margin","Net Profit Margin","Liquidity","Current Ratio",
+    "Acid Test Ratio","Working Capital","Cash Flow",
+    "Job Production","Batch Production","Flow Production","Cell Production",
+    "Productivity","Efficiency","Capacity","Capacity utilisation",
+    "Inventory Control","Buffer Stock","Just-in-Time (JIT)","Lean Production",
+    "Quality Control","Quality Assurance","Total Quality Management (TQM)","Kaizen",
+    "Inflation","Exchange Rates","Interest Rates","Business Cycle","GDP",
+    "Consumer Price Index (CPI)","Consumer Rights Act 2015",
+    "Health and Safety at Work Act 1974","Equality Act 2010",
+    "Competition Policy","Competition and Markets Authority (CMA)",
+    // ── Theme 3: Business Decisions and Strategy ──
+    "Strategy","Corporate Strategy","Mission Statement","Ansoff Matrix",
+    "Porter's Generic Strategies","Competitive Advantage","SWOT Analysis",
+    "PESTLE Analysis","Porter's Five Forces",
+    "Economies of Scale","Diseconomies of Scale","Mergers","Acquisitions","Takeovers",
+    "Horizontal Integration","Vertical Integration","Organic Growth","Inorganic Growth",
+    "Investment Appraisal","Payback Period","Accounting Rate of Return (ARR)",
+    "Net Present Value (NPV)","Decision Tree","Expected Value",
+    "Critical Path Analysis","Critical Path Analysis","Float Time",
+    "Corporate Culture","Organisational Culture","Stakeholders","Stakeholder Mapping",
+    "Shareholder Value","Ethics","Corporate Social Responsibility (CSR)",
+    "Return on Capital Employed (ROCE)","Gearing Ratio","Gearing Ratio",
+    "labour Turnover","Absenteeism",
+    "Change Management","Resistance to Change","Scenario Planning","Succession Planning",
+    // ── Theme 4: Global Business ──
+    "Globalisation","Imports","Exports","Foreign Direct Investment",
+    "Trade Blocs","Tariffs","Quotas","Protectionism","Subsidies",
+    "Emerging Markets","Human Development Index (HDI)",
+    "Offshoring","Joint Ventures","Glocalisation",
+    "Ethnocentric, Geocentric, and Polycentric Approaches","Cultural Diversity",
+    "Multinational Corporations","Transfer Pricing",
+    "Technology and Skills Transfers","Balance of Payments","Pressure Groups"
+  ]),
+
+  // EDEXCEL A-LEVEL — Paper 1: Marketing, People & Global (Themes 1 + 4)
+  EDEXCEL_ALEVEL_BUS_1: new Set([
+    "Market","Dynamic Markets","Market Share","Market Growth","Brand","Brand",
+    "Market Research","Primary Research","Secondary Research","Market Segmentation",
+    "Target Market","Market Positioning","Competitive Advantage","Differentiation",
+    "Price Elasticity of Demand","Income Elasticity of Demand",
+    "Design Mix","Emotional Branding","Viral Marketing","Social Media",
+    "Pricing Strategies","Cost-Plus Pricing","Price Skimming","Penetration Pricing",
+    "Predatory Pricing","Competitive Pricing","Psychological Pricing",
+    "Distribution Channels","E-commerce","Product Life Cycle","Boston Matrix","Ansoff Matrix",
+    "Marketing Mix","Product","Price","Promotion","Place",
+    "Recruitment","Selection","Training","On-the-Job Training","Off-the-Job Training",
+    "Induction Training","Outsourcing","Redundancy","Dismissal","Employment Contract",
+    "Collective Bargaining","Trade Unions",
+    "Organisational Structure","Hierarchy","Span of Control","Centralisation","Decentralisation",
+    "Flat Organisational Structure","Tall Organisational Structure","Matrix Structure",
+    "Motivation","Taylor's Scientific Management","Mayo's Human Relations Theory","Maslow's Hierarchy of Needs","Herzberg's Two-Factor Theory",
+    "Job Enrichment","Job Enlargement","Job Rotation","Empowerment","Delegation",
+    "Teamwork","Flexible Working",
+    "Autocratic Leadership","Autocratic Leadership","Democratic Leadership","Laissez-faire Leadership",
+    "Entrepreneurship","Intrapreneurship","Business Plan","Business Objectives",
+    "Corporate Strategy","Profit Maximisation","Opportunity Cost",
+    "Sole Trader","Partnership","Private Limited Company","Public Limited Company",
+    "Franchise","Social Enterprise","Lifestyle Businesses","Limited Liability","Unlimited Liability",
+    "Mission Statement",
+    "Globalisation","Imports","Exports","Foreign Direct Investment",
+    "Trade Blocs","Tariffs","Quotas","Protectionism","Subsidies",
+    "Emerging Markets","Human Development Index (HDI)",
+    "Offshoring","Joint Ventures","Glocalisation",
+    "Ethnocentric, Geocentric, and Polycentric Approaches","Cultural Diversity",
+    "Multinational Corporations","Transfer Pricing",
+    "Technology and Skills Transfers","Balance of Payments","Pressure Groups"
+  ]),
+
+  // EDEXCEL A-LEVEL — Paper 2: Business Activities, Decisions & Strategy (Themes 2 + 3)
+  EDEXCEL_ALEVEL_BUS_2: new Set([
+    "Sources of Finance","Sources of Finance","Sources of Finance","Retained Profit",
+    "Shares","Loans","Overdraft","Trade Credit","Leasing",
+    "Peer-to-Peer Funding","Business Angels","Crowdfunding","Venture Capital","Grants",
+    "Limited Liability","Unlimited Liability","Cash Flow Forecast","Business Plan",
+    "Revenue","Costs","Fixed Costs","Variable Costs","Break-even Analysis","Break-even Point",
+    "Contribution","Contribution Per Unit","Margin of Safety","Budgeting","Budgeting",
+    "Budget Variances","Adverse Variance","Favourable Variance","Zero-based Budgeting",
+    "Gross Profit","Operating Profit","Net Profit","Gross Profit Margin",
+    "Operating Profit Margin","Net Profit Margin","Liquidity","Current Ratio",
+    "Acid Test Ratio","Working Capital","Cash Flow",
+    "Job Production","Batch Production","Flow Production","Cell Production",
+    "Productivity","Efficiency","Capacity","Capacity utilisation",
+    "Inventory Control","Buffer Stock","Just-in-Time (JIT)","Lean Production",
+    "Quality Control","Quality Assurance","Total Quality Management (TQM)","Kaizen",
+    "Inflation","Exchange Rates","Interest Rates","Business Cycle","GDP",
+    "Consumer Price Index (CPI)","Consumer Rights Act 2015",
+    "Health and Safety at Work Act 1974","Equality Act 2010",
+    "Competition Policy","Competition and Markets Authority (CMA)",
+    "Strategy","Corporate Strategy","Mission Statement","Ansoff Matrix",
+    "Porter's Generic Strategies","Competitive Advantage","SWOT Analysis",
+    "PESTLE Analysis","Porter's Five Forces",
+    "Economies of Scale","Diseconomies of Scale","Mergers","Acquisitions","Takeovers",
+    "Horizontal Integration","Vertical Integration","Organic Growth","Inorganic Growth",
+    "Investment Appraisal","Payback Period","Accounting Rate of Return (ARR)",
+    "Net Present Value (NPV)","Decision Tree","Expected Value",
+    "Critical Path Analysis","Critical Path Analysis","Float Time",
+    "Corporate Culture","Organisational Culture","Stakeholders","Stakeholder Mapping",
+    "Shareholder Value","Ethics","Corporate Social Responsibility (CSR)",
+    "Return on Capital Employed (ROCE)","Gearing Ratio","Gearing Ratio",
+    "labour Turnover","Absenteeism",
+    "Change Management","Resistance to Change","Scenario Planning","Succession Planning"
+  ]),
+
+  // EDEXCEL A-LEVEL — Paper 3: Investigating Business in a Competitive Environment (all Themes, synoptic)
+  EDEXCEL_ALEVEL_BUS_3: new Set([
+    // Synoptic — all four themes
+    "Market","Dynamic Markets","Market Share","Market Growth","Brand","Brand",
+    "Market Research","Primary Research","Secondary Research","Market Segmentation",
+    "Target Market","Market Positioning","Competitive Advantage","Differentiation",
+    "Price Elasticity of Demand","Income Elasticity of Demand",
+    "Design Mix","Emotional Branding","Viral Marketing","Social Media",
+    "Pricing Strategies","Cost-Plus Pricing","Price Skimming","Penetration Pricing",
+    "Predatory Pricing","Competitive Pricing","Psychological Pricing",
+    "Distribution Channels","E-commerce","Product Life Cycle","Boston Matrix","Ansoff Matrix",
+    "Marketing Mix","Product","Price","Promotion","Place",
+    "Recruitment","Selection","Training","On-the-Job Training","Off-the-Job Training",
+    "Induction Training","Outsourcing","Redundancy","Dismissal","Employment Contract",
+    "Collective Bargaining","Trade Unions",
+    "Organisational Structure","Hierarchy","Span of Control","Centralisation","Decentralisation",
+    "Flat Organisational Structure","Tall Organisational Structure","Matrix Structure",
+    "Motivation","Taylor's Scientific Management","Mayo's Human Relations Theory","Maslow's Hierarchy of Needs","Herzberg's Two-Factor Theory",
+    "Job Enrichment","Job Enlargement","Job Rotation","Empowerment","Delegation",
+    "Teamwork","Flexible Working",
+    "Autocratic Leadership","Autocratic Leadership","Democratic Leadership","Laissez-faire Leadership",
+    "Entrepreneurship","Intrapreneurship","Business Plan","Business Objectives",
+    "Corporate Strategy","Profit Maximisation","Satisficing","Opportunity Cost",
+    "Sole Trader","Partnership","Private Limited Company","Public Limited Company",
+    "Franchise","Social Enterprise","Lifestyle Businesses","Limited Liability","Unlimited Liability",
+    "Mission Statement",
+    "Sources of Finance","Sources of Finance","Sources of Finance","Retained Profit",
+    "Shares","Loans","Overdraft","Trade Credit","Leasing",
+    "Peer-to-Peer Funding","Business Angels","Crowdfunding","Venture Capital","Grants",
+    "Cash Flow Forecast","Revenue","Costs","Fixed Costs","Variable Costs",
+    "Break-even Analysis","Break-even Point","Contribution","Margin of Safety",
+    "Budgeting","Budgeting","Budget Variances","Zero-based Budgeting",
+    "Gross Profit","Operating Profit","Net Profit","Gross Profit Margin",
+    "Operating Profit Margin","Net Profit Margin","Liquidity","Current Ratio",
+    "Acid Test Ratio","Working Capital","Cash Flow",
+    "Job Production","Batch Production","Flow Production","Cell Production",
+    "Productivity","Efficiency","Capacity","Capacity utilisation",
+    "Inventory Control","Buffer Stock","Just-in-Time (JIT)","Lean Production",
+    "Quality Control","Quality Assurance","Total Quality Management (TQM)","Kaizen",
+    "Inflation","Exchange Rates","Interest Rates","Business Cycle","GDP",
+    "Consumer Price Index (CPI)","Consumer Rights Act 2015",
+    "Health and Safety at Work Act 1974","Equality Act 2010",
+    "Competition Policy","Competition and Markets Authority (CMA)",
+    "Strategy","Porter's Generic Strategies","SWOT Analysis","PESTLE Analysis","Porter's Five Forces",
+    "Economies of Scale","Diseconomies of Scale","Mergers","Acquisitions","Takeovers",
+    "Horizontal Integration","Vertical Integration","Organic Growth","Inorganic Growth",
+    "Investment Appraisal","Payback Period","Accounting Rate of Return (ARR)",
+    "Net Present Value (NPV)","Decision Tree","Expected Value",
+    "Critical Path Analysis","Critical Path Analysis","Float Time",
+    "Corporate Culture","Organisational Culture","Stakeholders","Stakeholder Mapping",
+    "Shareholder Value","Ethics","Corporate Social Responsibility (CSR)",
+    "Return on Capital Employed (ROCE)","Gearing Ratio","Gearing Ratio",
+    "labour Turnover","Absenteeism",
+    "Change Management","Resistance to Change","Scenario Planning","Succession Planning",
+    "Globalisation","Imports","Exports","Foreign Direct Investment",
+    "Trade Blocs","Tariffs","Quotas","Protectionism","Subsidies",
+    "Emerging Markets","Human Development Index (HDI)","Offshoring","Joint Ventures",
+    "Glocalisation","Ethnocentric, Geocentric, and Polycentric Approaches",
+    "Cultural Diversity","Multinational Corporations","Transfer Pricing",
+    "Technology and Skills Transfers","Balance of Payments","Pressure Groups"
+  ])
+};
+
+// Labels shown in the badge when a spec is active
+const specLabels = {
+  AQA_ALEVEL_BUS_FULL: 'AQA A-Level (7132)',
+  AQA_ALEVEL_BUS_1:    'AQA A-Level Paper 1',
+  AQA_ALEVEL_BUS_2:    'AQA A-Level Paper 2',
+  AQA_ALEVEL_BUS_3:    'AQA A-Level Paper 3',
+  OCR_GCSE_BUS_FULL:   'OCR GCSE (J204)',
+  OCR_GCSE_BUS_1:      'OCR GCSE Component 1',
+  OCR_GCSE_BUS_2:      'OCR GCSE Component 2',
+  AQA_GCSE_BUS_FULL:   'AQA GCSE (8132)',
+  OCR_ALEVEL_BUS_FULL: 'OCR A-Level (H431)',
+  OCR_ALEVEL_BUS_1:    'OCR A-Level Component 01',
+  OCR_ALEVEL_BUS_2:    'OCR A-Level Component 02',
+  OCR_ALEVEL_BUS_3:    'OCR A-Level Component 03',
+  EDEXCEL_GCSE_BUS_FULL: 'Edexcel GCSE (1BS0)',
+  EDEXCEL_GCSE_BUS_1:    'Edexcel GCSE Paper 1',
+  EDEXCEL_GCSE_BUS_2:    'Edexcel GCSE Paper 2',
+  EDEXCEL_ALEVEL_BUS_FULL: 'Edexcel A-Level (9BS0)',
+  EDEXCEL_ALEVEL_BUS_1:    'Edexcel A-Level Paper 1',
+  EDEXCEL_ALEVEL_BUS_2:    'Edexcel A-Level Paper 2',
+  EDEXCEL_ALEVEL_BUS_3:    'Edexcel A-Level Paper 3'
+};
+
+// ==================== BOARD → PAPER CASCADE ====================
+const boardPapers = {
+  AQA_ALEVEL: [
+    { value: 'AQA_ALEVEL_BUS_FULL', label: 'Full specification (all papers)' },
+    { value: 'AQA_ALEVEL_BUS_1',    label: 'Paper 1 – Business 1 (7132/1)' },
+    { value: 'AQA_ALEVEL_BUS_2',    label: 'Paper 2 – Business 2 (7132/2)' },
+    { value: 'AQA_ALEVEL_BUS_3',    label: 'Paper 3 – Business 3 (7132/3)' }
+  ],
+  OCR_ALEVEL: [
+    { value: 'OCR_ALEVEL_BUS_FULL', label: 'Full specification (H431)' },
+    { value: 'OCR_ALEVEL_BUS_1',    label: 'Component 01 – Operating in a Local Business Environment (H431/01)' },
+    { value: 'OCR_ALEVEL_BUS_2',    label: 'Component 02 – The UK Business Environment (H431/02)' },
+    { value: 'OCR_ALEVEL_BUS_3',    label: 'Component 03 – The Global Business Environment (H431/03)' }
+  ],
+  EDEXCEL_ALEVEL: [
+    { value: 'EDEXCEL_ALEVEL_BUS_FULL', label: 'Full specification (all papers)' },
+    { value: 'EDEXCEL_ALEVEL_BUS_1',    label: 'Paper 1 – Marketing, People & Global (9BS0/01)' },
+    { value: 'EDEXCEL_ALEVEL_BUS_2',    label: 'Paper 2 – Business Activities, Decisions & Strategy (9BS0/02)' },
+    { value: 'EDEXCEL_ALEVEL_BUS_3',    label: 'Paper 3 – Investigating Business (9BS0/03)' }
+  ],
+  AQA_GCSE: [
+    { value: 'AQA_GCSE_BUS_FULL', label: 'Full specification (8132)' }
+  ],
+  OCR_GCSE: [
+    { value: 'OCR_GCSE_BUS_FULL', label: 'Full specification (J204)' },
+    { value: 'OCR_GCSE_BUS_1',    label: 'Component 01 – Business Activity, Marketing & People' },
+    { value: 'OCR_GCSE_BUS_2',    label: 'Component 02 – Operations, Finance & Influences' }
+  ],
+  EDEXCEL_GCSE: [
+    { value: 'EDEXCEL_GCSE_BUS_FULL', label: 'Full specification (1BS0)' },
+    { value: 'EDEXCEL_GCSE_BUS_1',    label: 'Paper 1 – Investigating Small Business (1BS0/01)' },
+    { value: 'EDEXCEL_GCSE_BUS_2',    label: 'Paper 2 – Building a Business (1BS0/02)' }
+  ]
+};
+
+function setBoard(boardKey) {
+  const paperLabel  = document.getElementById('paper-label');
+  const paperSelect = document.getElementById('paper-select');
+  const clearBtn    = document.getElementById('spec-clear-btn');
+
+  if (!boardKey) {
+    // Cleared — reset everything
+    paperLabel.style.display  = 'none';
+    paperSelect.style.display = 'none';
+    paperSelect.disabled = true;
+    clearBtn.classList.remove('visible');
+    setSpec('All');
+    return;
+  }
+
+  const papers = boardPapers[boardKey];
+  if (!papers) return;
+
+  // Populate the paper dropdown
+  paperSelect.innerHTML = papers.map(p =>
+    `<option value="${p.value}">${p.label}</option>`
+  ).join('');
+
+  paperLabel.style.display  = '';
+  paperSelect.style.display = '';
+  paperSelect.disabled = false;
+  clearBtn.classList.add('visible');
+
+  // Auto-apply the first option (full spec)
+  setSpec(papers[0].value);
+}
+
+function clearBoardFilter() {
+  document.getElementById('board-select').value = '';
+  setBoard('');
+}
+
+function setSpec(val) {
+  activeSpec = val;
+  const badge = document.getElementById('spec-badge');
+  const badgeText = document.getElementById('spec-badge-text');
+  if (val === 'All') {
+    badge.classList.add('hidden-badge');
+  } else {
+    const count = specTerms[val] ? [...specTerms[val]].filter(name => glossaryTerms.some(t => t.term === name)).length : 0;
+    badgeText.textContent = `${specLabels[val] || val} · ${count} terms`;
+    badge.classList.remove('hidden-badge');
+  }
+  filterTerms();
+}
+
 function updateStats() {
-  document.getElementById('total-terms').textContent = glossaryTerms.length;
   document.getElementById('showing-count').textContent = filteredTerms.length;
+  const totalEl = document.getElementById('total-terms');
+  const labelEl = document.getElementById('total-label');
+  if (activeSpec !== 'All' && specTerms[activeSpec]) {
+    const specCount = [...specTerms[activeSpec]].filter(name => glossaryTerms.some(t => t.term === name)).length;
+    totalEl.textContent = specCount;
+    if (labelEl) labelEl.textContent = 'Spec Terms:';
+  } else {
+    totalEl.textContent = glossaryTerms.length;
+    if (labelEl) labelEl.textContent = 'Total Terms:';
+  }
 }
 
 // ==================== MODE ====================
@@ -6366,10 +8092,12 @@ function setCategory(cat) {
 
 function filterTerms() {
   const query = document.getElementById('search-input').value.toLowerCase().trim();
+  const specSet = activeSpec !== 'All' ? specTerms[activeSpec] : null;
   filteredTerms = glossaryTerms.filter(t => {
     const matchesCat = activeCategory === 'All' || (activeCategory === 'External Environment' ? externalEnvTerms.has(t.term) : t.category === activeCategory);
     const matchesSearch = !query || t.term.toLowerCase().includes(query) || t.technical.toLowerCase().includes(query) || t.simple.toLowerCase().includes(query) || t.category.toLowerCase().includes(query) || t.related.some(r => r.toLowerCase().includes(query));
-    return matchesCat && matchesSearch;
+    const matchesSpec = !specSet || specSet.has(t.term);
+    return matchesCat && matchesSearch && matchesSpec;
   });
   filteredTerms.sort((a,b) => a.term.localeCompare(b.term));
   updateStats(); renderGlossary();
